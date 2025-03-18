@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slideshow Example</title>
+    <title>Arnold's Mentorship</title>
     <style>
         /* Basic styling for the slideshow */
         body {
@@ -60,12 +60,12 @@
     <div class="slideshow-container">
         <!-- Slide 1 -->
         <div class="mySlides fade">
-            <img src="image1.jpg" alt="Image 1">
+            <img src="OIP%20(1).jpg"
             <div class="text">Caption Text 1</div>
         </div>
         <!-- Slide 2 -->
         <div class="mySlides fade">
-            <img src="image2.jpg" alt="Image 2">
+            <img src="OIP%20(2).jpg"
             <div class="text">Caption Text 2</div>
         </div>
         <!-- Slide 3 -->
