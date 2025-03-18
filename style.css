@@ -132,3 +132,29 @@ color: #ff5722;
 font-weight: bold;
 
 }
+<style>
+        /* Basic styling for the logo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            position: top left;
+            top: 20px;
+            left: 20px;
+        }
+        .logo img {
+            height: 50px; /* Adjust the height as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo with a link to the homepage -->
+    <div class="logo">
+        <a href="index.html">
+            <img src="OIP%20(1).jpg" alt="Company Logo">
+        </a>
+    </div>
