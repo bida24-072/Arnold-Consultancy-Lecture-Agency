@@ -150,12 +150,16 @@
 
     <!-- Header section -->
     <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <h1>Arnold Consultancy Lecture Agency
+</h1>
+        <nav aria-label="Main Navigation">
+  <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+    <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="index.html">Home</a></li>
+    <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="about.html">About</a></li>
+    <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="contact.html">Contact</a></li>
+   
+  </ul>
+</nav>
     </header>
 
     <!-- Main content section -->
@@ -169,7 +173,7 @@
 
     <!-- Footer section -->
     <footer>
-        <p>&copy; 2023 My Website. All rights reserved.</p>
+        <p>&copy; Arnold. All rights reserved.</p>
     </footer>
 
 </body>
