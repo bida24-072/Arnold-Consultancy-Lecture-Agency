@@ -143,7 +143,7 @@
 
     <!-- Logo with a link to the homepage -->
     <div class="logo">
-        <a href=".html">
+        <a href="index.html">
             <img src="hOIP%20(1).jpg" alt="Company Logo"> <!-- Replace with your logo URL -->
         </a>
     </div>
@@ -165,7 +165,7 @@
         /* General body styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            background-color: white;
             color: #333;
             margin: 0;
             padding: 0;
