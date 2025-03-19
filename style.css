@@ -214,151 +214,103 @@
         .product button:hover {
             background-color: #218838;
         }
-    </style>
-
-    <!-- Main content section -->
-    <main>
-        <h2>About Us</h2>
-        <p>This is a sample website to demonstrate CSS styling. We aim to provide a seamless and visually appealing experience for our users.</p>
-        <img src="hOIP%20(1).jpg" alt="logo Image"> <!-- Replace with your main image URL -->
-        <p>Contact us at <a href="gaopalelwetheoanolg@gmail.com">info@example.com</a> or click the button below to learn more.</p>
-        <a href="#about" class="button">Learn More</a>
-}
-
-        /* Logo container styling */
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1000; /* Ensures the logo stays on top of other elements */
-        }
-
-        /* Logo image styling */
-        .logo img {
-            height: 50px; /* Adjust the height as needed */
-            width: auto; /* Maintain aspect ratio */
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effects */
-        }
-
-        /* Hover effect for the logo */
-        .logo img:hover {
-            transform: scale(1.1); /* Slightly enlarge the logo on hover */
-            opacity: 0.9; /* Slightly reduce opacity on hover */
-        }
-
-        /* Optional: Add a subtle shadow to the logo */
-        .logo img {
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        /* Header styling (optional) */
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
- <style>
+  <title>Homepage with Logo</title>
+    <style>
         /* General body styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: blue;
             color: #333;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-image: url('OIP.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
-        /* Container for the pricing table */
-        .pricing-container {
-            max-width: 1200px;
-            margin: 50px auto;
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust the height as needed */
+            width: auto; /* Maintain aspect ratio */
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Add a subtle shadow */
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: #fff;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Heading styling */
-        .pricing-container h1 {
+        header h1 {
+            margin: 0;
             font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #4CAF50;
+            font-weight: bold;
         }
 
-        /* Pricing table styling */
-        .pricing-table {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        /* Pricing card styling */
-        .pricing-card {
-            background-color: #fff;
+        /* Main content styling */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Pricing card header */
-        .pricing-card h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #4CAF50;
-        }
-
-        /* Pricing card details */
-        .pricing-card p {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-
-        .pricing-card .price {
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-            margin: 20px 0;
-        }
-
-        .pricing-card .price span {
-            font-size: 0.6em;
-            color: #777;
-        }
-
-        /* Button styling */
-        .pricing-card .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
+        /* Footer styling */
+        footer {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .pricing-card .btn:hover {
-            background-color: #45a049;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .pricing-table {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .pricing-card {
-                width: 80%;
-            }
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
         }
     </style>
+</head>
+<body>
+
+    <!-- Logo with a link to the homepage -->
+    <div class="logo">
+        <a href="index.html"> <!-- Link to the home page -->
+            <img src="logo.jpg" alt="Company Logo"> <!-- Replace with your logo file name -->
+        </a>
+    </div>
+
+    <!-- Header section -->
+    <header>
+        <h1>Arnold Consultancy Lecture Agency</h1>
+        <nav aria-label="Main Navigation">
+            <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+                <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="index.html">Home</a></li>
+                <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="about.html">About</a></li>
+                <li style="float: left;"><a style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <h2>Welcome to Our Website</h2>
+        <p>This is the homepage of Arnold Consultancy Lecture Agency. We provide top-notch consulting services to help your business grow.</p>
+        <img src="https://th.bing.com/th/id/OIP.SzY303AEnsBD0LGnrOqvnwHaCa?w=348&h=114&c=7&r=0&o=5&pid=1.7" alt="Sample Image"> <!-- Replace with your main image URL -->
+    </main>
+
+
+    
 .spaced-text {
   letter-spacing: 5px; /* Space between letters */
   word-spacing: 10px; /* Space between words */
