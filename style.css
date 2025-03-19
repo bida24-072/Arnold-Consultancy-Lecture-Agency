@@ -305,6 +305,12 @@
             }
         }
     </style>
+.spaced-text {
+  letter-spacing: 5px; /* Space between letters */
+  word-spacing: 10px; /* Space between words */
+  margin: 20px; /* Space around elements */
+  padding: 10px; /* Space inside elements */
+}
     </main>
 
     <!-- Footer section -->
