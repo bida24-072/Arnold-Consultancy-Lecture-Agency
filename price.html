@@ -4,7 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing List</title>
-    
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Container for the pricing table */
+        .pricing-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Heading styling */
+        .pricing-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        /* Pricing table styling */
+        .pricing-table {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Pricing card styling */
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pricing card header */
+        .pricing-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        /* Pricing card details */
+        .pricing-card p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .pricing-card .price {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 0.6em;
+            color: #777;
+        }
+
+        /* Button styling */
+        .pricing-card .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pricing-card .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .pricing-table {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                width: 80%;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -18,7 +118,7 @@
                 <p>Perfect for small projects or quick fixes.</p>
                 <p><strong>Hours:</strong> 1 - 5 hours</p>
                 <p><strong>Work:</strong> Simple tasks, bug fixes, or consultations.</p>
-                <div class="price">P4000 <span>/ hour</span></div>
+                <div class="price">P800 <span>/ hour</span></div>
                 <a href="#contact" class="btn">Get Started</a>
             </div>
 
@@ -28,7 +128,7 @@
                 <p>Ideal for medium-sized projects.</p>
                 <p><strong>Hours:</strong> 5 - 20 hours</p>
                 <p><strong>Work:</strong> Website updates, content creation, or design work.</p>
-                <div class="price">P800 <span>/ hour</span></div>
+                <div class="price">P1000 <span>/ hour</span></div>
                 <a href="#contact" class="btn">Get Started</a>
             </div>
 
