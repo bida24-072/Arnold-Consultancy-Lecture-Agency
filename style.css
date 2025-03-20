@@ -148,7 +148,7 @@
     <!-- Logo with a link to the homepage -->
     <div class="logo">
         <a href="index.html">
-            <img src="hOIP%20(1).jpg" alt="Company Logo"> <!-- Replace with your logo URL -->
+            <img src="logo.jfif" alt="Company Logo"> <!-- Replace with your logo URL -->
         </a>
     </div>
 
@@ -223,26 +223,12 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-image: url('OIP.jpg'); /* Replace with your background image URL */
+            background-image: url('logo.jfif'); /* Replace with your background image URL */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-        }
-
-        /* Logo styling */
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .logo img {
-            height: 50px; /* Adjust the height as needed */
-            width: auto; /* Maintain aspect ratio */
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Add a subtle shadow */
-        }
-
+       
         /* Header styling */
         header {
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
@@ -313,18 +299,7 @@
 
 
     
-.spaced-text {
-  letter-spacing: 5px; /* Space between letters */
-  word-spacing: 10px; /* Space between words */
-  margin: 20px; /* Space around elements */
-  padding: 10px; /* Space inside elements */
-}
-.layout {
-  width: 100%;
 
-  display: flex;
-  gap: 16px;
-}
 
     </main>
 
