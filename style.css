@@ -319,6 +319,13 @@
   margin: 20px; /* Space around elements */
   padding: 10px; /* Space inside elements */
 }
+.layout {
+  width: 100%;
+
+  display: flex;
+  gap: 16px;
+}
+
     </main>
 
     <!-- Footer section -->
