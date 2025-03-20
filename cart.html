@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <!-- W3Schools CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .cart {
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .total {
+      font-weight: bold;
+      text-align: right;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="w3-container">
+    <h1>Shopping Cart</h1>
+
+    <!-- Product List -->
+    <div class="w3-row">
+      <div class="w3-col s4">
+        <div class="w3-card w3-padding">
+          <h3>Product 1</h3>
+          <p>$10.00</p>
+          <button class="w3-button w3-green" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="w3-col s4">
+        <div class="w3-card w3-padding">
+          <h3>Product 2</h3>
+          <p>$20.00</p>
+          <button class="w3-button w3-green" onclick="addToCart('Product 2', 20)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="w3-col s4">
+        <div class="w3-card w3-padding">
+          <h3>Product 3</h3>
+          <p>$30.00</p>
+          <button class="w3-button w3-green" onclick="addToCart('Product 3', 30)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Section -->
+    <div class="cart w3-margin-top">
+      <h2>Your Cart</h2>
+      <div id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="total">
+        Total: $<span id="cart-total">0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    // Function to add an item to the cart
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
+
+    // Function to remove an item from the cart
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    // Function to update the cart display
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      // Clear the cart display
+      cartItems.innerHTML = '';
+
+      // Add each item to the cart display
+      total = 0;
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <span>${item.name} - $${item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItems.appendChild(itemDiv);
+        total += item.price;
+      });
+
+      // Update the total
+      cartTotal.textContent = total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
