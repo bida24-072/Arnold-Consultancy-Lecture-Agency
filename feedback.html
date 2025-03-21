@@ -1,29 +1,102 @@
-<html>
-  <form action="thank.html"> 
-    <fieldset> <legend>Personal information:</legend>
-    First name:<br>  
-    <input type="text" name="firstname"><br>
-  Last name:<br> 
-    <input type="text" name="lastname"><br>
- <input type="radio" name="gender" value="male" checked> Male<br>
-    <input type="radio" name="gender" value="female"> Female<br>
-  <input type="radio" name="gender" value="other"> Other<br>
-      <p>Services offered to you,did you like them</p>
-      <input type="radio" name="Yes" value="male" checked> yes<br>
-       <input type="radio" name="No" value="male" checked> No<br>
-<input type="submit" value="Submit">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Feedback Form</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('feedback%20img.jfif');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-<style>
-body {
-  background-image: url('feedback%20img.jfif');
-}
-</style>
+    form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
+    fieldset {
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      padding: 20px;
+    }
 
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #007BFF;
+    }
 
+    input[type="text"], input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
 
+    input[type="radio"] {
+      margin: 5px 0;
+    }
 
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      font-weight: bold;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <form action="thank.html">
+    <fieldset>
+      <legend>Personal Information</legend>
+      First name:<br>
+      <input type="text" name="firstname" placeholder="Enter your first name"><br>
+      Last name:<br>
+      <input type="text" name="lastname" placeholder="Enter your last name"><br>
+      Gender:<br>
+      <input type="radio" name="gender" value="male" checked> Male<br>
+      <input type="radio" name="gender" value="female"> Female<br>
+      <input type="radio" name="gender" value="other"> Other<br>
+      <p>Services offered to you, did you like them?</p>
+      <input type="radio" name="feedback" value="yes" checked> Yes<br>
+      <input type="radio" name="feedback" value="no"> No<br>
+      <input type="submit" value="Submit">
     </fieldset>
-</form>
+  </form>
+</body>
 </html>
