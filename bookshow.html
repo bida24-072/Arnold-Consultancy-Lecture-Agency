@@ -65,6 +65,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 100%;
         }
         
         .slide-text {
@@ -75,13 +76,16 @@
         .slide-image {
             flex: 1;
             text-align: center;
+            padding: 20px;
         }
         
         .slide-image img {
             max-width: 100%;
+            max-height: 350px;
             height: auto;
             border-radius: 6px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
         }
         
         .slide h2 {
@@ -120,6 +124,7 @@
             display: flex;
             justify-content: center;
             margin-top: 20px;
+            padding-bottom: 20px;
         }
         
         .dot {
@@ -142,7 +147,7 @@
             transform: translateY(-50%);
             width: 50px;
             height: 50px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -152,10 +157,14 @@
             z-index: 10;
             font-size: 1.5rem;
             color: #2c3e50;
+            border: none;
+            outline: none;
+            transition: all 0.3s;
         }
         
         .arrow:hover {
             background-color: white;
+            transform: translateY(-50%) scale(1.1);
         }
         
         .arrow.prev {
@@ -175,6 +184,13 @@
             .slide-text {
                 padding-right: 0;
                 margin-bottom: 30px;
+                order: 2;
+            }
+            
+            .slide-image {
+                order: 1;
+                margin-bottom: 20px;
+                padding: 0;
             }
             
             .services-header h1 {
@@ -188,6 +204,12 @@
             .slide h2 {
                 font-size: 1.5rem;
             }
+            
+            .arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -199,7 +221,7 @@
         </div>
         
         <div class="slideshow">
-            <div class="arrow prev">&#10094;</div>
+            <button class="arrow prev" aria-label="Previous slide">&#10094;</button>
             <div class="slides">
                 <!-- Slide 1 -->
                 <div class="slide">
@@ -277,13 +299,13 @@
                     </div>
                 </div>
             </div>
-            <div class="arrow next">&#10095;</div>
+            <button class="arrow next" aria-label="Next slide">&#10095;</button>
             
             <div class="controls">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+                <button class="dot active" aria-label="Go to slide 1"></button>
+                <button class="dot" aria-label="Go to slide 2"></button>
+                <button class="dot" aria-label="Go to slide 3"></button>
+                <button class="dot" aria-label="Go to slide 4"></button>
             </div>
         </div>
     </div>
@@ -297,6 +319,8 @@
             const nextBtn = document.querySelector('.next');
             let currentIndex = 0;
             const slideCount = slideItems.length;
+            let slideInterval;
+            const slideDuration = 6000;
             
             // Set initial slide position
             updateSlidePosition();
@@ -306,6 +330,7 @@
                 currentIndex = (currentIndex + 1) % slideCount;
                 updateSlidePosition();
                 updateDots();
+                resetAutoSlide();
             }
             
             // Previous slide function
@@ -313,6 +338,7 @@
                 currentIndex = (currentIndex - 1 + slideCount) % slideCount;
                 updateSlidePosition();
                 updateDots();
+                resetAutoSlide();
             }
             
             // Update slide position
@@ -333,12 +359,13 @@
                     currentIndex = index;
                     updateSlidePosition();
                     updateDots();
+                    resetAutoSlide();
                 });
             });
             
             // Button event listeners
-            nextBtn.addEventListener('click', nextSlide);
             prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
             
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
@@ -349,8 +376,18 @@
                 }
             });
             
-            // Auto-advance slides (optional)
-            let slideInterval = setInterval(nextSlide, 6000);
+            // Auto-advance slides
+            function startAutoSlide() {
+                slideInterval = setInterval(nextSlide, slideDuration);
+            }
+            
+            function resetAutoSlide() {
+                clearInterval(slideInterval);
+                startAutoSlide();
+            }
+            
+            // Start auto-slide
+            startAutoSlide();
             
             // Pause auto-advance on hover
             const slideshow = document.querySelector('.slideshow');
@@ -359,8 +396,32 @@
             });
             
             slideshow.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(nextSlide, 6000);
+                startAutoSlide();
             });
+            
+            // Touch events for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slideshow.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(slideInterval);
+            }, {passive: true});
+            
+            slideshow.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoSlide();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    nextSlide();
+                } else if (touchEndX > touchStartX + threshold) {
+                    prevSlide();
+                }
+            }
         });
     </script>
 </body>
