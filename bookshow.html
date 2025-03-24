@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnold Consultancy - Our Services</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Slideshow Container */
+        .services-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .services-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .services-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        /* Slideshow Styles */
+        .slideshow {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            padding: 40px;
+        }
+        
+        .slide-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .slide-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .slide-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .slide-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .slide p {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .service-features {
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Navigation Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #bdc3c7;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .dot.active {
+            background-color: #2c3e50;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .arrow:hover {
+            background-color: white;
+        }
+        
+        .arrow.prev {
+            left: 20px;
+        }
+        
+        .arrow.next {
+            right: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .slide-content {
+                flex-direction: column;
+            }
+            
+            .slide-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .services-header h1 {
+                font-size: 2rem;
+            }
+            
+            .slide {
+                padding: 30px 20px;
+            }
+            
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="services-container">
+        <div class="services-header">
+            <h1>Our Professional Services</h1>
+            <p>Comprehensive solutions tailored to your business needs</p>
+        </div>
+        
+        <div class="slideshow">
+            <div class="arrow prev">&#10094;</div>
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Strategic Business Consulting</h2>
+                            <p>Transform your business with our expert strategic guidance and industry insights.</p>
+                            <ul class="service-features">
+                                <li>Comprehensive market analysis</li>
+                                <li>Competitive positioning strategy</li>
+                                <li>Long-term business planning</li>
+                                <li>Performance optimization</li>
+                            </ul>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business Consulting">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Leadership Development</h2>
+                            <p>Empower your executives and managers with world-class leadership training.</p>
+                            <ul class="service-features">
+                                <li>Executive coaching programs</li>
+                                <li>Team leadership workshops</li>
+                                <li>Communication skills enhancement</li>
+                                <li>Decision-making frameworks</li>
+                            </ul>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leadership Development">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Operational Excellence</h2>
+                            <p>Streamline your operations and maximize efficiency across your organization.</p>
+                            <ul class="service-features">
+                                <li>Process optimization</li>
+                                <li>Cost reduction strategies</li>
+                                <li>Quality management systems</li>
+                                <li>Supply chain improvements</li>
+                            </ul>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Operational Excellence">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Digital Transformation</h2>
+                            <p>Future-proof your business with cutting-edge digital strategies.</p>
+                            <ul class="service-features">
+                                <li>Technology roadmap development</li>
+                                <li>Digital workflow implementation</li>
+                                <li>Data analytics integration</li>
+                                <li>Change management</li>
+                            </ul>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Digital Transformation">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow next">&#10095;</div>
+            
+            <div class="controls">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelector('.slides');
+            const slideItems = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentIndex = 0;
+            const slideCount = slideItems.length;
+            
+            // Set initial slide position
+            updateSlidePosition();
+            
+            // Next slide function
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlidePosition();
+                updateDots();
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlidePosition();
+                updateDots();
+            }
+            
+            // Update slide position
+            function updateSlidePosition() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            // Update navigation dots
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Dot click event
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlidePosition();
+                    updateDots();
+                });
+            });
+            
+            // Button event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+            
+            // Auto-advance slides (optional)
+            let slideInterval = setInterval(nextSlide, 6000);
+            
+            // Pause auto-advance on hover
+            const slideshow = document.querySelector('.slideshow');
+            slideshow.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slideshow.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 6000);
+            });
+        });
+    </script>
+</body>
+</html>
