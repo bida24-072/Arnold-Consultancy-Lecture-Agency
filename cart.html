@@ -118,8 +118,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>${item.name} - P${item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+          <span>${item.name} - P{item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(P{index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
