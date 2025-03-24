@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart</title>
+  <title>Service Cart</title>
   <!-- W3Schools CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
@@ -35,7 +35,7 @@
 <body>
 
   <div class="w3-container">
-    <h1>Shopping Cart</h1>
+    <h1>Service Cart</h1>
 
     <!-- Product List -->
     <div class="w3-row">
@@ -118,8 +118,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>${item.name} - $${item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+          <span>P{item.name} - PP{item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(Pindex})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
