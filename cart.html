@@ -43,37 +43,37 @@
         <div class="w3-card w3-padding">
           <h3>Financial Consulting</h3>
           <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
         </div>
       </div>
       <div class="w3-col s4">
         <div class="w3-card w3-padding">
           <h3>Technology Consulting</h3>
           <p>P300</p>
-          <button class="w3-button w3-green" onclick="addToCart('Product 2', 20)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
         </div>
       </div>
       <div class="w3-col s4">
         <div class="w3-card w3-padding">
           <h3>Marketing and sales Consulting</h3>
           <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Product 3', 30)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Marketing and sales Consulting', 250)">Add to Cart</button>
         </div>
       </div>
- <div class="w3-col s4">
+      <div class="w3-col s4">
         <div class="w3-card w3-padding">
           <h3>Industry-Specific Lecturing</h3>
           <p>P300</p>
-          <button class="w3-button w3-green" onclick="addToCart('Product 4', 40)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
         </div>
-     </div>
-    <div class="w3-col s4">
+      </div>
+      <div class="w3-col s4">
         <div class="w3-card w3-padding">
           <h3>Personal Development</h3>
           <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Product 5', 50)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
         </div>
-      
+      </div>
     </div>
 
     <!-- Cart Section -->
@@ -118,8 +118,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>P{item.name} - PP{item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(Pindex})">Remove</button>
+          <span>${item.name} - P${item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
@@ -129,8 +129,7 @@
       cartTotal.textContent = total.toFixed(2);
     }
   </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
