@@ -53,7 +53,7 @@
         
         .slides {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.75s ease-in-out;
         }
         
         .slide {
@@ -135,6 +135,8 @@
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s;
+            border: none;
+            outline: none;
         }
         
         .dot.active {
@@ -258,171 +260,4 @@
                         <div class="slide-image">
                             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leadership Development">
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2>Operational Excellence</h2>
-                            <p>Streamline your operations and maximize efficiency across your organization.</p>
-                            <ul class="service-features">
-                                <li>Process optimization</li>
-                                <li>Cost reduction strategies</li>
-                                <li>Quality management systems</li>
-                                <li>Supply chain improvements</li>
-                            </ul>
-                        </div>
-                        <div class="slide-image">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Operational Excellence">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="slide">
-                    <div class="slide-content">
-                        <div class="slide-text">
-                            <h2>Digital Transformation</h2>
-                            <p>Future-proof your business with cutting-edge digital strategies.</p>
-                            <ul class="service-features">
-                                <li>Technology roadmap development</li>
-                                <li>Digital workflow implementation</li>
-                                <li>Data analytics integration</li>
-                                <li>Change management</li>
-                            </ul>
-                        </div>
-                        <div class="slide-image">
-                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Digital Transformation">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="arrow next" aria-label="Next slide">&#10095;</button>
-            
-            <div class="controls">
-                <button class="dot active" aria-label="Go to slide 1"></button>
-                <button class="dot" aria-label="Go to slide 2"></button>
-                <button class="dot" aria-label="Go to slide 3"></button>
-                <button class="dot" aria-label="Go to slide 4"></button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelector('.slides');
-            const slideItems = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            let currentIndex = 0;
-            const slideCount = slideItems.length;
-            let slideInterval;
-            const slideDuration = 6000;
-            
-            // Set initial slide position
-            updateSlidePosition();
-            
-            // Next slide function
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateSlidePosition();
-                updateDots();
-                resetAutoSlide();
-            }
-            
-            // Previous slide function
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateSlidePosition();
-                updateDots();
-                resetAutoSlide();
-            }
-            
-            // Update slide position
-            function updateSlidePosition() {
-                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-            
-            // Update navigation dots
-            function updateDots() {
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-            
-            // Dot click event
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateSlidePosition();
-                    updateDots();
-                    resetAutoSlide();
-                });
-            });
-            
-            // Button event listeners
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    nextSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                }
-            });
-            
-            // Auto-advance slides
-            function startAutoSlide() {
-                slideInterval = setInterval(nextSlide, slideDuration);
-            }
-            
-            function resetAutoSlide() {
-                clearInterval(slideInterval);
-                startAutoSlide();
-            }
-            
-            // Start auto-slide
-            startAutoSlide();
-            
-            // Pause auto-advance on hover
-            const slideshow = document.querySelector('.slideshow');
-            slideshow.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-            
-            slideshow.addEventListener('mouseleave', () => {
-                startAutoSlide();
-            });
-            
-            // Touch events for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            slideshow.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                clearInterval(slideInterval);
-            }, {passive: true});
-            
-            slideshow.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-                startAutoSlide();
-            }, {passive: true});
-            
-            function handleSwipe() {
-                const threshold = 50;
-                if (touchEndX < touchStartX - threshold) {
-                    nextSlide();
-                } else if (touchEndX > touchStartX + threshold) {
-                    prevSlide();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+                   
