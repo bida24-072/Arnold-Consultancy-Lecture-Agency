@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bar </title>
+    <title>Search Bar</title>
     <style>
+        /* Body background styling */
+        body {
+            background-image: url('OIP%20(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
         /* Search container styling */
         .search-container {
             max-width: 600px;
             margin: 50px auto;
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         
         /* Search bar styling */
@@ -39,25 +53,27 @@
             font-size: 16px;
             margin-left: 10px;
             transition: background-color 0.3s;
-         <style>
-body {
-  background-image: url('OIP%20(1).jpg');
-    background-image size:80%
-  background-repeat: no-repeat;
-}
-</style>
+        }
+        
+        #searchButton:hover {
+            background-color: #45a049;
+        }
         
         /* Search results styling */
         #searchResults {
             margin-top: 20px;
             text-align: left;
             display: none;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
         }
         
         .result-item {
             padding: 15px;
             border-bottom: 1px solid #eee;
             transition: background-color 0.2s;
+            cursor: pointer;
         }
         
         .result-item:hover {
@@ -73,6 +89,11 @@ body {
         .result-snippet {
             color: #666;
             font-size: 14px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -146,8 +167,8 @@ body {
                     const resultElement = document.createElement('div');
                     resultElement.className = 'result-item';
                     resultElement.innerHTML = `
-                        <div class="result-title">P{item.title}</div>
-                        <div class="result-snippet">P{item.content}</div>
+                        <div class="result-title">${item.title}</div>
+                        <div class="result-snippet">${item.content}</div>
                     `;
                     // Make results clickable
                     resultElement.addEventListener('click', () => {
