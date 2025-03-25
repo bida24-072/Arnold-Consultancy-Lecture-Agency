@@ -111,7 +111,7 @@
             
             <!-- W3Schools dropdown implementation -->
             <div class="w3-dropdown-click">
-                <button onclick="toggleDropdown()" class="w3-btn">
+                <button onclick="toggleDropdown(event)" class="w3-btn">
                     Select Qualification ▼
                 </button>
                 <div id="qualificationDropdown" class="w3-dropdown-content">
@@ -145,7 +145,9 @@
 
     <!-- JavaScript for dropdown toggle -->
     <script>
-        function toggleDropdown() {
+        function toggleDropdown(event) {
+            // Prevent button from closing the dropdown if it's clicked
+            event.stopPropagation();
             var dropdown = document.getElementById("qualificationDropdown");
             if (dropdown.style.display === "block") {
                 dropdown.style.display = "none";
@@ -153,10 +155,10 @@
                 dropdown.style.display = "block";
             }
         }
-        
+
         // Close the dropdown if clicked outside
         window.onclick = function(event) {
-            if (!event.target.matches('.w3-btn')) {
+            if (!event.target.matches('.w3-btn') && !event.target.matches('.w3-dropdown-click')) {
                 var dropdowns = document.getElementsByClassName("w3-dropdown-content");
                 for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
