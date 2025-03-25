@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- Link to W3Schools CSS for form styling -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .signup-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .signup-title {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="w3-container w3-blue">
+    <h2 class="signup-title">Sign Up </h2>
+</div>
+
+<div class="signup-container">
+    <form action="/submit" method="post">
+        <div class="w3-section">
+            <label for="username">Username</label>
+            <input class="w3-input w3-border" type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="w3-section">
+            <label for="email">Email</label>
+            <input class="w3-input w3-border" type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="w3-section">
+            <label for="password">Password</label>
+            <input class="w3-input w3-border" type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="w3-section">
+            <label for="confirm-password">Confirm Password</label>
+            <input class="w3-input w3-border" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+        </div>
+
+        <div class="w3-section">
+            <button type="submit" class="w3-button w3-blue w3-block">Sign Up</button>
+        </div>
+
+        <div class="w3-section w3-center">
+            <p>Already have an account? <a href="/login" class="w3-text-blue">Login here</a></p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
