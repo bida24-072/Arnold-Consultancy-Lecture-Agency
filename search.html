@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Example</title>
+    <style>
+        /* Search container styling */
+        .search-container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        
+        /* Search bar styling */
+        #searchInput {
+            width: 70%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #searchInput:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Search button styling */
+        #searchButton {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        #searchButton:hover {
+            background-color: #45a049;
+        }
+        
+        /* Search results styling */
+        #searchResults {
+            margin-top: 20px;
+            text-align: left;
+            display: none;
+        }
+        
+        .result-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .result-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .result-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .result-snippet {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h2>Search Our Site</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for something...">
+            <button id="searchButton">Search</button>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+
+    <script>
+        // Sample data to search through
+        const searchData = [
+            {
+                title: "About Us",
+                content: "Learn more about our company and mission.",
+                url: "about.html"
+            },
+            {
+                title: "Our Services",
+                content: "Discover the range of services we offer to our clients.",
+                url: "services.html"
+            },
+            {
+                title: "Contact",
+                content: "Find out how to get in touch with our team.",
+                url: "contact.html"
+            },
+            {
+                title: "Catalogue",
+                content: "Stay updated with our company news and announcements.",
+                url: "news.html"
+            },
+            {
+                title: "Motto",
+                content: "Answers to frequently asked questions about our services.",
+                url: "faq.html"
+            }
+        ];
+
+        // Get DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+
+        // Search function
+        function performSearch() {
+            const query = searchInput.value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            
+            // Clear previous results
+            resultsContainer.innerHTML = '';
+            
+            if (query.trim() === '') {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            // Filter data based on search query
+            const results = searchData.filter(item => {
+                return item.title.toLowerCase().includes(query) || 
+                       item.content.toLowerCase().includes(query);
+            });
+            
+            // Display results
+            if (results.length > 0) {
+                results.forEach(item => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'result-item';
+                    resultElement.innerHTML = `
+                        <div class="result-title">P{item.title}</div>
+                        <div class="result-snippet">P{item.content}</div>
+                    `;
+                    // Make results clickable
+                    resultElement.addEventListener('click', () => {
+                        window.location.href = item.url;
+                    });
+                    resultsContainer.appendChild(resultElement);
+                });
+                resultsContainer.style.display = 'block';
+            } else {
+                resultsContainer.innerHTML = '<div class="result-item">No results found</div>';
+                resultsContainer.style.display = 'block';
+            }
+        }
+
+        // Event listeners
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
