@@ -1,40 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dropdown with Bootstrap</title>
-  <!-- Correct Bootstrap CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<select id="myDropdown" onchange="redirectToPage()">
+  <option value="">Select a page</option>
+  <option value="https://www.example.com">Example Page 1</option>
+  <option value="https://www.anotherpage.com">Example Page 2</option>
+  <option value="https://www.yetanotherpage.com">Example Page 3</option>
+</select>
 
-  <!-- Optional: W3Schools CSS for additional styling -->
-  <style>
-    .custom-dropdown {
-      margin-top: 20px;
+<script>
+  function redirectToPage() {
+    var dropdown = document.getElementById("myDropdown");
+    var selectedValue = dropdown.value;
+    if (selectedValue) {
+      window.location.href = selectedValue;
     }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <div class="custom-dropdown">
-      <!-- Dropdown Button -->
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown Menu
-        </button>
-        <!-- Dropdown Menu Items -->
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS and Popper.js (for dropdown functionality) -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+  }
+</script>
