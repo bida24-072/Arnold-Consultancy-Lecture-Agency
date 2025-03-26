@@ -1,4 +1,14 @@
  <style>
+<link rel="book.html" href="book.html">
+  <link rel="feedback.html" href="feedback.html">
+     <link rel="price.html" href="price.html">
+    <link rel="cart.html" href="cart.html">
+    <link rel="catalogue.html" href="catalogue.html">
+      <link href="dropdown.html" rel="dropdown.html">
+     <link rel="bookshow.html" href="bookshow.html">
+    <link rel="search.html" href="search.html">
+   
+
 body {
   background-image: url('best%20logo.jfif');
     background-image size:80%
