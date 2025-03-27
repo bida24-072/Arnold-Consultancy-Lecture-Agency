@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Cart</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="stle.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -92,7 +92,7 @@
       <div class="total">
         Total: P<span id="cart-total">0.00</span>
       </div>
-      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="window.location.href='contact.html'">Checkout</button>
+      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="window.location.href="checkoutlist.html">Checkout</button>
     </div>
   </div>
 
@@ -126,8 +126,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>${item.name} - P${item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+          <span>P{item.name} - P{item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(P{index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
