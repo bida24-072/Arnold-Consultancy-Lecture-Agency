@@ -4,114 +4,109 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Cart</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 20px;
     }
     .service-card {
-      margin-bottom: 20px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      flex: 1 1 300px;
-      margin: 10px;
-      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card-content {
+      flex-grow: 1;
     }
     .cart-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
+      padding: 10px 0;
       border-bottom: 1px solid #ddd;
     }
-    .total {
-      font-weight: bold;
-      font-size: 1.2em;
-      padding: 10px;
-      text-align: right;
-    }
-    .checkout-btn {
-      margin-top: 20px;
-      width: 100%;
-    }
-    .service-container {
-      margin-bottom: 30px;
-    }
-    .cart {
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 5px;
-      margin-top: 30px;
-    }
-    
-    /* Flexbox layout for services */
-    .services-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin: -10px; /* Counteract the card margins */
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .services-row {
-        justify-content: center;
-      }
+    .empty-cart-message {
+      color: #777;
+      font-style: italic;
     }
   </style>
 </head>
-<body>
+<body class="w3-container">
 
-  <div class="w3-container">
+  <div class="w3-panel w3-light-grey w3-round">
     <h1>Service Cart</h1>
+  </div>
 
-    <!-- Product List -->
-    <div class="service-container">
-      <div class="services-row">
-        <div class="service-card">
-          <h3>Financial Consulting</h3>
-          <p>P250.00</p>
-          <button class="w3-button w3-green" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
+  <!-- Service Cards -->
+  <div class="w3-panel">
+    <h2>Our Services</h2>
+    <div class="w3-row-padding">
+      <!-- Row 1 -->
+      <div class="w3-col s12 m6 l4 w3-margin-bottom">
+        <div class="w3-card w3-padding service-card">
+          <div class="service-card-content">
+            <h3>Financial Consulting</h3>
+            <p><strong>P250.00</strong></p>
+          </div>
+          <button class="w3-button w3-green w3-block" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
         </div>
-        <div class="service-card">
-          <h3>Technology Consulting</h3>
-          <p>P300.00</p>
-          <button class="w3-button w3-green" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
+      </div>
+      
+      <div class="w3-col s12 m6 l4 w3-margin-bottom">
+        <div class="w3-card w3-padding service-card">
+          <div class="service-card-content">
+            <h3>Technology Consulting</h3>
+            <p><strong>P300.00</strong></p>
+          </div>
+          <button class="w3-button w3-green w3-block" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
         </div>
-        <div class="service-card">
-          <h3>Marketing and Sales Consulting</h3>
-          <p>P250.00</p>
-          <button class="w3-button w3-green" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
+      </div>
+      
+      <div class="w3-col s12 m6 l4 w3-margin-bottom">
+        <div class="w3-card w3-padding service-card">
+          <div class="service-card-content">
+            <h3>Marketing and Sales Consulting</h3>
+            <p><strong>P250.00</strong></p>
+          </div>
+          <button class="w3-button w3-green w3-block" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
         </div>
-        <div class="service-card">
-          <h3>Industry-Specific Lecturing</h3>
-          <p>P300.00</p>
-          <button class="w3-button w3-green" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
+      </div>
+      
+      <!-- Row 2 -->
+      <div class="w3-col s12 m6 l4 w3-margin-bottom">
+        <div class="w3-card w3-padding service-card">
+          <div class="service-card-content">
+            <h3>Industry-Specific Lecturing</h3>
+            <p><strong>P300.00</strong></p>
+          </div>
+          <button class="w3-button w3-green w3-block" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
         </div>
-        <div class="service-card">
-          <h3>Personal Development</h3>
-          <p>P250.00</p>
-          <button class="w3-button w3-green" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
+      </div>
+      
+      <div class="w3-col s12 m6 l4 w3-margin-bottom">
+        <div class="w3-card w3-padding service-card">
+          <div class="service-card-content">
+            <h3>Personal Development</h3>
+            <p><strong>P250.00</strong></p>
+          </div>
+          <button class="w3-button w3-green w3-block" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Cart Section -->
-    <div class="cart">
-      <h2>Your Cart</h2>
-      <div id="cart-items">
-        <!-- Cart items will be dynamically added here -->
-        <p id="empty-cart-message">Your cart is empty</p>
-      </div>
-      <div class="total">
-        Total: P<span id="cart-total">0.00</span>
-      </div>
-      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="checkout()">Checkout</button>
+  <!-- Cart Section -->
+  <div class="w3-card w3-padding">
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <p id="empty-cart-message" class="empty-cart-message">Your cart is empty</p>
     </div>
+    <div class="w3-panel w3-light-grey">
+      <h4>Total: <strong>P<span id="cart-total">0.00</span></strong></h4>
+    </div>
+    <button id="checkout-btn" class="w3-button w3-blue w3-block w3-large" onclick="checkout()" disabled>Proceed to Checkout</button>
   </div>
 
   <script>
