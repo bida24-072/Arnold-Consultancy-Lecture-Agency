@@ -3,57 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Feedback Form</title>
   <link rel="stylesheet" href="style.css">
-  
- 
-  <!-- W3Schools-inspired CSS -->
-  
+  <!-- Add W3.CSS for styling (if you want to use W3Schools classes) -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-   <form action="thank.html">
-    <fieldset>
-      <legend> Anonymous</legend>
   <div class="w3-container">
     <div class="w3-card w3-padding">
-      <h2 class="w3-center form-title">Service Feedback</h2>
-      <form action="thank.html" method="post" class="w3-container">
-        <div class="w3-section">
-          <label class="w3-label"><b>Gender</b></label>
-          <div class="form-group">
-            <input class="w3-radio" type="radio" name="gender" value="male" checked>
-            <label>Male</label>
-          </div>
-          <div class="form-group">
-            <input class="w3-radio" type="radio" name="gender" value="female">
-            <label>Female</label>
-          </div>
-          <div class="form-group">
-            <input class="w3-radio" type="radio" name="gender" value="other">
-            <label>Other</label>
-          </div>
-        </div>
-        
-        <div class="w3-section">
-          <label class="w3-label"><b>Did you like our services?</b></label>
-          <div class="form-group">
-            <input class="w3-radio" type="radio" name="feedback" value="yes" checked>
-            <label>Yes</label>
-          </div>
-          <div class="form-group">
-            <input class="w3-radio" type="radio" name="feedback" value="no">
-            <label>No</label>
-          </div>
-        </div>
-        
-        <div class="w3-section">
-          <button type="submit" class="w3-button w3-green">Submit Feedback</button>
+      <form action="thank.html" method="post">
+        <fieldset>
+          <legend>Anonymous Feedback</legend>
+          <h2 class="w3-center">Service Feedback</h2>
           
-        </div>
+          <div class="w3-section">
+            <label class="w3-label"><b>Gender</b></label>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="gender" value="male" checked>
+              <label>Male</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="gender" value="female">
+              <label>Female</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="gender" value="other">
+              <label>Other</label>
+            </div>
+          </div>
+          
+          <div class="w3-section">
+            <label class="w3-label"><b>Did you like our services?</b></label>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="feedback" value="yes" checked>
+              <label>Yes</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="feedback" value="no">
+              <label>No</label>
+            </div>
+          </div>
+          
+          <div class="w3-section w3-center">
+            <button type="submit" class="w3-button w3-green">Submit Feedback</button>
+          </div>
+        </fieldset>
       </form>
     </div>
   </div>
 
-  <!-- HTML5 compliant scripts at the end of body -->
+  <!-- Optional JavaScript libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
