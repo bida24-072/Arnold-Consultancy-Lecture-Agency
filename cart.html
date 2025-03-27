@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Cart</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,6 +13,7 @@
     .w3-card {
       margin-bottom: 20px;
       height: 100%;
+      padding: 15px;
     }
     .cart-item {
       display: flex;
@@ -34,6 +35,15 @@
     .w3-row {
       margin-bottom: 20px;
     }
+    .service-container {
+      margin-bottom: 30px;
+    }
+    .cart {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
@@ -42,57 +52,60 @@
     <h1>Service Cart</h1>
 
     <!-- Product List -->
-    <div class="w3-row">
-      <div class="w3-col s4">
-        <div class="w3-card w3-padding">
-          <h3>Financial Consulting</h3>
-          <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
+    <div class="service-container">
+      <div class="w3-row">
+        <div class="w3-col s12 m4 l4">
+          <div class="w3-card">
+            <h3>Financial Consulting</h3>
+            <p>P250.00</p>
+            <button class="w3-button w3-green" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
+          </div>
+        </div>
+        <div class="w3-col s12 m4 l4">
+          <div class="w3-card">
+            <h3>Technology Consulting</h3>
+            <p>P300.00</p>
+            <button class="w3-button w3-green" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
+          </div>
+        </div>
+        <div class="w3-col s12 m4 l4">
+          <div class="w3-card">
+            <h3>Marketing and Sales Consulting</h3>
+            <p>P250.00</p>
+            <button class="w3-button w3-green" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
+          </div>
         </div>
       </div>
-      <div class="w3-col s4">
-        <div class="w3-card w3-padding">
-          <h3>Technology Consulting</h3>
-          <p>P300</p>
-          <button class="w3-button w3-green" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
+      
+      <div class="w3-row">
+        <div class="w3-col s12 m4 l4">
+          <div class="w3-card">
+            <h3>Industry-Specific Lecturing</h3>
+            <p>P300.00</p>
+            <button class="w3-button w3-green" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
+          </div>
         </div>
-      </div>
-      <div class="w3-col s4">
-        <div class="w3-card w3-padding">
-          <h3>Marketing and Sales Consulting</h3>
-          <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="w3-row">
-      <div class="w3-col s4">
-        <div class="w3-card w3-padding">
-          <h3>Industry-Specific Lecturing</h3>
-          <p>P300</p>
-          <button class="w3-button w3-green" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
-        </div>
-      </div>
-      <div class="w3-col s4">
-        <div class="w3-card w3-padding">
-          <h3>Personal Development</h3>
-          <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
+        <div class="w3-col s12 m4 l4">
+          <div class="w3-card">
+            <h3>Personal Development</h3>
+            <p>P250.00</p>
+            <button class="w3-button w3-green" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Cart Section -->
-    <div class="cart w3-margin-top">
+    <div class="cart">
       <h2>Your Cart</h2>
       <div id="cart-items">
         <!-- Cart items will be dynamically added here -->
+        <p id="empty-cart-message">Your cart is empty</p>
       </div>
       <div class="total">
         Total: P<span id="cart-total">0.00</span>
       </div>
-      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="window.location.href="checkoutlist.html">Checkout</button>
+      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="checkout()">Checkout</button>
     </div>
   </div>
 
@@ -116,9 +129,17 @@
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       const cartTotal = document.getElementById('cart-total');
+      const emptyCartMessage = document.getElementById('empty-cart-message');
 
       // Clear the cart display
       cartItems.innerHTML = '';
+
+      if (cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        cartItems.appendChild(emptyCartMessage);
+      } else {
+        emptyCartMessage.style.display = 'none';
+      }
 
       // Add each item to the cart display
       total = 0;
@@ -126,8 +147,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>P{item.name} - P{item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(P{index})">Remove</button>
+          <span>${item.name} - P${item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
@@ -135,7 +156,23 @@
 
       // Update the total
       cartTotal.textContent = total.toFixed(2);
+      
+      // Enable/disable checkout button based on cart items
+      document.getElementById('checkout-btn').disabled = cart.length === 0;
     }
+
+    // Function to handle checkout
+    function checkout() {
+      if (cart.length > 0) {
+        // Store cart data in sessionStorage to pass to checkout page
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('total', total);
+        window.location.href = "checkoutlist.html";
+      }
+    }
+
+    // Initialize cart display
+    updateCart();
   </script>
 </body>
 </html>
