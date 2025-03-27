@@ -8,6 +8,142 @@
       <link href="dropdown.html" rel="dropdown.html">
      <link rel="bookshow.html" href="bookshow.html">
     <link rel="search.html" href="search.html">
+/* W3Schools inspired styling */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.order-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.payment-method {
+    margin-bottom: 10px;
+}
+
+.payment-method input {
+    margin-right: 10px;
+}
+
+.cart-summary {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .order-container {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* General Styles */
 * {
