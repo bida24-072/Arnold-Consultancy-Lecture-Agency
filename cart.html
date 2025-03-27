@@ -1,208 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Cart</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .service-card {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card-content {
-      flex-grow: 1;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-    .cart-item span {
-      flex: 1;
-    }
-    .remove-btn {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 14px;
-      border-radius: 5px;
-    }
-    .remove-btn:hover {
-      background-color: darkred;
-    }
-    .empty-cart-message {
-      color: #777;
-      font-style: italic;
-    }
-    #checkout-btn {
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="w3-container">
+<body>
+    <div class="container">
+        <h2>My Shopping Cart</h2>
+        <div class="product-list">
+            <div class="product">
+                <h3>Product 1</h3>
+                <p>Price: $10</p>
+                <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Product 2</h3>
+                <p>Price: $20</p>
+                <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Product 3</h3>
+                <p>Price: $30</p>
+                <button onclick="addToCart('Product 3', 30)">Add to Cart</button>
+            </div>
+        </div>
 
-  <div class="w3-panel w3-light-grey w3-round">
-    <h1>Service Cart</h1>
-  </div>
-
-  <!-- Service Cards -->
-  <div class="w3-panel">
-    <h2>Our Services</h2>
-    <div class="w3-row-padding">
-      <!-- Row 1 -->
-      <div class="w3-col s12 m6 l4 w3-margin-bottom">
-        <div class="w3-card w3-padding service-card">
-          <div class="service-card-content">
-            <h3>Financial Consulting</h3>
-            <p><strong>P250.00</strong></p>
-          </div>
-          <button class="w3-button w3-green w3-block" onclick="addToCart('Financial Consulting', 250)">Add to Cart</button>
+        <h3>Your Cart</h3>
+        <div id="cartItems">
+            <!-- Cart items will appear here -->
         </div>
-      </div>
-      
-      <div class="w3-col s12 m6 l4 w3-margin-bottom">
-        <div class="w3-card w3-padding service-card">
-          <div class="service-card-content">
-            <h3>Technology Consulting</h3>
-            <p><strong>P300.00</strong></p>
-          </div>
-          <button class="w3-button w3-green w3-block" onclick="addToCart('Technology Consulting', 300)">Add to Cart</button>
+        <div class="total">
+            <p>Total: $<span id="totalPrice">0</span></p>
+            <button onclick="clearCart()">Clear Cart</button>
         </div>
-      </div>
-      
-      <div class="w3-col s12 m6 l4 w3-margin-bottom">
-        <div class="w3-card w3-padding service-card">
-          <div class="service-card-content">
-            <h3>Marketing and Sales Consulting</h3>
-            <p><strong>P250.00</strong></p>
-          </div>
-          <button class="w3-button w3-green w3-block" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
-        </div>
-      </div>
-      
-      <!-- Row 2 -->
-      <div class="w3-col s12 m6 l4 w3-margin-bottom">
-        <div class="w3-card w3-padding service-card">
-          <div class="service-card-content">
-            <h3>Industry-Specific Lecturing</h3>
-            <p><strong>P300.00</strong></p>
-          </div>
-          <button class="w3-button w3-green w3-block" onclick="addToCart('Industry-Specific Lecturing', 300)">Add to Cart</button>
-        </div>
-      </div>
-      
-      <div class="w3-col s12 m6 l4 w3-margin-bottom">
-        <div class="w3-card w3-padding service-card">
-          <div class="service-card-content">
-            <h3>Personal Development</h3>
-            <p><strong>P250.00</strong></p>
-          </div>
-          <button class="w3-button w3-green w3-block" onclick="addToCart('Personal Development', 250)">Add to Cart</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Cart Section -->
-  <div class="w3-card w3-padding">
-    <h2>Your Cart</h2>
-    <div id="cart-items">
-      <p id="empty-cart-message" class="empty-cart-message">Your cart is empty</p>
-    </div>
-    <div class="w3-panel w3-light-grey">
-      <h4>Total: <strong>P<span id="cart-total">0.00</span></strong></h4>
-    </div>
-    <button id="checkout-btn" class="w3-button w3-blue w3-block w3-large" onclick="checkout()" disabled>Proceed to Checkout</button>
-  </div>
-
-  <script>
-    let cart = [];
-    let total = 0;
-
-    // Function to add an item to the cart
-    function addToCart(name, price) {
-      // Check if the item already exists in the cart
-      const existingItem = cart.find(item => item.name === name);
-      
-      if (existingItem) {
-        // If the item already exists, increase the quantity
-        existingItem.quantity += 1;
-        existingItem.price = existingItem.basePrice * existingItem.quantity; // Update price based on quantity
-      } else {
-        // If it's a new item, add it to the cart with a quantity of 1
-        cart.push({ name, basePrice: price, price, quantity: 1 });
-      }
-      
-      updateCart();
-    }
-
-    // Function to remove an item from the cart
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    // Function to update the cart display
-    function updateCart() {
-      const cartItems = document.getElementById('cart-items');
-      const cartTotal = document.getElementById('cart-total');
-      const emptyCartMessage = document.getElementById('empty-cart-message');
-
-      // Clear the cart display
-      cartItems.innerHTML = '';
-
-      if (cart.length === 0) {
-        emptyCartMessage.style.display = 'block';
-        cartItems.appendChild(emptyCartMessage);
-      } else {
-        emptyCartMessage.style.display = 'none';
-      }
-
-      // Add each item to the cart display
-      total = 0;
-      cart.forEach((item, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-          <span>P{item.name} - P {item.price.toFixed(2)} (xP{item.quantity})</span>
-          <button class="remove-btn" onclick="removeFromCart(P{index})">Remove</button>
-        `;
-        cartItems.appendChild(itemDiv);
-        total += item.price;
-      });
-
-      // Update the total
-      cartTotal.textContent = total.toFixed(2);
-      
-      // Enable/disable checkout button based on cart items
-      document.getElementById('checkout-btn').disabled = cart.length === 0;
-    }
-
-    // Function to handle checkout
-    function checkout() {
-      if (cart.length > 0) {
-        // Store cart data in sessionStorage to pass to checkout page
-        sessionStorage.setItem('cart', JSON.stringify(cart));
-        sessionStorage.setItem('total', total);
-        window.location.href = "checkoutlist.html";
-      }
-    }
-
-    // Initialize cart display
-    updateCart();
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
