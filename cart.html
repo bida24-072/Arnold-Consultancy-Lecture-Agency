@@ -4,8 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Cart</title>
-  <link rel="stylesheet" href="style.css">
-  
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .w3-card {
+      margin-bottom: 20px;
+      height: 100%;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .total {
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 10px;
+      text-align: right;
+    }
+    .checkout-btn {
+      margin-top: 20px;
+      width: 100%;
+    }
+    .w3-row {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,11 +59,14 @@
       </div>
       <div class="w3-col s4">
         <div class="w3-card w3-padding">
-          <h3>Marketing and sales Consulting</h3>
+          <h3>Marketing and Sales Consulting</h3>
           <p>P250</p>
-          <button class="w3-button w3-green" onclick="addToCart('Marketing and sales Consulting', 250)">Add to Cart</button>
+          <button class="w3-button w3-green" onclick="addToCart('Marketing and Sales Consulting', 250)">Add to Cart</button>
         </div>
       </div>
+    </div>
+    
+    <div class="w3-row">
       <div class="w3-col s4">
         <div class="w3-card w3-padding">
           <h3>Industry-Specific Lecturing</h3>
@@ -60,9 +92,8 @@
       <div class="total">
         Total: P<span id="cart-total">0.00</span>
       </div>
+      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="window.location.href='contact.html'">Checkout</button>
     </div>
-     </div>
-      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="<link rel="contact.html" href="contact.html">">Checkout</button>
   </div>
 
   <script>
@@ -95,8 +126,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>P{item.name} - P{item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(P{index})">Remove</button>
+          <span>${item.name} - P${item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
