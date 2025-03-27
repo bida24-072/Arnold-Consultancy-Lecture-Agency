@@ -26,10 +26,29 @@
       align-items: center;
       padding: 10px 0;
       border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    .cart-item span {
+      flex: 1;
+    }
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+    .remove-btn:hover {
+      background-color: darkred;
     }
     .empty-cart-message {
       color: #777;
       font-style: italic;
+    }
+    #checkout-btn {
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -148,7 +167,7 @@
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
           <span>${item.name} - P${item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+          <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
