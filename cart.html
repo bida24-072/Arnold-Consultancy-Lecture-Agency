@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Cart</title>
-  <!-- W3Schools CSS -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
   
 </head>
 <body>
@@ -63,7 +62,7 @@
       </div>
     </div>
      </div>
-      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="checkout()">Checkout</button>
+      <button id="checkout-btn" class="w3-button w3-blue checkout-btn" onclick="<link rel="contact.html" href="contact.html">">Checkout</button>
   </div>
 
   <script>
@@ -96,8 +95,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>${item.name} - P${item.price.toFixed(2)}</span>
-          <button class="w3-button w3-red" onclick="removeFromCart(${index})">Remove</button>
+          <span>P{item.name} - P{item.price.toFixed(2)}</span>
+          <button class="w3-button w3-red" onclick="removeFromCart(P{index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
