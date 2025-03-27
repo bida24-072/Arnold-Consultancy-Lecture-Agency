@@ -3,48 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Feedback Form</title>
- 
-  
+  <title>Service Feedback Form | Arnold Consultancy</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .feedback-container {
+      max-width: 700px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .form-header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .form-content {
+      background-color: white;
+      padding: 2rem;
+    }
+    fieldset {
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    legend {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      padding: 0 1rem;
+    }
+    .w3-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .w3-radio {
+      margin-right: 0.5rem;
+    }
+    .submit-btn {
+      background-color: #2c3e50;
+      color: white;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #1a252f;
+    }
+    .form-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .w3-margin-bottom {
+      margin-bottom: 1rem;
+    }
+    .w3-section {
+      margin-bottom: 1.5rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="w3-container">
+  <div class="w3-container feedback-container">
+    <div class="form-header">
+      <h2>Service Feedback Form</h2>
+      <p>Your opinion helps us improve our services</p>
+    </div>
     
+    <div class="form-content">
       <form action="thank.html" method="post">
         <fieldset>
-          <legend>Anonymous Feedback</legend>
-          <h2 class="w3-center">Service Feedback</h2>
+          <legend>Confidential Feedback Submission</legend>
           
           <div class="w3-section">
-            <label class="w3-label"><b>Gender</b></label>
+            <label class="w3-label"><b>Gender (Optional)</b></label>
             <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="male" checked>
-              <label>Male</label>
+              <input class="w3-radio" type="radio" name="gender" value="male" id="male">
+              <label for="male">Male</label>
             </div>
             <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="female">
-              <label>Female</label>
+              <input class="w3-radio" type="radio" name="gender" value="female" id="female">
+              <label for="female">Female</label>
             </div>
             <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="other">
-              <label>Other</label>
+              <input class="w3-radio" type="radio" name="gender" value="other" id="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="gender" value="prefer-not-to-say" id="no-answer" checked>
+              <label for="no-answer">Prefer not to say</label>
             </div>
           </div>
           
           <div class="w3-section">
-            <label class="w3-label"><b>Did you like our services?</b></label>
+            <label class="w3-label"><b>How would you rate your experience with our services?</b></label>
             <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="yes" checked>
-              <label>Yes</label>
+              <input class="w3-radio" type="radio" name="feedback" value="excellent" id="excellent">
+              <label for="excellent">Excellent - Far exceeded expectations</label>
             </div>
             <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="no">
-              <label>No</label>
+              <input class="w3-radio" type="radio" name="feedback" value="good" id="good">
+              <label for="good">Good - Met expectations</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="feedback" value="average" id="average">
+              <label for="average">Average - Room for improvement</label>
+            </div>
+            <div class="w3-margin-bottom">
+              <input class="w3-radio" type="radio" name="feedback" value="poor" id="poor">
+              <label for="poor">Poor - Did not meet expectations</label>
             </div>
           </div>
           
           <div class="w3-section w3-center">
-            <button type="submit" class="w3-button w3-green">Submit Feedback</button>
+            <button type="submit" class="w3-button submit-btn">
+              Submit Feedback
+            </button>
+          </div>
+          
+          <div class="form-footer">
+            <p>Thank you for taking the time to provide your valuable feedback.</p>
+            <p>All responses are confidential and will be used to improve our services.</p>
           </div>
         </fieldset>
       </form>
