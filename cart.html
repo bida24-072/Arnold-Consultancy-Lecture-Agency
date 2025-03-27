@@ -134,7 +134,18 @@
 
     // Function to add an item to the cart
     function addToCart(name, price) {
-      cart.push({ name, price });
+      // Check if the item already exists in the cart
+      const existingItem = cart.find(item => item.name === name);
+      
+      if (existingItem) {
+        // If the item already exists, increase the quantity
+        existingItem.quantity += 1;
+        existingItem.price = existingItem.basePrice * existingItem.quantity; // Update price based on quantity
+      } else {
+        // If it's a new item, add it to the cart with a quantity of 1
+        cart.push({ name, basePrice: price, price, quantity: 1 });
+      }
+      
       updateCart();
     }
 
@@ -166,8 +177,8 @@
         const itemDiv = document.createElement('div');
         itemDiv.className = 'cart-item';
         itemDiv.innerHTML = `
-          <span>${item.name} - P${item.price.toFixed(2)}</span>
-          <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+          <span>P{item.name} - P {item.price.toFixed(2)} (xP{item.quantity})</span>
+          <button class="remove-btn" onclick="removeFromCart(P{index})">Remove</button>
         `;
         cartItems.appendChild(itemDiv);
         total += item.price;
