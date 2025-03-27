@@ -9,6 +9,85 @@
      <link rel="bookshow.html" href="bookshow.html">
     <link rel="search.html" href="search.html">
 /* W3Schools inspired styling */
+
+
+
+/* style.css */
+body {
+  background-image: url('best%20logo.jfif');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.space-bottom {
+  margin-bottom: 1.5rem;
+}
+
+.space-large {
+  margin: 2rem 0;
+}
+
+.space-top {
+  margin-top: 1.5rem;
+}
+
+.indent {
+  padding-left: 2rem;
+}
+
+.paragraph {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1a5276;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    background-size: contain;
+    padding: 10px;
+  }
+  
+  .indent {
+    padding-left: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
