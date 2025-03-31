@@ -131,19 +131,30 @@
         <!-- Product List -->
         <div class="product-list">
             <div class="product">
-                <h3>Product 1</h3>
-                <p>Price: $10</p>
+                <h3>Financial Consulting</h3>
+                <p>Price: P300</p>
                 <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
             </div>
             <div class="product">
-                <h3>Product 2</h3>
-                <p>Price: $20</p>
+                <h3>Technology Consulting</h3>
+                <p>Price: P250</p>
                 <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
             </div>
             <div class="product">
-                <h3>Product 3</h3>
-                <p>Price: $30</p>
+                <h3>Marketing and Sales Consulting</h3>
+                <p>Price: P300</p>
                 <button onclick="addToCart('Product 3', 30)">Add to Cart</button>
+            </div>
+               <div class="product">
+                <h3>Industry-Specific Lecturing</h3>
+                <p>Price: P250</p>
+                <button onclick="addToCart('Product 4', 40)">Add to Cart</button>
+            </div>
+
+              <div class="product">
+                <h3>Personal Development</h3>
+                <p>Price: P300</p>
+                <button onclick="addToCart('Product 5', 50)">Add to Cart</button>
             </div>
         </div>
 
@@ -153,7 +164,7 @@
             <!-- Cart items will appear here -->
         </div>
         <div class="total">
-            <p>Total: $<span id="totalPrice">0</span></p>
+            <p>Total: P<span id="totalPrice">0</span></p>
         </div>
 
         <div class="clear-cart">
@@ -183,7 +194,7 @@
             cart.forEach((item, index) => {
                 let itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `${item.name} - $${item.price} <button onclick="removeFromCart(${index})">Remove</button>`;
+                itemDiv.innerHTML = `P{item.name} - PP{item.price} <button onclick="removeFromCart(${index})">Remove</button>`;
                 cartItemsDiv.appendChild(itemDiv);
             });
 
