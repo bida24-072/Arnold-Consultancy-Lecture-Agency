@@ -1,163 +1,235 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing List</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Header Styles */
-.header {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #fff;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
 
-.header p {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-}
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
 
-/* Flexbox Pricing Grid */
-.flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+        /* Flexbox Pricing Grid */
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.pricing-card {
-    flex: 1;
-    min-width: 280px;
-    max-width: 350px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
+        .pricing-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
 
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
 
-.pricing-card.popular {
-    position: relative;
-    border: 2px solid #3498db;
-}
+        .pricing-card.popular {
+            position: relative;
+            border: 2px solid #3498db;
+        }
 
-.pricing-card.popular::before {
-    content: "Most Popular";
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #3498db;
-    color: white;
-    padding: 5px 15px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    border-bottom-left-radius: 10px;
-}
+        .pricing-card.popular::before {
+            content: "Most Popular";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-bottom-left-radius: 10px;
+        }
 
-.card-content {
-    padding: 30px;
-    text-align: center;
-}
+        .card-content {
+            padding: 30px;
+            text-align: center;
+        }
 
-.card-content h3 {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
+        .card-content h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
 
-.price {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #3498db;
-    margin-bottom: 25px;
-}
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 25px;
+        }
 
-.per-hour {
-    font-size: 1rem;
-    font-weight: normal;
-    color: #7f8c8d;
-}
+        .per-hour {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #7f8c8d;
+        }
 
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
-    text-align: left;
-}
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            text-align: left;
+        }
 
-.feature-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    color: #555;
-}
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
 
-.feature-list li:last-child {
-    border-bottom: none;
-}
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
 
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
 
-.btn:hover {
-    background: #2980b9;
-}
+        .btn:hover {
+            background: #2980b9;
+        }
 
-/* Footer Styles */
-.footer {
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    background: #fff;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            background: #fff;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
 
-.footer a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-.footer a:hover {
-    text-decoration: underline;
-}
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .flex-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .pricing-card {
-        width: 100%;
-        max-width: 400px;
-    }
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Row -->
+<div class="header">
+    <h1>OUR PRICING PLANS</h1>
+    <p>Choose the plan that works for you</p>
+</div>
+
+<!-- Flexbox Pricing Grid -->
+<div class="flex-container">
+    <!-- Basic Plan -->
+    <div class="pricing-card">
+        <div class="card-content">
+            <h3>Basic Plan</h3>
+            <div class="price">P800 <span class="per-hour">per hour</span></div>
+            <ul class="feature-list">
+                <li>1-5 hours</li>
+                <li>Simple tasks</li>
+                <li>Bug fixes</li>
+                <li>Consultations</li>
+            </ul>
+            <a href="contact.html" class="btn">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Standard Plan (Popular) -->
+    <div class="pricing-card popular">
+        <div class="card-content">
+            <h3>Standard Plan</h3>
+            <div class="price">P1000 <span class="per-hour">per hour</span></div>
+            <ul class="feature-list">
+                <li>5-20 hours</li>
+                <li>Tech projects</li>
+                <li>Website updates</li>
+                <li>Content creation</li>
+            </ul>
+            <a href="contact.html" class="btn">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Premium Plan -->
+    <div class="pricing-card">
+        <div class="card-content">
+            <h3>Premium Plan</h3>
+            <div class="price">P1200 <span class="per-hour">per hour</span></div>
+            <ul class="feature-list">
+                <li>20+ hours</li>
+                <li>Full development</li>
+                <li>Custom applications</li>
+                <li>Advanced design</li>
+            </ul>
+            <a href="contact.html" class="btn">Get Started</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Row -->
+<div class="footer">
+    <p>Need help deciding? <a href="contact.html">Contact us</a></p>
+</div>
+
+</body>
+</html>
