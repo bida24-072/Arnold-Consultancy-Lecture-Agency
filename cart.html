@@ -88,21 +88,48 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
         }
 
         .cart-item button {
             background-color: #ff6347;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-item button:hover {
+            background-color: #e5533d;
         }
 
         .total {
             margin-top: 20px;
             font-size: 18px;
             text-align: right;
+            font-weight: bold;
         }
 
         .clear-cart {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .clear-cart button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .clear-cart button:hover {
+            background-color: #e5533d;
         }
 
         /* Media Query for Small Screens */
@@ -133,28 +160,27 @@
             <div class="product">
                 <h3>Financial Consulting</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 1', P300)">Add to Cart</button>
+                <button onclick="addToCart('Financial Consulting', 300)">Add to Cart</button>
             </div>
             <div class="product">
                 <h3>Technology Consulting</h3>
                 <p>Price: P250</p>
-                <button onclick="addToCart('Product 2', P250)">Add to Cart</button>
+                <button onclick="addToCart('Technology Consulting', 250)">Add to Cart</button>
             </div>
             <div class="product">
                 <h3>Marketing and Sales Consulting</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 3', P300)">Add to Cart</button>
+                <button onclick="addToCart('Marketing and Sales Consulting', 300)">Add to Cart</button>
             </div>
-               <div class="product">
+            <div class="product">
                 <h3>Industry-Specific Lecturing</h3>
                 <p>Price: P250</p>
-                <button onclick="addToCart('Product 4', P250)">Add to Cart</button>
+                <button onclick="addToCart('Industry-Specific Lecturing', 250)">Add to Cart</button>
             </div>
-
-              <div class="product">
+            <div class="product">
                 <h3>Personal Development</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 5', P300)">Add to Cart</button>
+                <button onclick="addToCart('Personal Development', 300)">Add to Cart</button>
             </div>
         </div>
 
@@ -174,7 +200,7 @@
 
     <script>
         let cart = [];
-        let totalPrice =P 0;
+        let totalPrice = 0;
 
         function addToCart(productName, price) {
             // Add product to cart array
@@ -191,10 +217,18 @@
             let cartItemsDiv = document.getElementById('cartItems');
             cartItemsDiv.innerHTML = '';
 
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p>Your cart is empty</p>';
+                return;
+            }
+
             cart.forEach((item, index) => {
                 let itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `P{item.name} - PP{item.price} <button onclick="removeFromCart(P{index})">Remove</button>`;
+                itemDiv.innerHTML = `
+                    <span>P{item.name} - P0{item.price}</span>
+                    <button onclick="removeFromCart(P{index})">Remove</button>
+                `;
                 cartItemsDiv.appendChild(itemDiv);
             });
 
@@ -213,9 +247,12 @@
 
         function clearCart() {
             cart = [];
-            totalPrice =P 0;
+            totalPrice = 0;
             updateCartDisplay();
         }
+
+        // Initialize empty cart display
+        updateCartDisplay();
     </script>
     
 </body>
