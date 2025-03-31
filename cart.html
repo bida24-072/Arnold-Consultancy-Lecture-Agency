@@ -133,28 +133,28 @@
             <div class="product">
                 <h3>Financial Consulting</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+                <button onclick="addToCart('Product 1', P300)">Add to Cart</button>
             </div>
             <div class="product">
                 <h3>Technology Consulting</h3>
                 <p>Price: P250</p>
-                <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+                <button onclick="addToCart('Product 2', P250)">Add to Cart</button>
             </div>
             <div class="product">
                 <h3>Marketing and Sales Consulting</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 3', 30)">Add to Cart</button>
+                <button onclick="addToCart('Product 3', P300)">Add to Cart</button>
             </div>
                <div class="product">
                 <h3>Industry-Specific Lecturing</h3>
                 <p>Price: P250</p>
-                <button onclick="addToCart('Product 4', 40)">Add to Cart</button>
+                <button onclick="addToCart('Product 4', P250)">Add to Cart</button>
             </div>
 
               <div class="product">
                 <h3>Personal Development</h3>
                 <p>Price: P300</p>
-                <button onclick="addToCart('Product 5', 50)">Add to Cart</button>
+                <button onclick="addToCart('Product 5', P300)">Add to Cart</button>
             </div>
         </div>
 
@@ -174,7 +174,7 @@
 
     <script>
         let cart = [];
-        let totalPrice = 0;
+        let totalPrice =P 0;
 
         function addToCart(productName, price) {
             // Add product to cart array
@@ -194,7 +194,7 @@
             cart.forEach((item, index) => {
                 let itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `P{item.name} - PP{item.price} <button onclick="removeFromCart(${index})">Remove</button>`;
+                itemDiv.innerHTML = `P{item.name} - PP{item.price} <button onclick="removeFromCart(P{index})">Remove</button>`;
                 cartItemsDiv.appendChild(itemDiv);
             });
 
@@ -213,7 +213,7 @@
 
         function clearCart() {
             cart = [];
-            totalPrice = 0;
+            totalPrice =P 0;
             updateCartDisplay();
         }
     </script>
