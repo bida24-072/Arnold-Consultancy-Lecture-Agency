@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fancy Search Bar</title>
+    <title>Enterprise Search</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #6c5ce7;
-            --secondary-color: #a29bfe;
-            --accent-color: #fd79a8;
-            --text-color: #2d3436;
-            --light-color: #f9f9f9;
-            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #2980b9;
+            --text-color: #333333;
+            --light-color: #f8f9fa;
+            --border-color: #e0e0e0;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7f9;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -25,103 +25,108 @@
             margin: 0;
             padding: 20px;
             color: var(--text-color);
+            line-height: 1.6;
         }
         
         .search-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             background: white;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            padding: 30px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 30px 40px;
+            border: 1px solid var(--border-color);
         }
         
-        .search-container:hover {
-            transform: translateY(-5px);
-        }
-        
-        .search-container h2 {
+        .search-header {
             text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-header h2 {
             color: var(--primary-color);
-            margin-bottom: 25px;
-            font-size: 28px;
-            font-weight: 700;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .search-header p {
+            color: #7f8c8d;
+            margin: 0;
+            font-size: 14px;
         }
         
         .search-box {
             display: flex;
+            margin-bottom: 5px;
             position: relative;
-            margin-bottom: 10px;
         }
         
         .search-box input {
             flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            font-size: 16px;
+            padding: 14px 20px 14px 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 15px;
             outline: none;
-            transition: all 0.3s ease;
-            padding-left: 50px;
+            transition: border-color 0.3s ease;
+            background-color: var(--light-color);
         }
         
         .search-box input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+            border-color: var(--accent-color);
+            background-color: white;
         }
         
         .search-box::before {
             content: "\f002";
             font-family: "Font Awesome 6 Free";
-            font-weight: 900;
+            font-weight: 600;
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: #aaa;
-            z-index: 1;
+            color: #95a5a6;
+            font-size: 14px;
         }
         
         .search-box button {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 4px;
             padding: 0 25px;
             margin-left: 10px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
+            font-size: 15px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            min-width: 100px;
         }
         
         .search-box button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(108, 92, 231, 0.3);
+            background-color: var(--secondary-color);
         }
         
         .search-box button:active {
-            transform: translateY(0);
+            background-color: var(--primary-color);
         }
         
         #searchResults {
             max-height: 400px;
             overflow-y: auto;
-            margin-top: 15px;
+            margin-top: 20px;
             display: none;
-            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
             background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .result-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background-color 0.2s ease;
         }
         
         .result-item:last-child {
@@ -129,54 +134,64 @@
         }
         
         .result-item:hover {
-            background: #f8f8f8;
-            transform: translateX(5px);
+            background-color: var(--light-color);
         }
         
         .result-title {
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 5px;
-            font-size: 18px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-title i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 14px;
         }
         
         .result-snippet {
-            color: #666;
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .result-url {
+            color: #3498db;
+            font-size: 13px;
+            margin-top: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #95a5a6;
             font-size: 14px;
         }
         
         /* Scrollbar styling */
         #searchResults::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         #searchResults::-webkit-scrollbar-track {
             background: #f1f1f1;
-            border-radius: 10px;
         }
         
         #searchResults::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 10px;
-        }
-        
-        #searchResults::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
-        }
-        
-        /* Pulse animation for the search button */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
-        }
-        
-        .pulse {
-            animation: pulse 1.5s infinite;
+            background: #bdc3c7;
+            border-radius: 3px;
         }
         
         /* Responsive design */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .search-container {
+                padding: 25px;
+            }
+            
             .search-box {
                 flex-direction: column;
             }
@@ -185,24 +200,24 @@
                 margin-left: 0;
                 margin-top: 10px;
                 padding: 12px;
+                width: 100%;
             }
             
             .search-box::before {
-                top: 18px;
-            }
-            
-            .search-box input {
-                padding-left: 45px;
+                top: 16px;
             }
         }
     </style>
 </head>
 <body>
     <div class="search-container">
-        <h2>Search Our Site</h2>
+        <div class="search-header">
+            <h2>Enterprise Search</h2>
+            <p>Search across all company resources and documents</p>
+        </div>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search for something...">
-            <button id="searchButton" class="pulse">Search</button>
+            <input type="text" id="searchInput" placeholder="Enter search terms...">
+            <button id="searchButton">Search <i class="fas fa-search"></i></button>
         </div>
         <div id="searchResults"></div>
     </div>
@@ -211,49 +226,58 @@
         // Sample data to search through
         const searchData = [
             {
-                title: "About Us",
-                content: "Learn more about our company and mission.",
-                url: "about.html"
+                title: "About Our Company",
+                content: "Corporate overview, mission statement, and executive leadership team.",
+                url: "about.html",
+                icon: "building"
             },
             {
-                title: "Services",
-                content: "Discover the range of services we offer to our clients.",
-                url: "bookshow.html"
+                title: "Services Overview",
+                content: "Detailed information about our professional service offerings and solutions.",
+                url: "services.html",
+                icon: "briefcase"
             },
             {
-                title: "Contact Information",
-                content: "Find out how to get in touch with our team.",
-                url: "contact.html"
+                title: "Client Portal",
+                content: "Secure login for existing clients to access their accounts and documents.",
+                url: "clients.html",
+                icon: "user-shield"
             },
             {
-                title: "Product Catalogue",
-                content: "Browse our extensive collection of products.",
-                url: "catalogue.html"
+                title: "Product Catalog",
+                content: "Comprehensive listing of all products with specifications and pricing.",
+                url: "catalog.html",
+                icon: "box-open"
             },
             {
-                title: "Company Motto",
-                content: "Our guiding principles and values that drive us forward.",
-                url: "about.html"
+                title: "Corporate Policies",
+                content: "Official company policies, procedures, and compliance documentation.",
+                url: "policies.html",
+                icon: "file-contract"
             },
             {
-                title: "Customer Feedback",
-                content: "See what our clients say about our services.",
-                url: "feedback.html"
+                title: "Investor Relations",
+                content: "Financial reports, investor presentations, and shareholder information.",
+                url: "investors.html",
+                icon: "chart-line"
             },
             {
-                title: "Shopping Cart",
-                content: "Manage your selected items before checkout.",
-                url: "cart.html"
+                title: "Contact Directory",
+                content: "Department contacts, office locations, and global headquarters information.",
+                url: "contact.html",
+                icon: "address-book"
             },
             {
-                title: "Our Clients",
-                content: "View the prestigious companies we've worked with.",
-                url: "qualifications.html"
+                title: "White Papers",
+                content: "Technical documents and research reports published by our team.",
+                url: "whitepapers.html",
+                icon: "file-alt"
             },
             {
-                title: "Qualifications",
-                content: "Our professional certifications and accreditations.",
-                url: "qualification.html"
+                title: "Careers",
+                content: "Current job openings, benefits information, and application portal.",
+                url: "careers.html",
+                icon: "user-tie"
             }
         ];
 
@@ -264,13 +288,13 @@
 
         // Search function
         function performSearch() {
-            const query = searchInput.value.toLowerCase();
+            const query = searchInput.value.toLowerCase().trim();
             const resultsContainer = document.getElementById('searchResults');
             
             // Clear previous results
             resultsContainer.innerHTML = '';
             
-            if (query.trim() === '') {
+            if (query === '') {
                 resultsContainer.style.display = 'none';
                 return;
             }
@@ -287,22 +311,28 @@
                     const resultElement = document.createElement('div');
                     resultElement.className = 'result-item';
                     resultElement.innerHTML = `
-                        <div class="result-title">${highlightMatches(item.title, query)}</div>
+                        <div class="result-title">
+                            <i class="fas fa-${item.icon}"></i>
+                            ${highlightMatches(item.title, query)}
+                        </div>
                         <div class="result-snippet">${highlightMatches(item.content, query)}</div>
+                        <div class="result-url">${item.url}</div>
                     `;
                     // Make results clickable
                     resultElement.addEventListener('click', () => {
-                        // Add click animation
-                        resultElement.style.transform = 'scale(0.98)';
-                        setTimeout(() => {
-                            window.location.href = item.url;
-                        }, 200);
+                        window.location.href = item.url;
                     });
                     resultsContainer.appendChild(resultElement);
                 });
                 resultsContainer.style.display = 'block';
             } else {
-                resultsContainer.innerHTML = '<div class="result-item">No results found for "' + query + '"</div>';
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 24px; margin-bottom: 10px;"></i>
+                        <div>No results found for "${query}"</div>
+                        <div style="margin-top: 5px; font-size: 13px;">Try different keywords or check your spelling</div>
+                    </div>
+                `;
                 resultsContainer.style.display = 'block';
             }
         }
@@ -312,7 +342,7 @@
             if (!query) return text;
             
             const regex = new RegExp(query, 'gi');
-            return text.replace(regex, match => `<span style="background-color: #fff9c4; font-weight: bold;">${match}</span>`);
+            return text.replace(regex, match => `<span style="background-color: #e3f2fd; color: #1565c0; padding: 0 2px;">${match}</span>`);
         }
 
         // Event listeners
@@ -323,13 +353,9 @@
             }
         });
         
-        // Add focus effect to search input
-        searchInput.addEventListener('focus', () => {
-            searchButton.classList.add('pulse');
-        });
-        
-        searchInput.addEventListener('blur', () => {
-            searchButton.classList.remove('pulse');
+        // Focus the search input on page load
+        window.addEventListener('load', () => {
+            searchInput.focus();
         });
     </script>
 </body>
