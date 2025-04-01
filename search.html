@@ -3,26 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bar</title>
-    <link rel="stylesheet" href="style.css">
-  
-</head>
-<body>
- <style>
+    <title>Fancy Search Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --text-color: #2d3436;
+            --light-color: #f9f9f9;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
         body {
-            background-image: url('best%20logo.jfif');
-            background-size: 80%;
-            background-repeat: repeat;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .search-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .search-container h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .search-box {
+            display: flex;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            padding-left: 50px;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        
+        .search-box::before {
+            content: "\f002";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            z-index: 1;
+        }
+        
+        .search-box button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0 25px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
+        }
+        
+        .search-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(108, 92, 231, 0.3);
+        }
+        
+        .search-box button:active {
+            transform: translateY(0);
+        }
+        
+        #searchResults {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 15px;
+            display: none;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-item:hover {
+            background: #f8f8f8;
+            transform: translateX(5px);
+        }
+        
+        .result-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .result-snippet {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Scrollbar styling */
+        #searchResults::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #searchResults::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        #searchResults::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+        
+        #searchResults::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
+        /* Pulse animation for the search button */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box button {
+                margin-left: 0;
+                margin-top: 10px;
+                padding: 12px;
+            }
+            
+            .search-box::before {
+                top: 18px;
+            }
+            
+            .search-box input {
+                padding-left: 45px;
+            }
         }
     </style>
-
-
-    
+</head>
+<body>
     <div class="search-container">
         <h2>Search Our Site</h2>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search for something...">
-            <button id="searchButton">Search</button>
+            <button id="searchButton" class="pulse">Search</button>
         </div>
         <div id="searchResults"></div>
     </div>
@@ -31,7 +211,7 @@
         // Sample data to search through
         const searchData = [
             {
-                title: "About",
+                title: "About Us",
                 content: "Learn more about our company and mission.",
                 url: "about.html"
             },
@@ -41,38 +221,38 @@
                 url: "bookshow.html"
             },
             {
-                title: "Contact",
+                title: "Contact Information",
                 content: "Find out how to get in touch with our team.",
                 url: "contact.html"
             },
             {
-                title: "Catalogue",
-                content: "Stay updated with our company news and announcements.",
+                title: "Product Catalogue",
+                content: "Browse our extensive collection of products.",
                 url: "catalogue.html"
             },
             {
-                title: "Motto",
-                content: "Answers to frequently asked questions about our services.",
+                title: "Company Motto",
+                content: "Our guiding principles and values that drive us forward.",
                 url: "about.html"
             },
             {
-                title: "Feedback",
-                content: "Learn more about our company and mission.",
+                title: "Customer Feedback",
+                content: "See what our clients say about our services.",
                 url: "feedback.html"
             },
             {
-                title: "cart",
-                content: "Learn more about our company and mission.",
-                url: "about.html"
+                title: "Shopping Cart",
+                content: "Manage your selected items before checkout.",
+                url: "cart.html"
             },
             {
-                title: "clients",
-                content: "Learn more about our company and mission.",
+                title: "Our Clients",
+                content: "View the prestigious companies we've worked with.",
                 url: "qualifications.html"
             },
             {
-                title: "qualification",
-                content: "Learn more about our company and mission.",
+                title: "Qualifications",
+                content: "Our professional certifications and accreditations.",
                 url: "qualification.html"
             }
         ];
@@ -107,20 +287,32 @@
                     const resultElement = document.createElement('div');
                     resultElement.className = 'result-item';
                     resultElement.innerHTML = `
-                        <div class="result-title">${item.title}</div>
-                        <div class="result-snippet">${item.content}</div>
+                        <div class="result-title">${highlightMatches(item.title, query)}</div>
+                        <div class="result-snippet">${highlightMatches(item.content, query)}</div>
                     `;
                     // Make results clickable
                     resultElement.addEventListener('click', () => {
-                        window.location.href = item.url;
+                        // Add click animation
+                        resultElement.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            window.location.href = item.url;
+                        }, 200);
                     });
                     resultsContainer.appendChild(resultElement);
                 });
                 resultsContainer.style.display = 'block';
             } else {
-                resultsContainer.innerHTML = '<div class="result-item">No results found</div>';
+                resultsContainer.innerHTML = '<div class="result-item">No results found for "' + query + '"</div>';
                 resultsContainer.style.display = 'block';
             }
+        }
+
+        // Highlight matching text in results
+        function highlightMatches(text, query) {
+            if (!query) return text;
+            
+            const regex = new RegExp(query, 'gi');
+            return text.replace(regex, match => `<span style="background-color: #fff9c4; font-weight: bold;">${match}</span>`);
         }
 
         // Event listeners
@@ -129,6 +321,15 @@
             if (e.key === 'Enter') {
                 performSearch();
             }
+        });
+        
+        // Add focus effect to search input
+        searchInput.addEventListener('focus', () => {
+            searchButton.classList.add('pulse');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchButton.classList.remove('pulse');
         });
     </script>
 </body>
