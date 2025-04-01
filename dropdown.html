@@ -3,40 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown</title>
-    <link rel="stylesheet" href="style.css">
-
-
-  
-  <body>
-    
-<style>
+    <title>Client Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
             background-image: url('best%20logo.jfif');
             background-size: 150%;
             background-repeat: repeat;
+            background-blend-mode: overlay;
+            background-color: rgba(245, 247, 250, 0.9);
+        }
+
+        .dropdown-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .dropdown-header {
+            margin-bottom: 25px;
+        }
+
+        .dropdown-header h2 {
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .dropdown-header p {
+            color: #7f8c8d;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .custom-dropdown select {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding-right: 40px;
+        }
+
+        .custom-dropdown select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background-color: white;
+        }
+
+        .custom-dropdown::after {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .dropdown-footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #95a5a6;
+        }
+
+        /* Business-style hover effect */
+        .custom-dropdown:hover select {
+            border-color: #3498db;
+            background-color: white;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .dropdown-container {
+                padding: 25px 20px;
+            }
+            
+            .dropdown-header h2 {
+                font-size: 20px;
+            }
         }
     </style>
+</head>
+<body>
+    <div class="dropdown-container">
+        <div class="dropdown-header">
+            <h2>Client Access Portal</h2>
+            <p>Select a client from the dropdown to view their information</p>
+        </div>
+        
+        <div class="custom-dropdown">
+            <select id="myDropdown" onchange="redirectToPage()">
+                <option value="">Select a client...</option>
+                <option value="OIP%20(2).jpg">Client Corporation</option>
+                <option value="OIP%20(3).jpg">Global Enterprises</option>
+                <option value="OIP%20(4).jpg">National Holdings</option>
+                <option value="degree.jpg">Executive Partners LLC</option>
+            </select>
+        </div>
+        
+        <div class="dropdown-footer">
+            <i class="fas fa-lock"></i> Secure connection • Authorized access only
+        </div>
+    </div>
 
-    
-    <select id="myDropdown" onchange="redirectToPage()">
-  <option value="">Select a page</option>
-  <option value="OIP%20(2).jpg">Client #1</option>
-  <option value="OIP%20(3).jpg">Client #2</option>
-  <option value="OIP%20(4).jpg">client #3</option>
-    <option value="degree.jpg">Client #4</option>
-</select>
-
-<script>
-  function redirectToPage() {
-    var dropdown = document.getElementById("myDropdown");
-    var selectedValue = dropdown.value;
-    if (selectedValue) {
-      window.location.href = selectedValue;
-    }
-  }
-</script>
-  </body>
- 
-
+    <script>
+        function redirectToPage() {
+            var dropdown = document.getElementById("myDropdown");
+            var selectedValue = dropdown.value;
+            if (selectedValue) {
+                // Add a slight delay for better UX
+                document.body.style.opacity = '0.9';
+                setTimeout(function() {
+                    window.location.href = selectedValue;
+                }, 150);
+            }
+        }
+        
+        // Enhance the dropdown with keyboard accessibility
+        document.getElementById('myDropdown').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && this.value) {
+                redirectToPage();
+            }
+        });
+    </script>
+</body>
 </html>
