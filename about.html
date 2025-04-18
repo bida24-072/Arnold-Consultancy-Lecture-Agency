@@ -3,49 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="stylesheet" href="style.css">
-   
-</head>
-<body>
+    <title>About Arnold's Mentorship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
             background-image: url('best%20logo.jfif');
-            background-size: 80%;
+            background-size: 30%;
             background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(249, 249, 249, 0.9);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        main {
+            padding: 40px 0;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin: 30px auto;
+            border-radius: 8px;
+            max-width: 1000px;
+        }
+        
+        .content-section {
+            padding: 0 40px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .paragraph-spacing {
+            margin-top: 30px;
+        }
+        
+        .video-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        video {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .video-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+        
+        .highlight-box {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .content-section {
+                padding: 0 20px;
+            }
+            
+            body {
+                background-size: 60%;
+            }
         }
     </style>
-    
-        <h1>About Me</h1>
-        <nav aria-label="Main Navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-   
-
-    <main>
-        <p>Arnold's Mentorship has established itself as a trusted name in the fields of lecturing and consultation services over its two years of operation. Founded with the vision of empowering individuals and organizations to achieve their full potential, Arnold's Mentorship offers tailored guidance in areas such as academic excellence, career development, and business strategy.</p>
-        
-        <p class="paragraph-spacing">With a focus on personalized attention, Arnold combines his extensive expertise and passion for teaching to deliver impactful lectures and consultations. His approach is rooted in practical insights, ensuring that clients and students not only gain knowledge but also develop the skills needed to succeed in their respective fields.</p>
-        
-        <div class="video-container">
-            <video controls>
-                <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/mp4">
-                <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-caption">What Financial Consultants Do (And how to become one)</div>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>About Arnold's Mentorship</h1>
         </div>
-        
-        <p class="paragraph-spacing">Over the past two years, Arnold's Mentorship has built a reputation for excellence, helping countless individuals and businesses navigate challenges and achieve their goals. What sets Arnold's Mentorship apart is its commitment to adaptability and client-centered solutions.</p>
-        
-        <p class="paragraph-spacing">Whether it's one-on-one tutoring, group lectures, or strategic business consultations, Arnold tailors his services to meet the unique needs of each client. His two years of operation have been marked by consistent growth, driven by positive testimonials and word-of-mouth referrals.</p>
-        
-        <p class="paragraph-spacing">Arnold's ability to simplify complex concepts and provide actionable advice has made him a sought-after mentor in both academic and professional circles. As Arnold's Mentorship continues to expand, it remains dedicated to its core mission: fostering growth, confidence, and success in every individual and organization it serves.</p>
+    </header>
+    
+    <nav aria-label="Main Navigation">
+        <div class="container">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="content-section">
+            <div class="highlight-box">
+                <p>Arnold's Mentorship has established itself as a trusted name in the fields of lecturing and consultation services over its two years of operation. Founded with the vision of empowering individuals and organizations to achieve their full potential, Arnold's Mentorship offers tailored guidance in areas such as academic excellence, career development, and business strategy.</p>
+            </div>
+            
+            <p>With a focus on personalized attention, Arnold combines his extensive expertise and passion for teaching to deliver impactful lectures and consultations. His approach is rooted in practical insights, ensuring that clients and students not only gain knowledge but also develop the skills needed to succeed in their respective fields.</p>
+            
+            <div class="video-container">
+                <video controls>
+                    <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/mp4">
+                    <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-caption">What Financial Consultants Do (And how to become one)</div>
+            </div>
+            
+            <p class="paragraph-spacing">Over the past two years, Arnold's Mentorship has built a reputation for excellence, helping countless individuals and businesses navigate challenges and achieve their goals. What sets Arnold's Mentorship apart is its commitment to adaptability and client-centered solutions.</p>
+            
+            <p>Whether it's one-on-one tutoring, group lectures, or strategic business consultations, Arnold tailors his services to meet the unique needs of each client. His two years of operation have been marked by consistent growth, driven by positive testimonials and word-of-mouth referrals.</p>
+            
+            <p class="paragraph-spacing">Arnold's ability to simplify complex concepts and provide actionable advice has made him a sought-after mentor in both academic and professional circles. As Arnold's Mentorship continues to expand, it remains dedicated to its core mission: fostering growth, confidence, and success in every individual and organization it serves.</p>
+        </div>
     </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Arnold's Mentorship. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
