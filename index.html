@@ -185,7 +185,7 @@
             </div>
         </main>
 
-    <title>Accessible Website with Voice Commands</title>
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -228,7 +228,40 @@
     <script src="accessibility.js"></script>
 </body>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Test</title>
+</head>
+<body>
+    <button id="voice-btn">Start Listening</button>
+    <div id="output"></div>
 
+    <script>
+        const voiceBtn = document.getElementById('voice-btn');
+        const output = document.getElementById('output');
+        
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            
+            voiceBtn.onclick = () => {
+                recognition.start();
+                output.textContent = "Listening...";
+            };
+            
+            recognition.onresult = (e) => {
+                const transcript = e.results[e.results.length-1][0].transcript;
+                output.textContent = "You said: " + transcript;
+            };
+        } else {
+            output.textContent = "Voice commands not supported";
+            voiceBtn.disabled = true;
+        }
+    </script>
+</body>
+</html>
 
 
 
