@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroupThink - Professional Group Lecture Consultations</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #4CAF50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a2a3a, #2d3e4e);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #3e8e41;
+            transform: translateY(-3px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #1a2a3a;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a2a3a;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+        }
+        
+        /* Lecture Topics Section */
+        .topics {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .topic-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .topic-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .topic-card:hover .topic-img img {
+            transform: scale(1.1);
+        }
+        
+        .topic-info {
+            padding: 20px;
+        }
+        
+        .topic-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a2a3a;
+        }
+        
+        .topic-info p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .topic-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #4CAF50;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Upcoming Lectures */
+        .lectures {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .lectures-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .lecture-item {
+            display: flex;
+            margin-bottom: 30px;
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .lecture-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lecture-date {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .lecture-date .day {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .lecture-date .month {
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        
+        .lecture-details {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .lecture-details h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a2a3a;
+        }
+        
+        .lecture-meta {
+            display: flex;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .lecture-meta span {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .lecture-meta i {
+            margin-right: 5px;
+            color: #4CAF50;
+        }
+        
+        .lecture-details p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .register-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .register-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        /* Speakers Section */
+        .speakers {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .speaker-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .speaker-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .speaker-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .speaker-card:hover .speaker-img img {
+            transform: scale(1.1);
+        }
+        
+        .speaker-info {
+            padding: 20px;
+        }
+        
+        .speaker-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #1a2a3a;
+        }
+        
+        .speaker-info p {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .speaker-info .bio {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Group Booking Section */
+        .group-booking {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a2a3a, #2d3e4e);
+            color: white;
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .booking-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .booking-text p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .booking-features {
+            margin-bottom: 30px;
+        }
+        
+        .booking-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .booking-feature i {
+            color: #4CAF50;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a2a3a;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #f5f7fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: #4CAF50;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .client-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .client-name h4 {
+            font-size: 18px;
+            color: #1a2a3a;
+            margin-bottom: 5px;
+        }
+        
+        .client-name p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #4CAF50;
+            position: relative;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a2a3a;
+        }
+        
+        .price {
+            font-size: 40px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: #7f8c8d;
+        }
+        
+        .pricing-features {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            list-style: none;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        .pricing-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .pricing-btn.outline {
+            background-color: transparent;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .pricing-btn:hover {
+            background-color: #3e8e41;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #4CAF50;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            opacity: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #2d3e4e;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #4CAF50;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2d3e4e;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+        
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-text {
+                text-align: center;
+            }
+            
+            .lecture-item {
+                flex-direction: column;
+            }
+            
+            .lecture-date {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                min-height: 80px;
+            }
+            
+            .lecture-date .day {
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Group<span>Think</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#lectures">Upcoming Lectures</a></li>
+                    <li><a href="#speakers">Speakers</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#booking">Group Booking</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Transform Your Team Through Group Learning</h1>
+            <p>Professional group lecture consultations in finance, technology, personal development, and industry-specific knowledge. Elevate your team's expertise collectively.</p>
+            <a href="#booking" class="cta-button">Book a Group Session</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Group Lecture Consultations?</h2>
+                <p>Group learning offers unique advantages that individual sessions can't match</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Participants learn not just from the instructor but from each other's experiences and perspectives.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Cost Effective</h3>
+                    <p>More affordable per person than individual consultations while delivering comparable value.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Team Alignment</h3>
+                    <p>Ensures everyone receives the same information and develops shared understanding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lecture Topics Section -->
+    <section class="topics" id="topics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Group Lecture Topics</h2>
+                <p>Comprehensive coverage across key professional domains</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Financial Topics">
+                    </div>
+                    <div class="topic-info">
+                        <h3>Financial Mastery</h3>
+                        <p>Group lectures on investment strategies, financial planning, market trends, and wealth management.</p>
+                        <div class="topic-meta">
+                            <span>4 Modules</span>
+                            <span>12 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Technology Topics">
+                    </div>
+                    <div class="topic-info">
+                        <h3>Technology Insights</h3>
+                        <p>Group sessions on emerging technologies, digital transformation, cybersecurity, and tech strategy.</p>
+                        <div class="topic-meta">
+                            <span>6 Modules</span>
+                            <span>18 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-img">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Personal Growth Topics">
+                    </div>
+                    <div class="topic-info">
+                        <h3>Personal Growth</h3>
+                        <p>Group workshops on leadership development, productivity, communication skills, and career growth.</p>
+                        <div class="topic-meta">
+                            <span>5 Modules</span>
+                            <span>15 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Topics">
+                    </div>
+                    <div class="topic-info">
+                        <h3>Industry Deep Dives</h3>
+                        <p>Sector-specific group lectures covering trends, regulations, and best practices in your industry.</p>
+                        <div class="topic-meta">
+                            <span>Custom</span>
+                            <span>Tailored</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Lectures Section -->
+    <section class="lectures" id="lectures">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Group Lectures</h2>
+                <p>Join our scheduled group sessions or request a private group lecture for your team</p>
+            </div>
+            <div class="lectures-list">
+                <div class="lecture-item">
+                    <div class="lecture-date">
+                        <div class="day">15</div>
+                        <div class="month">Jun</div>
+                    </div>
+                    <div class="lecture-details">
+                        <h3>Financial Forecasting for Teams</h3>
+                        <div class="lecture-meta">
+                            <span><i>⏱</i> 2:00 PM - 5:00 PM</span>
+                            <span><i>📍</i> Virtual</span>
+                            <span><i>👥</i> 12/25 spots left</span>
+                        </div>
+                        <p>Learn collaborative financial forecasting techniques to align your team's budgeting and planning processes.</p>
+                        <a href="#" class="register-btn">Register Group</a>
+                    </div>
+                </div>
+                <div class="lecture-item">
+                    <div class="lecture-date">
+                        <div class="day">22</div>
+                        <div class="month">Jun</div>
+                    </div>
+                    <div class="lecture-details">
+                        <h3>Agile Transformation Workshop</h3>
+                        <div class="lecture-meta">
+                            <span><i>⏱</i> 9:00 AM - 4:00 PM</span>
+                            <span><i>📍</i> NYC Office</span>
+                            <span><i>👥</i> 8/20 spots left</span>
+                        </div>
+                        <p>Full-day intensive for tech teams transitioning to agile methodologies with hands-on exercises.</p>
+                        <a href="#" class="register-btn">Register Group</a>
+                    </div>
+                </div>
+                <div class="lecture-item">
+                    <div class="lecture-date">
+                        <div class="day">05</div>
+                        <div class="month">Jul</div>
+                    </div>
+                    <div class="lecture-details">
+                        <h3>Leadership Communication</h3>
+                        <div class="lecture-meta">
+                            <span><i>⏱</i> 1:00 PM - 4:00 PM</span>
+                            <span><i>📍</i> Virtual</span>
+                            <span><i>👥</i> 15/30 spots left</span>
+                        </div>
+                        <p>Enhance your management team's communication skills for better alignment and productivity.</p>
+                        <a href="#" class="register-btn">Register Group</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="speakers" id="speakers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Group Lecturers</h2>
+                <p>Our speakers are experts at engaging groups and facilitating collaborative learning experiences</p>
+            </div>
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Financial Speaker">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Sarah Johnson</h3>
+                        <p>Financial Group Facilitator</p>
+                        <div class="bio">Specializes in interactive financial workshops that make complex concepts accessible to groups.</div>
+                        <a href="#" class="learn-more">View Topics →</a>
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <div class="speaker-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Speaker">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Michael Chen</h3>
+                        <p>Tech Workshop Leader</p>
+                        <div class="bio">Creates hands-on tech learning experiences that keep groups engaged and collaborating.</div>
+                        <a href="#" class="learn-more">View Topics →</a>
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <div class="speaker-img">
+                        <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Speaker">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>David Wilson</h3>
+                        <p>Team Development Expert</p>
+                        <div class="bio">Designs transformative group experiences that build skills and strengthen team dynamics.</div>
+                        <a href="#" class="learn-more">View Topics →</a>
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <div class="speaker-img">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Speaker">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Lisa Rodriguez</h3>
+                        <p>Industry Roundtable Moderator</p>
+                        <div class="bio">Facilitates industry-specific group discussions that surface insights and best practices.</div>
+                        <a href="#" class="learn-more">View Topics →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Group Lecture Pricing</h2>
+                <p>Flexible options for teams of all sizes</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Small Team</h3>
+                    <div class="price">$1,200 <span>per session</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 10 participants</li>
+                        <li>3-hour group lecture</li>
+                        <li>Basic materials</li>
+                        <li>Virtual or in-person</li>
+                        <li>Q&A session</li>
+                    </ul>
+                    <a href="#booking" class="pricing-btn outline">Book Now</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Standard Team</h3>
+                    <div class="price">$2,500 <span>per session</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 25 participants</li>
+                        <li>Full-day workshop</li>
+                        <li>Comprehensive materials</li>
+                        <li>Virtual or in-person</li>
+                        <li>Interactive exercises</li>
+                        <li>Follow-up resources</li>
+                    </ul>
+                    <a href="#booking" class="pricing-btn">Book Now</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom <span>pricing</span></div>
+                    <ul class="pricing-features">
+                        <li>Unlimited participants</li>
+                        <li>Multi-session programs</li>
+                        <li>Customized content</li>
+                        <li>On-site delivery</li>
+                        <li>Pre/post assessments</li>
+                        <li>Dedicated coordinator</li>
+                    </ul>
+                    <a href="#booking" class="pricing-btn outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group Booking Section -->
+    <section class="group-booking" id="booking">
+        <div class="container booking-container">
+            <div class="booking-text">
+                <h2>Book a Group Lecture for Your Team</h2>
+                <p>Whether you want to join one of our scheduled group sessions or arrange a private lecture for your organization, we'll create a valuable learning experience tailored to your group's needs.</p>
+                
+                <div class="booking-features">
+                    <div class="booking-feature">
+                        <i>✓</i>
+                        <p>Flexible group sizes from 5 to 500+ participants</p>
+                    </div>
+                    <div class="booking-feature">
+                        <i>✓</i>
+                        <p>Virtual, in-person, or hybrid delivery options</p>
+                    </div>
+                    <div class="booking-feature">
+                        <i>✓</i>
+                        <p>Customizable content to match your team's level</p>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="org-name">Organization Name</label>
+                        <input type="text" id="org-name" name="org-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-name">Contact Person</label>
+                        <input type="text" id="contact-name" name="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" name="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label
