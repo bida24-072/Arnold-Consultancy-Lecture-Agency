@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpertOne Consulting - Personalized Consultation Services</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .learn-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Experts Section */
+        .experts {
+            padding: 80px 0;
+            background-color: #ecf0f1;
+        }
+        
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .expert-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .expert-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .expert-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .expert-card:hover .expert-img img {
+            transform: scale(1.1);
+        }
+        
+        .expert-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .expert-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .expert-info p {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .expert-info .bio {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Booking Section */
+        .booking {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .booking-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .booking-text p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .client-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .client-name h4 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .client-name p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            opacity: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #34495e;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Expert<span>One</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#experts">Experts</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#booking">Book a Session</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Personalized One-on-One Consultation</h1>
+            <p>Get expert guidance tailored to your specific needs in finance, technology, personal growth, and industry-specific knowledge.</p>
+            <a href="#booking" class="cta-button">Book Your Session Now</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Consultation Services</h2>
+                <p>We offer specialized one-on-one sessions to help you achieve your goals and overcome challenges in various domains.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Financial Consultation</h3>
+                    <p>Personalized financial planning, investment strategies, retirement planning, and wealth management advice from certified financial experts.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Technology Guidance</h3>
+                    <p>Expert advice on software development, IT infrastructure, digital transformation, cybersecurity, and emerging tech trends.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Personal Growth</h3>
+                    <p>Coaching for career advancement, leadership skills, productivity enhancement, and personal development strategies.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏭</div>
+                    <h3>Industry Lecturing</h3>
+                    <p>Specialized knowledge sharing from industry veterans across various sectors including manufacturing, healthcare, and more.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experts Section -->
+    <section class="experts" id="experts">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Experts</h2>
+                <p>Our consultants are seasoned professionals with years of experience in their respective fields.</p>
+            </div>
+            <div class="experts-grid">
+                <div class="expert-card">
+                    <div class="expert-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Financial Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h3>Sarah Johnson</h3>
+                        <p>Financial Consultant</p>
+                        <div class="bio">15+ years in wealth management and financial planning. Certified Financial Planner.</div>
+                        <a href="#" class="learn-more">View Profile →</a>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h3>Michael Chen</h3>
+                        <p>Technology Strategist</p>
+                        <div class="bio">Former CTO with expertise in AI, cloud computing, and digital transformation.</div>
+                        <a href="#" class="learn-more">View Profile →</a>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-img">
+                        <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Coach">
+                    </div>
+                    <div class="expert-info">
+                        <h3>David Wilson</h3>
+                        <p>Personal Growth Coach</p>
+                        <div class="bio">Executive coach helping professionals achieve peak performance and career success.</div>
+                        <a href="#" class="learn-more">View Profile →</a>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-img">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h3>Lisa Rodriguez</h3>
+                        <p>Industry Specialist</p>
+                        <div class="bio">20 years in healthcare management and consulting with deep industry insights.</div>
+                        <a href="#" class="learn-more">View Profile →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container booking-container">
+            <div class="booking-text">
+                <h2>Ready to Transform Your Journey?</h2>
+                <p>Book a personalized one-on-one session with our experts. Whether you need financial advice, tech guidance, personal growth coaching, or industry-specific knowledge, we're here to help.</p>
+                <p>Fill out the form and we'll match you with the perfect consultant for your needs.</p>
+            </div>
+            <div class="booking-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Consultation Type</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="financial">Financial Consultation</option>
+                            <option value="technology">Technology Guidance</option>
+                            <option value="personal-growth">Personal Growth Coaching</option>
+                            <option value="industry">Industry Lecturing</option>
+                            <option value="other">Other (Specify in message)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Questions/Goals</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Request Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from professionals who have transformed their careers and businesses with our consultation services.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The financial consultation completely changed my approach to investments. Sarah helped me create a diversified portfolio that's already showing great returns."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-img">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
+                        </div>
+                        <div class="client-name">
+                            <h4>Emily Thompson</h4>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Michael's technology guidance helped our startup choose the right stack and architecture. His advice saved us months of development time and potential costly mistakes."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
+                        </div>
+                        <div class="client-name">
+                            <h4>James Rodriguez</h4>
+                            <p>Tech Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "David's coaching gave me the confidence and strategies to negotiate a promotion and 30% salary increase. The personal growth sessions were worth every penny."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-img">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
+                        </div>
+                        <div class="client-name">
+                            <h4>Priya Patel</h4>
+                            <p>Senior Project Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ExpertOne</h3>
+                    <p>Providing personalized one-on-one consultation services to help professionals and businesses achieve their goals.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f">f</i></a>
+                        <a href="#"><i class="fab fa-twitter">t</i></a>
+                        <a href="#"><i class="fab fa-linkedin-in">in</i></a>
+                        <a href="#"><i class="fab fa-instagram">ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#experts">Experts</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#booking">Book a Session</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Financial Consultation</a></li>
+                        <li><a href="#">Technology Guidance</a></li>
+                        <li><a href="#">Personal Growth</a></li>
+                        <li><a href="#">Industry Lecturing</a></li>
+                        <li><a href="#">Corporate Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>123 Consulting Ave, Suite 500</p>
+                    <p>New York, NY 10001</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@expertone.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ExpertOne Consulting. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
