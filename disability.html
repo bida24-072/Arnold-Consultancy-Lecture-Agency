@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Icon</title>
+    <style>
+        /* Accessibility Icon Styles */
+        .disability-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            background-color: #0056b3;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Wheelchair Symbol */
+        .wheelchair {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 10px;
+            left: 10px;
+        }
+        
+        /* Wheelchair Circle */
+        .wheelchair-circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid white;
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+        }
+        
+        /* Wheelchair Seat */
+        .wheelchair-seat {
+            position: absolute;
+            width: 12px;
+            height: 10px;
+            background-color: white;
+            top: 10px;
+            left: 18px;
+            transform: rotate(15deg);
+        }
+        
+        /* Wheelchair Back */
+        .wheelchair-back {
+            position: absolute;
+            width: 3px;
+            height: 12px;
+            background-color: white;
+            top: 5px;
+            left: 18px;
+        }
+        
+        /* Wheelchair Wheel */
+        .wheelchair-wheel {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid white;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+        }
+        
+        /* Wheelchair Handrim */
+        .wheelchair-handrim {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 2px solid white;
+            border-radius: 50%;
+            top: 23px;
+            left: 23px;
+        }
+        
+        /* Accessibility Text (hidden visually but available for screen readers) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Disability/Accessibility Icon with ARIA attributes -->
+    <div class="disability-icon" role="img" aria-label="Accessibility Icon">
+        <span class="sr-only">Accessibility Icon</span>
+        <div class="wheelchair">
+            <div class="wheelchair-circle"></div>
+            <div class="wheelchair-seat"></div>
+            <div class="wheelchair-back"></div>
+            <div class="wheelchair-wheel"></div>
+            <div class="wheelchair-handrim"></div>
+        </div>
+    </div>
+
+    <!-- Alternative using SVG (recommended for production) -->
+    <svg class="disability-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Accessibility Icon">
+        <title>Accessibility Icon</title>
+        <desc>A blue circle with a white wheelchair symbol</desc>
+        <circle cx="30" cy="30" r="28" fill="#0056b3"/>
+        <circle cx="30" cy="25" r="15" stroke="white" stroke-width="3"/>
+        <rect x="27" y="20" width="6" height="10" fill="white" transform="rotate(15 30 25)"/>
+        <rect x="27" y="15" width="3" height="8" fill="white"/>
+        <circle cx="40" cy="35" r="10" stroke="white" stroke-width="3"/>
+        <circle cx="40" cy="35" r="7" stroke="white" stroke-width="2"/>
+    </svg>
+</body>
+</html>
