@@ -229,44 +229,104 @@
 </body>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Voice Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Command Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        #voice-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        #voice-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        #voice-btn.listening {
+            background: #db4437;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        #voice-feedback {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 300px;
+            display: none;
+        }
+        
+        .command-examples {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-    <button id="voice-btn">Start Listening</button>
-    <div id="output"></div>
-
-    <script>
-        const voiceBtn = document.getElementById('voice-btn');
-        const output = document.getElementById('output');
+    <h1>Voice Command Demo</h1>
+    
+    <div id="content">
+        <p>Try saying commands like:</p>
+        <ul>
+            <li>"Scroll down" or "Scroll up"</li>
+            <li>"Go to top" or "Go to bottom"</li>
+            <li>"Change theme" (light/dark)</li>
+            <li>"Search for [your query]"</li>
+            <li>"Read content"</li>
+            <li>"Stop listening"</li>
+        </ul>
         
-        if ('webkitSpeechRecognition' in window) {
-            const recognition = new webkitSpeechRecognition();
-            recognition.continuous = true;
-            recognition.interimResults = true;
-            
-            voiceBtn.onclick = () => {
-                recognition.start();
-                output.textContent = "Listening...";
-            };
-            
-            recognition.onresult = (e) => {
-                const transcript = e.results[e.results.length-1][0].transcript;
-                output.textContent = "You said: " + transcript;
-            };
-        } else {
-            output.textContent = "Voice commands not supported";
-            voiceBtn.disabled = true;
-        }
-    </script>
+        <div class="command-examples">
+            <h3>Available Voice Commands:</h3>
+            <ul>
+                <li><strong>Navigation:</strong> "go home", "scroll up/down", "go to top/bottom"</li>
+                <li><strong>Appearance:</strong> "dark mode", "light mode", "bigger text", "normal text"</li>
+                <li><strong>Content:</strong> "read content", "pause reading", "search for [term]"</li>
+                <li><strong>Control:</strong> "start listening", "stop listening", "help"</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="voice-control">
+        <div id="voice-feedback"></div>
+        <button id="voice-btn" aria-label="Voice control">🎤</button>
+    </div>
+    
+    <script src="voice-commands.js"></script>
 </body>
 </html>
-
-
-
-
-
 
 
 
