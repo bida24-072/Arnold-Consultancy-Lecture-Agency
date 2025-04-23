@@ -194,6 +194,96 @@
             border-radius: 0 0 4px 4px;
             overflow: hidden;
         }
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding-top: 60px; /* To account for fixed navbar */
+        }
+        
+        /* Formal Navigation Bar */
+        .navbar {
+            background: linear-gradient(135deg, #006400, #228B22);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            list-style-type: none;
+            display: flex;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-align: center;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Dropdown Styles - Fixed */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 0 0 4px 4px;
+            overflow: hidden;
+            left: 0;
+            top: 100%;
+        }
         
         .dropdown:hover .dropdown-content {
             display: block;
@@ -205,11 +295,18 @@
             text-decoration: none;
             display: block;
             transition: all 0.3s;
+            text-align: left;
         }
         
         .dropdown-content a:hover {
             background-color: #f1f1f1;
             color: #006400;
+        }
+        
+        /* Dropdown arrow */
+        .dropdown > .nav-link::after {
+            content: " ▾";
+            font-size: 0.8em;
         }
         
         .mobile-menu-btn {
@@ -219,6 +316,7 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 15px;
         }
         
         /* Responsive Design */
@@ -232,7 +330,7 @@
                 display: block;
                 position: absolute;
                 right: 20px;
-                top: 15px;
+                top: 10px;
             }
             
             .nav-menu {
@@ -258,17 +356,43 @@
                 position: static;
                 box-shadow: none;
                 width: 100%;
+                display: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
             }
         }
+
+
+
+
+
+
+
+
+
+
+        
     </style>
 </head>
-<body>
-    <!-- Formal Navigation Bar -->
-    <nav class="navbar">
+</body>
+
+
+
+
+
+
+
+ <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="best%20logo.jfif" alt="Arnold's Mentorship Logo">
-               
+                <img src="logo.png" alt="Arnold's Mentorship Logo">
+                Arnold's Mentorship
             </a>
             
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
@@ -277,7 +401,7 @@
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a href="services.html" class="nav-link">Services ▾</a>
+                    <a href="services.html" class="nav-link">Services</a>
                     <div class="dropdown-content">
                         <a href="topic.html">Financial Consulting</a>
                         <a href="topic.html">Technology Consulting</a>
@@ -290,16 +414,12 @@
                 <li class="nav-item"><a href="bookshow.html" class="nav-link">Catalogue</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a href="resources.html" class="nav-link">Resources ▾</a>
+                    <a href="resources.html" class="nav-link">Resources</a>
                     <div class="dropdown-content">
                         <a href="speakers.html">Lectures</a>
                         <a href="topic.html">Topics</a>
-                        
                     </div>
                 </li>
-                
-                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 
                 <li class="nav-item">
                     <a href="login.html" class="nav-link" style="background-color: rgba(255,255,255,0.3); border-radius: 4px; margin-left: 10px;">Login</a>
@@ -309,26 +429,62 @@
     </nav>
 
     <script>
+        // Toggle mobile menu
         function toggleMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
         }
         
-        // Close dropdown when clicking outside
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const link = dropdown.querySelector('.nav-link');
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    });
+                });
+            }
+        });
+        
+        // Close dropdowns when clicking outside
         document.addEventListener('click', function(event) {
             if (!event.target.matches('.nav-link') && !event.target.matches('.dropdown-content a')) {
-                const dropdowns = document.getElementsByClassName('dropdown-content');
-                for (let i = 0; i < dropdowns.length; i++) {
-                    const openDropdown = dropdowns[i];
-                    if (openDropdown.style.display === 'block') {
-                        openDropdown.style.display = 'none';
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
                     }
-                }
+                });
             }
         });
     </script>
-</body>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     
    
 
