@@ -1,1 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Book System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #2E5A88;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #2E5A88;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1E3A5F;
+        }
+        
+        .registration-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .registration-table th, 
+        .registration-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .registration-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .registration-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .registration-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .edit-btn {
+            background-color: #FFA500;
+        }
+        
+        .delete-btn {
+            background-color: #FF4500;
+        }
+        
+        .search-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: none;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: #2E5A88;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Book System</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="openTab('register')">New Registration</button>
+            <button class="tab" onclick="openTab('records')">View Records</button>
+            <button class="tab" onclick="openTab('search')">Search Records</button>
+        </div>
+        
+        <!-- Registration Form -->
+        <div id="register" class="tab-content active">
+            <h2>New Registration</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name*</label>
+                    <input type="text" id="fullName" required>
+                    <div id="nameError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" required>
+                    <div id="emailError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" required>
+                    <div id="phoneError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Date of Registration*</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="purpose">Purpose of Registration*</label>
+                    <select id="purpose" required>
+                        <option value="">Select a purpose</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Lecture">Lecture</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <input type="text" id="notes">
+                </div>
+                
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        
+        <!-- View Records -->
+        <div id="records" class="tab-content">
+            <h2>Registration Records</h2>
+            <div class="search-container">
+                <input type="text" id="searchRecords" placeholder="Search records..." oninput="filterRecords()">
+            </div>
+            <table class="registration-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Purpose</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="recordsTable">
+                    <!-- Records will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Search Records -->
+        <div id="search" class="tab-content">
+            <h2>Search Registrations</h2>
+            <div class="form-group">
+                <label for="searchTerm">Search by Name, Email, or Phone:</label>
+                <input type="text" id="searchTerm" placeholder="Enter search term">
+            </div>
+            <div class="form-group">
+                <label for="searchDate">Search by Date:</label>
+                <input type="date" id="searchDate">
+            </div>
+            <div class="form-group">
+                <label for="searchPurpose">Search by Purpose:</label>
+                <select id="searchPurpose">
+                    <option value="">All Purposes</option>
+                    <option value="Consultation">Consultation</option>
+                    <option value="Lecture">Lecture</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button onclick="searchRecords()">Search</button>
+            
+            <div id="searchResults" style="margin-top: 20px;">
+                <!-- Search results will be displayed here -->
+            </div>
+        </div>
+    </div>
 
+    <script>
+        // Initialize data from localStorage or create empty array
+        let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+        let editId = null;
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) return;
+            
+            // Get form values
+            const registration = {
+                id: editId || Date.now().toString(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                purpose: document.getElementById('purpose').value,
+                notes: document.getElementById('notes').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            if (editId) {
+                // Update existing registration
+                const index = registrations.findIndex(reg => reg.id === editId);
+                if (index !== -1) {
+                    registrations[index] = registration;
+                }
+                editId = null;
+                document.querySelector('#register button[type="submit"]').textContent = 'Register';
+            } else {
+                // Add new registration
+                registrations.push(registration);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+            
+            // Reset form
+            this.reset();
+            
+            // Update records display
+            displayRecords();
+            
+            // Show records tab
+            openTab('records');
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('fullName').value;
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Full name is required';
+                isValid = false;
+            } else if (name.length < 3) {
+                document.getElementById('nameError').textContent = 'Name must be at least 3 characters';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').textContent = '';
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').textContent = '';
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10,15}$/;
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                isValid = false;
+            } else if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid phone number (10-15 digits)';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').textContent = '';
+            }
+            
+            return isValid;
+        }
+
+        // Display all records
+        function displayRecords() {
+            const tableBody = document.getElementById('recordsTable');
+            tableBody.innerHTML = '';
+            
+            registrations.forEach(registration => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${registration.id.substring(0, 6)}</td>
+                    <td>${registration.fullName}</td>
+                    <td>${registration.email}</td>
+                    <td>${registration.phone}</td>
+                    <td>${new Date(registration.date).toLocaleDateString()}</td>
+                    <td>${registration.purpose}</td>
+                    <td class="action-buttons">
+                        <button class="edit-btn" onclick="editRegistration('${registration.id}')">Edit</button>
+                        <button class="delete-btn" onclick="deleteRegistration('${registration.id}')">Delete</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Edit registration
+        function editRegistration(id) {
+            const registration = registrations.find(reg => reg.id === id);
+            if (registration) {
+                document.getElementById('fullName').value = registration.fullName;
+                document.getElementById('email').value = registration.email;
+                document.getElementById('phone').value = registration.phone;
+                document.getElementById('date').value = registration.date;
+                document.getElementById('purpose').value = registration.purpose;
+                document.getElementById('notes').value = registration.notes || '';
+                
+                editId = id;
+                document.querySelector('#register button[type="submit"]').textContent = 'Update Registration';
+                
+                // Switch to registration tab
+                openTab('register');
+            }
+        }
+
+        // Delete registration
+        function deleteRegistration(id) {
+            if (confirm('Are you sure you want to delete this registration?')) {
+                registrations = registrations.filter(reg => reg.id !== id);
+                localStorage.setItem('registrations', JSON.stringify(registrations));
+                displayRecords();
+            }
+        }
+
+        // Search records
+        function searchRecords() {
+            const term = document.getElementById('searchTerm').value.toLowerCase();
+            const date = document.getElementById('searchDate').value;
+            const purpose = document.getElementById('searchPurpose').value;
+            
+            let results = registrations;
+            
+            if (term) {
+                results = results.filter(reg => 
+                    reg.fullName.toLowerCase().includes(term) || 
+                    reg.email.toLowerCase().includes(term) || 
+                    reg.phone.includes(term)
+                );
+            }
+            
+            if (date) {
+                results = results.filter(reg => reg.date === date);
+            }
+            
+            if (purpose) {
+                results = results.filter(reg => reg.purpose === purpose);
+            }
+            
+            displaySearchResults(results);
+        }
+
+        // Display search results
+        function displaySearchResults(results) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>No matching records found.</p>';
+                return;
+            }
+            
+            let html = '<table class="registration-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th><th>Purpose</th><th>Notes</th></tr></thead><tbody>';
+            
+            results.forEach(reg => {
+                html += `
+                    <tr>
+                        <td>${reg.fullName}</td>
+                        <td>${reg.email}</td>
+                        <td>${reg.phone}</td>
+                        <td>${new Date(reg.date).toLocaleDateString()}</td>
+                        <td>${reg.purpose}</td>
+                        <td>${reg.notes || '-'}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            resultsDiv.innerHTML = html;
+        }
+
+        // Filter records in real-time
+        function filterRecords() {
+            const searchTerm = document.getElementById('searchRecords').value.toLowerCase();
+            const rows = document.querySelectorAll('#recordsTable tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        }
+
+        // Tab navigation
+        function openTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate tab button
+            document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active');
+            
+            // If viewing records, refresh the display
+            if (tabName === 'records') {
+                displayRecords();
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRecords();
+            
+            // Set today's date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').value = today;
+        });
+    </script>
+</body>
+</html>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #2E5A88;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #2E5A88;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1E3A5F;
+        }
+        
+        .registration-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .registration-table th, 
+        .registration-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .registration-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .registration-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .registration-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .edit-btn {
+            background-color: #FFA500;
+        }
+        
+        .delete-btn {
+            background-color: #FF4500;
+        }
+        
+        .search-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: none;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: #2E5A88;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Book System</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="openTab('register')">New Registration</button>
+            <button class="tab" onclick="openTab('records')">View Records</button>
+            <button class="tab" onclick="openTab('search')">Search Records</button>
+        </div>
+        
+        <!-- Registration Form -->
+        <div id="register" class="tab-content active">
+            <h2>New Registration</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name*</label>
+                    <input type="text" id="fullName" required>
+                    <div id="nameError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" required>
+                    <div id="emailError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" required>
+                    <div id="phoneError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Date of Registration*</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="purpose">Purpose of Registration*</label>
+                    <select id="purpose" required>
+                        <option value="">Select a purpose</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Lecture">Lecture</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <input type="text" id="notes">
+                </div>
+                
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        
+        <!-- View Records -->
+        <div id="records" class="tab-content">
+            <h2>Registration Records</h2>
+            <div class="search-container">
+                <input type="text" id="searchRecords" placeholder="Search records..." oninput="filterRecords()">
+            </div>
+            <table class="registration-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Purpose</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="recordsTable">
+                    <!-- Records will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Search Records -->
+        <div id="search" class="tab-content">
+            <h2>Search Registrations</h2>
+            <div class="form-group">
+                <label for="searchTerm">Search by Name, Email, or Phone:</label>
+                <input type="text" id="searchTerm" placeholder="Enter search term">
+            </div>
+            <div class="form-group">
+                <label for="searchDate">Search by Date:</label>
+                <input type="date" id="searchDate">
+            </div>
+            <div class="form-group">
+                <label for="searchPurpose">Search by Purpose:</label>
+                <select id="searchPurpose">
+                    <option value="">All Purposes</option>
+                    <option value="Consultation">Consultation</option>
+                    <option value="Lecture">Lecture</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button onclick="searchRecords()">Search</button>
+            
+            <div id="searchResults" style="margin-top: 20px;">
+                <!-- Search results will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize data from localStorage or create empty array
+        let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+        let editId = null;
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) return;
+            
+            // Get form values
+            const registration = {
+                id: editId || Date.now().toString(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                purpose: document.getElementById('purpose').value,
+                notes: document.getElementById('notes').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            if (editId) {
+                // Update existing registration
+                const index = registrations.findIndex(reg => reg.id === editId);
+                if (index !== -1) {
+                    registrations[index] = registration;
+                }
+                editId = null;
+                document.querySelector('#register button[type="submit"]').textContent = 'Register';
+            } else {
+                // Add new registration
+                registrations.push(registration);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+            
+            // Reset form
+            this.reset();
+            
+            // Update records display
+            displayRecords();
+            
+            // Show records tab
+            openTab('records');
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('fullName').value;
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Full name is required';
+                isValid = false;
+            } else if (name.length < 3) {
+                document.getElementById('nameError').textContent = 'Name must be at least 3 characters';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').textContent = '';
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').textContent = '';
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10,15}$/;
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                isValid = false;
+            } else if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid phone number (10-15 digits)';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').textContent = '';
+            }
+            
+            return isValid;
+        }
+
+        // Display all records
+        function displayRecords() {
+            const tableBody = document.getElementById('recordsTable');
+            tableBody.innerHTML = '';
+            
+            registrations.forEach(registration => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${registration.id.substring(0, 6)}</td>
+                    <td>${registration.fullName}</td>
+                    <td>${registration.email}</td>
+                    <td>${registration.phone}</td>
+                    <td>${new Date(registration.date).toLocaleDateString()}</td>
+                    <td>${registration.purpose}</td>
+                    <td class="action-buttons">
+                        <button class="edit-btn" onclick="editRegistration('${registration.id}')">Edit</button>
+                        <button class="delete-btn" onclick="deleteRegistration('${registration.id}')">Delete</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Edit registration
+        function editRegistration(id) {
+            const registration = registrations.find(reg => reg.id === id);
+            if (registration) {
+                document.getElementById('fullName').value = registration.fullName;
+                document.getElementById('email').value = registration.email;
+                document.getElementById('phone').value = registration.phone;
+                document.getElementById('date').value = registration.date;
+                document.getElementById('purpose').value = registration.purpose;
+                document.getElementById('notes').value = registration.notes || '';
+                
+                editId = id;
+                document.querySelector('#register button[type="submit"]').textContent = 'Update Registration';
+                
+                // Switch to registration tab
+                openTab('register');
+            }
+        }
+
+        // Delete registration
+        function deleteRegistration(id) {
+            if (confirm('Are you sure you want to delete this registration?')) {
+                registrations = registrations.filter(reg => reg.id !== id);
+                localStorage.setItem('registrations', JSON.stringify(registrations));
+                displayRecords();
+            }
+        }
+
+        // Search records
+        function searchRecords() {
+            const term = document.getElementById('searchTerm').value.toLowerCase();
+            const date = document.getElementById('searchDate').value;
+            const purpose = document.getElementById('searchPurpose').value;
+            
+            let results = registrations;
+            
+            if (term) {
+                results = results.filter(reg => 
+                    reg.fullName.toLowerCase().includes(term) || 
+                    reg.email.toLowerCase().includes(term) || 
+                    reg.phone.includes(term)
+                );
+            }
+            
+            if (date) {
+                results = results.filter(reg => reg.date === date);
+            }
+            
+            if (purpose) {
+                results = results.filter(reg => reg.purpose === purpose);
+            }
+            
+            displaySearchResults(results);
+        }
+
+        // Display search results
+        function displaySearchResults(results) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>No matching records found.</p>';
+                return;
+            }
+            
+            let html = '<table class="registration-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th><th>Purpose</th><th>Notes</th></tr></thead><tbody>';
+            
+            results.forEach(reg => {
+                html += `
+                    <tr>
+                        <td>${reg.fullName}</td>
+                        <td>${reg.email}</td>
+                        <td>${reg.phone}</td>
+                        <td>${new Date(reg.date).toLocaleDateString()}</td>
+                        <td>${reg.purpose}</td>
+                        <td>${reg.notes || '-'}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            resultsDiv.innerHTML = html;
+        }
+
+        // Filter records in real-time
+        function filterRecords() {
+            const searchTerm = document.getElementById('searchRecords').value.toLowerCase();
+            const rows = document.querySelectorAll('#recordsTable tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        }
+
+        // Tab navigation
+        function openTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate tab button
+            document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active');
+            
+            // If viewing records, refresh the display
+            if (tabName === 'records') {
+                displayRecords();
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRecords();
+            
+            // Set today's date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').value = today;
+        });
+    </script>
+</body>
+</html>
