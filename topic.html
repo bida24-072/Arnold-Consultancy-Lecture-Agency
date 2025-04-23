@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Hub - Topic Directory</title>
+    <style>
+        :root {
+            --finance: #4CAF50;
+            --tech: #2196F3;
+            --industry: #9C27B0;
+            --growth: #FF9800;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .category {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .category-header {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .finance { background-color: var(--finance); }
+        .tech { background-color: var(--tech); }
+        .industry { background-color: var(--industry); }
+        .growth { background-color: var(--growth); }
+        .topics-container {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .topics-container.expanded {
+            padding: 20px;
+            max-height: 2000px;
+        }
+        .topic {
+            margin-bottom: 20px;
+            border-left: 4px solid;
+            padding-left: 15px;
+        }
+        .finance .topic { border-color: var(--finance); }
+        .tech .topic { border-color: var(--tech); }
+        .industry .topic { border-color: var(--industry); }
+        .growth .topic { border-color: var(--growth); }
+        .topic h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .subtopics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .subtopic {
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .finance .subtopic:hover { background: #E8F5E9; }
+        .tech .subtopic:hover { background: #E3F2FD; }
+        .industry .subtopic:hover { background: #F3E5F5; }
+        .growth .subtopic:hover { background: #FFF3E0; }
+        .toggle-icon {
+            transition: transform 0.3s;
+        }
+        .expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Knowledge Hub - Topic Directory</h1>
+        
+        <!-- Finance Category -->
+        <div class="category finance">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Finance & Economics</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="topics-container">
+                <div class="topic">
+                    <h3>Personal Finance</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Budgeting strategies</span>
+                        <span class="subtopic">Debt management</span>
+                        <span class="subtopic">Retirement planning</span>
+                        <span class="subtopic">Tax optimization</span>
+                        <span class="subtopic">Investment basics</span>
+                        <span class="subtopic">Credit building</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Corporate Finance</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Financial statements</span>
+                        <span class="subtopic">Valuation methods</span>
+                        <span class="subtopic">Mergers & acquisitions</span>
+                        <span class="subtopic">Capital structure</span>
+                        <span class="subtopic">Risk management</span>
+                        <span class="subtopic">IPO strategies</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Market Trends</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Stock market analysis</span>
+                        <span class="subtopic">Cryptocurrency trends</span>
+                        <span class="subtopic">Commodities outlook</span>
+                        <span class="subtopic">Real estate markets</span>
+                        <span class="subtopic">Global economic shifts</span>
+                        <span class="subtopic">Emerging markets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Category -->
+        <div class="category tech">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Technology & Innovation</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="topics-container">
+                <div class="topic">
+                    <h3>Emerging Technologies</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Artificial Intelligence</span>
+                        <span class="subtopic">Blockchain applications</span>
+                        <span class="subtopic">Quantum computing</span>
+                        <span class="subtopic">IoT developments</span>
+                        <span class="subtopic">5G/6G networks</span>
+                        <span class="subtopic">Biotechnology</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Software Development</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Programming languages</span>
+                        <span class="subtopic">DevOps practices</span>
+                        <span class="subtopic">Cloud architectures</span>
+                        <span class="subtopic">Cybersecurity</span>
+                        <span class="subtopic">Mobile development</span>
+                        <span class="subtopic">Database systems</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Digital Transformation</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Automation tools</span>
+                        <span class="subtopic">Data analytics</span>
+                        <span class="subtopic">Enterprise software</span>
+                        <span class="subtopic">UX/UI design</span>
+                        <span class="subtopic">E-commerce solutions</span>
+                        <span class="subtopic">Tech leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Industry-Specific Category -->
+        <div class="category industry">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Industry-Specific Knowledge</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="topics-container">
+                <div class="topic">
+                    <h3>Healthcare</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Medical innovations</span>
+                        <span class="subtopic">Healthcare policy</span>
+                        <span class="subtopic">Pharmaceutical R&D</span>
+                        <span class="subtopic">Telemedicine</span>
+                        <span class="subtopic">Hospital management</span>
+                        <span class="subtopic">Medical devices</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Manufacturing</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Lean manufacturing</span>
+                        <span class="subtopic">Supply chain 4.0</span>
+                        <span class="subtopic">Quality control</span>
+                        <span class="subtopic">Industrial IoT</span>
+                        <span class="subtopic">Sustainable production</span>
+                        <span class="subtopic">Robotics in manufacturing</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Professional Services</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Legal tech</span>
+                        <span class="subtopic">Consulting frameworks</span>
+                        <span class="subtopic">Accounting standards</span>
+                        <span class="subtopic">Architecture trends</span>
+                        <span class="subtopic">Engineering solutions</span>
+                        <span class="subtopic">Creative industries</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Personal Growth Category -->
+        <div class="category growth">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Personal Growth & Development</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="topics-container">
+                <div class="topic">
+                    <h3>Career Development</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Resume building</span>
+                        <span class="subtopic">Interview skills</span>
+                        <span class="subtopic">Networking strategies</span>
+                        <span class="subtopic">Salary negotiation</span>
+                        <span class="subtopic">Leadership skills</span>
+                        <span class="subtopic">Career transitions</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Mindset & Productivity</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Time management</span>
+                        <span class="subtopic">Goal setting</span>
+                        <span class="subtopic">Habit formation</span>
+                        <span class="subtopic">Mindfulness</span>
+                        <span class="subtopic">Stress management</span>
+                        <span class="subtopic">Decision making</span>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <h3>Communication Skills</h3>
+                    <div class="subtopics">
+                        <span class="subtopic">Public speaking</span>
+                        <span class="subtopic">Business writing</span>
+                        <span class="subtopic">Active listening</span>
+                        <span class="subtopic">Persuasion techniques</span>
+                        <span class="subtopic">Conflict resolution</span>
+                        <span class="subtopic">Cross-cultural communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCategory(header) {
+            const container = header.parentElement;
+            const content = container.querySelector('.topics-container');
+            content.classList.toggle('expanded');
+            
+            // Close other open categories when opening a new one
+            if (content.classList.contains('expanded')) {
+                document.querySelectorAll('.topics-container').forEach(el => {
+                    if (el !== content && el.classList.contains('expanded')) {
+                        el.classList.remove('expanded');
+                        el.previousElementSibling.querySelector('.toggle-icon').textContent = '▼';
+                    }
+                });
+            }
+            
+            // Update toggle icon
+            const icon = header.querySelector('.toggle-icon');
+            icon.textContent = content.classList.contains('expanded') ? '▲' : '▼';
+        }
+        
+        // Initialize with first category open
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.category-header').click();
+        });
+    </script>
+</body>
+</html>
