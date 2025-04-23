@@ -3,71 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPEAKERS</title>
+    <title>Featured Speakers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Speaker Section Styles */
+        .speakers {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+        }
 
+        .section-title {
+            margin-bottom: 40px;
+        }
 
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
+        .section-title p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 10px;
+        }
 
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            margin-top: 40px;
+        }
 
+        .speaker-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 320px;
+            text-align: left;
+        }
 
+        .speaker-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
 
+        .speaker-info {
+            padding: 20px;
+        }
 
+        .speaker-info h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
 
+        .speaker-info p {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .speaker-info .bio {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #006400;
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background-color: #228B22;
+        }
+    </style>
+</head>
+<body>
 
 <!-- Speakers Section -->
-    <section class="speakers" id="speakers">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured Group Lecturers</h2>
-                <p>Our speakers are experts at engaging groups and facilitating collaborative learning experiences</p>
+<section class="speakers" id="speakers">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Group Lecturers</h2>
+            <p>Our speakers are experts at engaging groups and facilitating collaborative learning experiences.</p>
+        </div>
+
+        <div class="speakers-grid">
+            <!-- Speaker 1 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Financial Speaker">
+                </div>
+                <div class="speaker-info">
+                    <h3>Theo Gaopalelwe</h3>
+                    <p>Financial Group Facilitator</p>
+                    <div class="bio">Specializes in interactive financial workshops that make complex concepts accessible to groups.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
+                </div>
             </div>
-            <div class="speakers-grid">
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Financial Speaker">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Theo Gaopalelwe</h3>
-                        <p>Financial Group Facilitator</p>
-                        <div class="bio">Specializes in interactive financial workshops that make complex concepts accessible to groups.</div>
-                        <a href="topic.html" class="learn-more">View Topics →</a>
-                    </div>
+
+            <!-- Speaker 2 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Speaker">
                 </div>
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Speaker">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Malebogo Nku</h3>
-                        <p>Tech Workshop Leader</p>
-                        <div class="bio">Creates hands-on tech learning experiences that keep groups engaged and collaborating.</div>
-                        <a href="topic.html" class="learn-more">View Topics →</a>
-                    </div>
+                <div class="speaker-info">
+                    <h3>Malebogo Nku</h3>
+                    <p>Tech Workshop Leader</p>
+                    <div class="bio">Creates hands-on tech learning experiences that keep groups engaged and collaborating.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
                 </div>
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Speaker">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Tumisang Babadinyana</h3>
-                        <p>Team Development Expert</p>
-                        <div class="bio">Designs transformative group experiences that build skills and strengthen team dynamics.</div>
-                        <a href="topic.html" class="learn-more">View Topics →</a>
-                    </div>
+            </div>
+
+            <!-- Speaker 3 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Speaker">
                 </div>
-                <div class="speaker-card">
-                    <div class="speaker-img">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Speaker">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Leo Cj</h3>
-                        <p>Industry Roundtable Moderator</p>
-                        <div class="bio">Facilitates industry-specific group discussions that surface insights and best practices.</div>
-                        <a href="topic.html" class="learn-more">View Topics →</a>
-                    </div>
+                <div class="speaker-info">
+                    <h3>Tumisang Babadinyana</h3>
+                    <p>Team Development Expert</p>
+                    <div class="bio">Designs transformative group experiences that build skills and strengthen team dynamics.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
+                </div>
+            </div>
+
+            <!-- Speaker 4 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Speaker">
+                </div>
+                <div class="speaker-info">
+                    <h3>Leo Cj</h3>
+                    <p>Industry Roundtable Moderator</p>
+                    <div class="bio">Facilitates industry-specific group discussions that surface insights and best practices.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
+                </div>
+            </div>
+
+            <!-- Additional Speakers -->
+            <!-- Speaker 5 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1563298720-9a7f87bce694?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjQ2OXwwfDF8c2VhY2h8MXx8Zm9vZCUyMGRlc2lnbnxlbnwwfHx8fDE2NzkxNzc1MTg&ixlib=rb-1.2.1&q=80&w=400" alt="Leadership Speaker">
+                </div>
+                <div class="speaker-info">
+                    <h3>Maria Sefalana</h3>
+                    <p>Leadership Coach</p>
+                    <div class="bio">Helps leaders develop emotional intelligence and strategic decision-making in group settings.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
+                </div>
+            </div>
+
+            <!-- Speaker 6 -->
+            <div class="speaker-card">
+                <div class="speaker-img">
+                    <img src="https://images.unsplash.com/photo-1505242768-995f0299ec76?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjQ2OXwwfDF8c2VhY2h8Mnx8c3RhcnVwJTIwbGVhZGVyc2hpcHwxfDB8fHx8fDE2NzkxNzc3Mzk&ixid=rb-1.2.1&q=80&w=400" alt="Communication Speaker">
+                </div>
+                <div class="speaker-info">
+                    <h3>David Ndaba</h3>
+                    <p>Communications Specialist</p>
+                    <div class="bio">Trains groups on effective communication strategies and public speaking techniques.</div>
+                    <a href="topic.html" class="learn-more">View Topics →</a>
                 </div>
             </div>
         </div>
-    </section>
-</head>
+    </div>
+</section>
+
+</body>
 </html>
