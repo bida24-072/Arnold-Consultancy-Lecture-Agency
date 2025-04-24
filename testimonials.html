@@ -3,9 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Testimonials</title>
+    <title>Client Testimonials | Arnold's Mentorship</title>
+    <style>
+        /* Brand Colors */
+        :root {
+            --primary-blue: #002366;
+            --accent-gold: #FFD700;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .testimonials-header h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .testimonials-header h2:after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-gold);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .testimonials-header p {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card:before {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: var(--light-gray);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+            margin-right: 15px;
+        }
+        
+        .client-details h4 {
+            margin: 0;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+        
+        .client-details p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: var(--accent-gold);
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="testimonials-section">
+        <div class="testimonials-header">
+            <h2>Trusted by Leaders</h2>
+            <p>Don't just take our word for it - here's what our clients say about their mentorship experience</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">
+                    Arnold's mentorship transformed our executive team's decision-making process. The 1:1 sessions provided clarity we couldn't find elsewhere.
+                </p>
+                <div class="client-info">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="client-avatar">
+                    <div class="client-details">
+                        <h4>Sarah Johnson</h4>
+                        <p>CEO, TechForward Inc.</p>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">
+                    The group workshops revolutionized our company culture. Arnold's approach to leadership development is unlike anything we've experienced before.
+                </p>
+                <div class="client-info">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="client-avatar">
+                    <div class="client-details">
+                        <h4>Michael Chen</h4>
+                        <p>COO, Global Strategies</p>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
 
-<div class="client-info">
+
+
                         <div class="client-img">
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
                         </div>
@@ -26,9 +192,33 @@
                         <div class="client-name">
                             <h4>Kitso Motshelo</h4>
                             <p>Software Developer</p>
-                       
 
 
+
+
+
+
+
+            
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <p class="testimonial-content">
+                    As a female executive, I found Arnold's mentorship incredibly empowering. The tailored approach helped me break through barriers in my industry.
+                </p>
+                <div class="client-info">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Diallo" class="client-avatar">
+                    <div class="client-details">
+                        <h4>Amina Diallo</h4>
+                        <p>Founder, Elevate Africa</p>
+                        <div class="rating">★★★★☆</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
 
 
 
