@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnold-Consultancy-Lecture-Agency</title>
+    <title>Arnold Consultancy & Lecture Agency</title>
     <style>
         * {
             margin: 0;
@@ -14,21 +14,22 @@
         
         body {
             background-color: #f5f5f5;
-            background-image: url('best%20logo.jfif');
-            background-size: 150%;
-            background-repeat: repeat;
-            padding-top: 60px; /* To account for fixed navbar */
+            padding-top: 80px; /* Adjusted for fixed header + nav */
         }
         
-        header {
+        /* Header Styles */
+        .main-header {
             background-color: #2E5A88;
             color: white;
             text-align: center;
             padding: 20px 0;
-            margin-bottom: 20px;
+            position: fixed;
+            top: 60px; /* Below navbar */
+            width: 100%;
+            z-index: 999;
         }
         
-        /* Formal Navigation Bar - Fixed Version */
+        /* Navigation Bar - Fixed */
         .navbar {
             background: linear-gradient(135deg, #006400, #228B22);
             width: 100%;
@@ -150,16 +151,19 @@
         /* Main Content Layout */
         .content-container {
             display: flex;
-            min-height: calc(100vh - 60px);
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 120px auto 40px; /* Adjusted for fixed headers */
         }
         
+        /* Sidebars */
         .sidebar {
             width: 200px;
             background-color: #2E5A88;
             color: white;
             padding: 20px;
+            margin: 0 20px;
+            border-radius: 8px;
+            height: fit-content;
         }
         
         .sidebar h2 {
@@ -190,36 +194,45 @@
             background-color: #3a6ea5;
         }
         
+        /* Main Content */
         .main-content {
             flex: 1;
             padding: 40px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        .welcome-box {
-            background-color: #f9f9f9;
-            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
         }
         
-        .welcome-box h1, .welcome-box h2 {
+        /* Welcome Section - Now Separate */
+        .welcome-section {
+            background-color: white;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .welcome-section h2 {
             color: #2c3e50;
             margin-bottom: 20px;
         }
         
-        .welcome-box p {
+        .welcome-section p {
             color: #333;
             line-height: 1.6;
             margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
+        /* Hero Section */
         .hero {
             text-align: center;
             padding: 40px 20px;
-            margin-bottom: 30px;
+            margin: 40px 0;
         }
         
         .cta-button {
@@ -240,6 +253,18 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-container {
+                flex-direction: column;
+                margin-top: 140px;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin: 20px 0;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -287,22 +312,15 @@
                 display: block;
             }
             
-            .content-container {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                order: 2;
+            .main-header {
+                top: 60px;
+                position: relative;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1><em>Arnold Consultancy & Lecture Agency</em></h1>
-    </header>
-
+    <!-- Fixed Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -331,6 +349,18 @@
         </div>
     </nav>
 
+    <!-- Main Header -->
+    <header class="main-header">
+        <h1><em>Arnold Consultancy & Lecture Agency</em></h1>
+    </header>
+
+    <!-- Welcome Section - Now Separate -->
+    <section class="welcome-section">
+        <h2>Welcome to Arnold Agency</h2>
+        <p>Your premier destination for expert lectures and professional consultation services. We specialize in delivering high-quality, insightful lectures and tailored consultations.</p>
+        <p><a href="contact.html" style="color: #006400; font-weight: 500;">Contact Us</a></p>
+    </section>
+
     <!-- Main Content with Sidebars -->
     <div class="content-container">
         <!-- Left Sidebar -->
@@ -347,12 +377,6 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="welcome-box">
-                <h2>Welcome to Arnold Agency</h2>
-                <p>Your premier destination for expert lectures and professional consultation services. We specialize in delivering high-quality, insightful lectures and tailored consultations.</p>
-                <p><a href="contact.html" style="color: #006400; font-weight: 500;">Contact Us</a></p>
-            </div>
-
             <!-- Hero Section -->
             <section class="hero">
                 <h1>Unlock Your Potential with Expert Guidance</h1>
