@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnold Mentorship 
-        - Online Learning Consultation</title>
+    <title>Arnold Mentorship - Online Learning Consultation</title>
     <style>
         /* Global Styles */
         * {
@@ -48,6 +47,14 @@
             font-size: 24px;
             font-weight: 700;
             color: #4f46e5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
         }
         
         nav ul {
@@ -139,6 +146,8 @@
             justify-content: center;
             font-size: 24px;
             transition: all 0.3s;
+            color: white;
+            text-decoration: none;
         }
         
         .platform-icon:hover {
@@ -769,11 +778,16 @@
 <body>
     <!-- Header -->
     <header>
-         
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="OIP%20(1).jpg" alt="Arnold's Mentorship">
+                <div>Arnold</div>
+            </a>
+            <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="servicedropdown.html">Programs</a></li>
-                    <li><a href="">Process</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="speaker.html">Experts</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="registerbook.html">Book Consultation</a></li>
@@ -794,22 +808,18 @@
                 <a href="catalogue.html" class="cta-button">Start Learning Today</a>
                 
                 <div class="platform-icons">
-                    <div class="platform-icon">
-                        <i class="fas fa-audio"></i>
-                         <li><a href="contact.html.html">Call</a></li>
-                    </div>
-                    <div class="platform-icon">
+                    <a href="contact.html" class="platform-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="speaker.html" class="platform-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
-                         <li><a href="speaker.html">Consultants</a></li>
-                    </div>
-                    <div class="platform-icon">
+                    </a>
+                    <a href="registerbook.html" class="platform-icon">
                         <i class="fas fa-laptop-code"></i>
-                         <li><a href="registerbook.html">Book Session</a></li>
-                    </div>
-                    <div class="platform-icon">
+                    </a>
+                    <a href="about.html" class="platform-icon">
                         <i class="fas fa-chart-line"></i>
-                         <li><a href="about.html">About</a></li>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1106,14 +1116,4 @@
 
     <!-- Testimonials Section -->
     <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>What our learners say about their online consultation experience</p>
-                 
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "The financial consultation sessions completely transformed how I manage my investments. My consultant provided clear, personalized advice through interactive online sessions that fit my schedule perfectly."
-                   
+       
