@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Comment Badge</title>
+    <style>
+        .comment-badge {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .user-name, 
+        .comment-count {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            color: #2A5C8D; /* Brand blue for names */
+            font-size: 15px;
+        }
+        
+        .user-name:hover {
+            color: #1E456E; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+        
+        .comment-count {
+            display: inline-flex;
+            align-items: center;
+            color: #7D8A94; /* Neutral gray */
+            font-size: 14px;
+        }
+        
+        .comment-count:hover {
+            color: #2A5C8D; /* Brand blue on hover */
+        }
+        
+        .comment-count::before {
+            content: "•";
+            margin: 0 6px;
+            color: #D1D5D8; /* Light separator */
+            font-weight: bold;
+        }
+        
+        /* Active state for clicks */
+        .user-name:active,
+        .comment-count:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-badge">
+        <a href="#" class="user-name">Victor Cheng</a>
+        <a href="#comments" class="comment-count">63 Comments</a>
+    </div>
+
+    <script>
+        // Example JavaScript for functionality
+        document.querySelector('.user-name').addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Navigate to user profile');
+            // window.location.href = '/users/victor-cheng';
+        });
+        
+        document.querySelector('.comment-count').addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Scroll to comments section');
+            // document.getElementById('comments').scrollIntoView();
+        });
+    </script>
+</body>
+</html>
