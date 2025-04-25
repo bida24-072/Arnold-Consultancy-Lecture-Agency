@@ -1,142 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Feedback Form | Arnold Consultancy</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-    }
-    .feedback-container {
-      max-width: 700px;
-      margin: 2rem auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .form-header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .form-content {
-      background-color: white;
-      padding: 2rem;
-    }
-    fieldset {
-      border: 1px solid #e0e0e0;
-      border-radius: 4px;
-      padding: 1.5rem;
-    }
-    legend {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #2c3e50;
-      padding: 0 1rem;
-    }
-    .w3-label {
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .w3-radio {
-      margin-right: 0.5rem;
-    }
-    .submit-btn {
-      background-color: #2c3e50;
-      color: white;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    .submit-btn:hover {
-      background-color: #1a252f;
-    }
-    .form-footer {
-      text-align: center;
-      margin-top: 1.5rem;
-      color: #666;
-      font-size: 0.9rem;
-    }
-    .w3-margin-bottom {
-      margin-bottom: 1rem;
-    }
-    .w3-section {
-      margin-bottom: 1.5rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 120px;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .rating-option {
+            text-align: center;
+            cursor: pointer;
+        }
+        .rating-option input {
+            margin: 0 auto;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div class="w3-container feedback-container">
-   
-    <div class="form-header">
-      <h2>Service Feedback Form</h2>
-      <p>Your opinion helps us improve our services</p>
-    </div>
+    <h1>Share Your Experience</h1>
+    <p>We value your feedback! Please take a moment to share your thoughts about our services.</p>
     
-    <div class="form-content">
-      
-        <fieldset>
-          <legend>Confidential Feedback Submission</legend>
-          
-          <div class="w3-section">
-            <label class="w3-label"><b>Gender (Optional)</b></label>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="male" id="male">
-              <label for="male">Male</label>
+    <form id="feedbackForm">
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="contact">Email/Phone Number (optional):</label>
+            <input type="text" id="contact" name="contact">
+        </div>
+        
+        <div class="form-group">
+            <label>How would you rate your overall experience?</label>
+            <div class="rating">
+                <div class="rating-option">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5">⭐️⭐️⭐️⭐️⭐️<br>Excellent</label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">⭐️⭐️⭐️⭐️<br>Good</label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">⭐️⭐️⭐️<br>Average</label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">⭐️⭐️<br>Needs Improvement</label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">⭐️<br>Poor</label>
+                </div>
             </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="female" id="female">
-              <label for="female">Female</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="valuable">What did you find most valuable about this service?</label>
+            <textarea id="valuable" name="valuable"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="impact">How has this service impacted you?</label>
+            <textarea id="impact" name="impact" placeholder="Personal growth, mindset, skills, etc."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Would you recommend this service to others?</label>
+            <div class="checkbox-group">
+                <input type="radio" id="recommend-yes" name="recommend" value="yes">
+                <label for="recommend-yes">Yes</label>
+                
+                <input type="radio" id="recommend-no" name="recommend" value="no">
+                <label for="recommend-no">No</label>
+                
+                <input type="radio" id="recommend-maybe" name="recommend" value="maybe">
+                <label for="recommend-maybe">Maybe</label>
             </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="other" id="other">
-              <label for="other">Other</label>
-            </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="gender" value="prefer-not-to-say" id="no-answer" checked>
-              <label for="no-answer">Prefer not to say</label>
-            </div>
-          </div>
-          
-          <div class="w3-section">
-            <label class="w3-label"><b>How would you rate your experience with our services?</b></label>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="excellent" id="excellent">
-              <label for="excellent">Excellent - Far exceeded expectations</label>
-            </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="good" id="good">
-              <label for="good">Good - Met expectations</label>
-            </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="average" id="average">
-              <label for="average">Average - Room for improvement</label>
-            </div>
-            <div class="w3-margin-bottom">
-              <input class="w3-radio" type="radio" name="feedback" value="poor" id="poor">
-              <label for="poor">Poor - Did not meet expectations</label>
-            </div>
-          </div>
-          
-          <div class="w3-section w3-center">
-              <form action="thank.html" method="post">
-            <button type="submit" class="w3-button submit-btn">
-              Submit Feedback
-            </button>
-          </div>
-          
-         
-        </fieldset>
-      </form>
+            <textarea id="recommend-reason" name="recommend-reason" placeholder="Please share why..." style="display: none; margin-top: 10px;"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="testimonial">Testimonial (Optional but appreciated!):</label>
+            <textarea id="testimonial" name="testimonial" placeholder="Share your honest thoughts about your experience. We'd love to feature your words (with your permission)!"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="improvement">How can we improve?</label>
+            <textarea id="improvement" name="improvement"></textarea>
+        </div>
+        
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="permission" name="permission">
+            <label for="permission">I give permission to share my testimonial publicly (anonymously if preferred)</label>
+        </div>
+        
+        <button type="submit">Submit Feedback</button>
+    </form>
+    
+    <div id="thankYou" class="thank-you">
+        <h2>Thank You!</h2>
+        <p>We appreciate you taking the time to share your feedback. Your insights help us improve our services.</p>
     </div>
-  </div>
 
-  <!-- Optional JavaScript libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Show/hide "why" textarea based on "maybe" selection
+        document.querySelectorAll('input[name="recommend"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const reasonTextarea = document.getElementById('recommend-reason');
+                if (this.value === 'maybe') {
+                    reasonTextarea.style.display = 'block';
+                } else {
+                    reasonTextarea.style.display = 'none';
+                }
+            });
+        });
+
+        // Form submission handling (in a real implementation, you'd send this to your server)
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your server
+            // For demonstration, we'll just show the thank you message
+            this.style.display = 'none';
+            document.getElementById('thankYou').style.display = 'block';
+            
+            // Scroll to thank you message
+            document.getElementById('thankYou').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
