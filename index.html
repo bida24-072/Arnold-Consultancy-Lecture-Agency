@@ -318,6 +318,124 @@
             }
         }
     </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .language-selector {
+            float: right;
+            margin-bottom: 20px;
+        }
+        .content {
+            clear: both;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+        </select>
+    </div>
+
+    <div class="content">
+        <h1 id="title">API Platform</h1>
+        <p id="welcome">Welcome to our API Platform</p>
+        <!-- Add more content elements as needed -->
+    </div>
+
+    <script>
+        // Translations object
+        const translations = {
+            en: {
+                title: "API Platform",
+                welcome: "Welcome to our API Platform"
+            },
+            zh: {
+                title: "API 平台",
+                welcome: "欢迎来到我们的API平台"
+            },
+            fr: {
+                title: "Plateforme API",
+                welcome: "Bienvenue sur notre plateforme API"
+            },
+            es: {
+                title: "Plataforma API",
+                welcome: "Bienvenido a nuestra plataforma API"
+            },
+            de: {
+                title: "API-Plattform",
+                welcome: "Willkommen auf unserer API-Plattform"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            updateContent(lang);
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Function to update content based on language
+        function updateContent(lang) {
+            document.documentElement.lang = lang;
+            const elements = translations[lang];
+            
+            for (const [id, text] of Object.entries(elements)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = text;
+                }
+            }
+        }
+
+        // Initialize language
+        function initLanguage() {
+            // Check for saved preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            
+            // Or detect browser language
+            const browserLang = navigator.language.split('-')[0];
+            
+            // Supported languages
+            const supportedLangs = ['en', 'zh', 'fr', 'es', 'de'];
+            
+            // Determine language to use
+            let lang = 'en'; // default
+            
+            if (savedLang && supportedLangs.includes(savedLang)) {
+                lang = savedLang;
+            } else if (supportedLangs.includes(browserLang)) {
+                lang = browserLang;
+            }
+            
+            // Update UI
+            document.getElementById('languageSelect').value = lang;
+            updateContent(lang);
+        }
+
+        // Initialize when page loads
+        window.onload = initLanguage;
+    </script>
+</body>
+</html>
+    
 </head>
 <body>
     <!-- Fixed Navigation Bar -->
