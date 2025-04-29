@@ -401,8 +401,8 @@ p {
             <h2 class="section-title">Order Summary</h2>
             
             <div class="summary-row">
-                <span>Subtotal (2 items)</span>
-                <span>$548.00</span>
+                <span>Subtotal ( items)</span>
+                <span>......</span>
             </div>
             
             <div class="summary-row">
@@ -483,14 +483,14 @@ p {
         function updateTotals() {
             // In a real implementation, you would calculate based on actual cart items
             // This is just a placeholder for the demo
-            const subtotal = 548.00;
+            const subtotal = 0.00;
             const serviceFee = 25.00;
             const tax = 43.84;
             const total = subtotal + serviceFee + tax;
             
-            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `$${subtotal.toFixed(2)}`;
-            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `$${tax.toFixed(2)}`;
-            document.querySelector('.summary-total span:last-child').textContent = `$${total.toFixed(2)}`;
+            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `PP{subtotal.toFixed(2)}`;
+            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `PP{tax.toFixed(2)}`;
+            document.querySelector('.summary-total span:last-child').textContent = `PP{total.toFixed(2)}`;
         }
         
         // Form submission
