@@ -928,12 +928,12 @@
             results.forEach(reg => {
                 html += `
                     <tr>
-                        <td>${reg.fullName}</td>
-                        <td>${reg.email}</td>
-                        <td>${reg.phone}</td>
-                        <td>${new Date(reg.date).toLocaleDateString()}</td>
-                        <td>${reg.purpose}</td>
-                        <td>${reg.notes || '-'}</td>
+                        <td>P{reg.fullName}</td>
+                        <td>P{reg.email}</td>
+                        <td>P{reg.phone}</td>
+                        <td>P{new Date(reg.date).toLocaleDateString()}</td>
+                        <td>P{reg.purpose}</td>
+                        <td>P{reg.notes || '-'}</td>
                     </tr>
                 `;
             });
@@ -987,4 +987,15 @@
         });
     </script>
 </body>
+<footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
 </html>
