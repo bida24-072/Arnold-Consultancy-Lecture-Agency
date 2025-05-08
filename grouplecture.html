@@ -505,105 +505,7 @@
             font-size: 14px;
         }
         
-        /* Pricing Section */
-        .pricing {
-            padding: 80px 0;
-            background-color: #f5f7fa;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .pricing-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .pricing-card.featured {
-            border: 2px solid #4CAF50;
-            position: relative;
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.featured::before {
-            content: 'Popular';
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .pricing-card.featured:hover {
-            transform: translateY(-10px) scale(1.05);
-        }
-        
-        .pricing-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #1a2a3a;
-        }
-        
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
-        
-        .price span {
-            font-size: 16px;
-            font-weight: normal;
-            color: #7f8c8d;
-        }
-        
-        .pricing-features {
-            margin-bottom: 30px;
-        }
-        
-        .pricing-features li {
-            list-style: none;
-            margin-bottom: 10px;
-            color: #7f8c8d;
-        }
-        
-        .pricing-btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .pricing-btn.outline {
-            background-color: transparent;
-            border: 2px solid #4CAF50;
-            color: #4CAF50;
-        }
-        
-        .pricing-btn:hover {
-            background-color: #3e8e41;
-            color: white;
-        }
-        
+       
         /* Footer */
         footer {
             background-color: #1a2a3a;
@@ -750,7 +652,7 @@
                     <li><a href="#lectures">Upcoming Lectures</a></li>
                     <li><a href="speaker.html">Speakers</a></li>
                     <li><a href="price.html">Pricing</a></li>
-                    <li><a href="group.html">Group Booking</a></li>
+                    <li><a href="registerbook.html">Group Booking</a></li>
                 </ul>
             </nav>
         </div>
@@ -856,55 +758,7 @@
 
  
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Group Lecture Pricing</h2>
-                <p>Flexible options for teams of all sizes</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Small Team</h3>
-                    <div class="price">$1,200 <span>per session</span></div>
-                    <ul class="pricing-features">
-                        <li>Up to 10 participants</li>
-                        <li>3-hour group lecture</li>
-                        <li>Basic materials</li>
-                        <li>Virtual or in-person</li>
-                        <li>Q&A session</li>
-                    </ul>
-                    <a href="#booking" class="pricing-btn outline">Book Now</a>
-                </div>
-                <div class="pricing-card featured">
-                    <h3>Standard Team</h3>
-                    <div class="price">$2,500 <span>per session</span></div>
-                    <ul class="pricing-features">
-                        <li>Up to 25 participants</li>
-                        <li>Full-day workshop</li>
-                        <li>Comprehensive materials</li>
-                        <li>Virtual or in-person</li>
-                        <li>Interactive exercises</li>
-                        <li>Follow-up resources</li>
-                    </ul>
-                    <a href="#booking" class="pricing-btn">Book Now</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">Custom <span>pricing</span></div>
-                    <ul class="pricing-features">
-                        <li>Unlimited participants</li>
-                        <li>Multi-session programs</li>
-                        <li>Customized content</li>
-                        <li>On-site delivery</li>
-                        <li>Pre/post assessments</li>
-                        <li>Dedicated coordinator</li>
-                    </ul>
-                    <a href="price.html" class="pricing-btn outline">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Group Booking Section -->
     <section class="group-booking" id="booking">
@@ -945,5 +799,5 @@
                     <div class="form-group">
                         <form id="booking-form">
    <a href="registerbook.html">
-    <button type="submit" class="submit-btn">BOOK FOR GROUP</button>
+    <button type="submit" class="submit-btn href="registerbook.html">BOOK FOR GROUP</button>
 </a>
