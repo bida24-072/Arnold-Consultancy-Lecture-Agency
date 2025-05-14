@@ -15,12 +15,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f9f9f9;
+            color: #333;
+            display: flex; /* Use flexbox for overall layout */
+            flex-direction: column; /* Stack header, main, and footer vertically */
+            min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            flex: 1; /* Allow the container to grow and take up available space */
         }
         h1 {
             text-align: center;
@@ -93,14 +98,72 @@
         .expanded .toggle-icon {
             transform: rotate(180deg);
         }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: #28a745; /* Green background */
+            overflow: hidden;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .navbar a:hover {
+            background-color: #218838;
+            border-radius: 5px;
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: auto;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #28a745; /* Green background */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <span class="navbar-brand">Knowledge Hub</span>
+        <a href="#finance">Finance</a>
+        <a href="#tech">Technology</a>
+        <a href="#industry">Industry</a>
+        <a href="#growth">Personal Growth</a>
+    </nav>
     <div class="container">
         <h1>Knowledge Hub - Topic Directory</h1>
-        
-        <!-- Finance Category -->
-        <div class="category finance">
+
+        <div id="finance" class="category finance">
             <div class="category-header" onclick="toggleCategory(this)">
                 <h2>Finance & Economics</h2>
                 <span class="toggle-icon">▼</span>
@@ -117,7 +180,7 @@
                         <span class="subtopic">Credit building</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Corporate Finance</h3>
                     <div class="subtopics">
@@ -129,7 +192,7 @@
                         <span class="subtopic">IPO strategies</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Market Trends</h3>
                     <div class="subtopics">
@@ -143,9 +206,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Technology Category -->
-        <div class="category tech">
+
+        <div id="tech" class="category tech">
             <div class="category-header" onclick="toggleCategory(this)">
                 <h2>Technology & Innovation</h2>
                 <span class="toggle-icon">▼</span>
@@ -162,7 +224,7 @@
                         <span class="subtopic">Biotechnology</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Software Development</h3>
                     <div class="subtopics">
@@ -174,7 +236,7 @@
                         <span class="subtopic">Database systems</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Digital Transformation</h3>
                     <div class="subtopics">
@@ -188,9 +250,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Industry-Specific Category -->
-        <div class="category industry">
+
+        <div id="industry" class="category industry">
             <div class="category-header" onclick="toggleCategory(this)">
                 <h2>Industry-Specific Knowledge</h2>
                 <span class="toggle-icon">▼</span>
@@ -207,7 +268,7 @@
                         <span class="subtopic">Medical devices</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Manufacturing</h3>
                     <div class="subtopics">
@@ -219,7 +280,7 @@
                         <span class="subtopic">Robotics in manufacturing</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Professional Services</h3>
                     <div class="subtopics">
@@ -233,9 +294,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Personal Growth Category -->
-        <div class="category growth">
+
+        <div id="growth" class="category growth">
             <div class="category-header" onclick="toggleCategory(this)">
                 <h2>Personal Growth & Development</h2>
                 <span class="toggle-icon">▼</span>
@@ -252,7 +312,7 @@
                         <span class="subtopic">Career transitions</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Mindset & Productivity</h3>
                     <div class="subtopics">
@@ -264,7 +324,7 @@
                         <span class="subtopic">Decision making</span>
                     </div>
                 </div>
-                
+
                 <div class="topic">
                     <h3>Communication Skills</h3>
                     <div class="subtopics">
@@ -280,12 +340,23 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         function toggleCategory(header) {
             const container = header.parentElement;
             const content = container.querySelector('.topics-container');
             content.classList.toggle('expanded');
-            
+
             // Close other open categories when opening a new one
             if (content.classList.contains('expanded')) {
                 document.querySelectorAll('.topics-container').forEach(el => {
@@ -295,31 +366,16 @@
                     }
                 });
             }
-            
+
             // Update toggle icon
             const icon = header.querySelector('.toggle-icon');
             icon.textContent = content.classList.contains('expanded') ? '▲' : '▼';
         }
-        
+
         // Initialize with first category open
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.category-header').click();
         });
     </script>
-
-<!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="contact.html">Contact Us</a>
-            </div>
-        </div>
-
-    </footer>
-
-    
 </body>
 </html>
