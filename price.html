@@ -65,7 +65,7 @@
 
         .pricing-card.popular {
             position: relative;
-            border: 2px solid #3498db;
+            border: 2px solid #2ecc71; /* Green border for popular */
         }
 
         .pricing-card.popular::before {
@@ -73,7 +73,7 @@
             position: absolute;
             top: 0;
             right: 0;
-            background: #3498db;
+            background: #2ecc71; /* Green background for label */
             color: white;
             padding: 5px 15px;
             font-size: 0.8rem;
@@ -95,7 +95,7 @@
         .price {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #3498db;
+            color: #2ecc71; /* Green price */
             margin-bottom: 25px;
         }
 
@@ -125,7 +125,7 @@
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: #3498db;
+            background: #2ecc71; /* Green button */
             color: white;
             text-decoration: none;
             border-radius: 30px;
@@ -134,7 +134,7 @@
         }
 
         .btn:hover {
-            background: #2980b9;
+            background: #27ae60; /* Darker green on hover */
         }
 
         /* Footer Styles */
@@ -142,12 +142,13 @@
             text-align: center;
             padding: 30px 20px;
             margin-top: 50px;
-            background: #fff;
+            background: #f0f0f0;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            color: #2c3e50; /* Darker text for better contrast on light green */
         }
 
         .footer a {
-            color: #3498db;
+            color: #2ecc71; /* Green link */
             text-decoration: none;
             font-weight: bold;
         }
@@ -168,68 +169,117 @@
                 max-width: 400px;
             }
         }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #2ecc71; /* Green navbar */
+            overflow: hidden;
+            position: sticky; /* Make it sticky */
+            top: 0; /* Stick to the top */
+            z-index: 100; /* Ensure it's above other elements */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add a shadow for better visibility */
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px; /* Slightly increased padding */
+            text-decoration: none;
+            font-size: 1.2rem; /* Increased font size for better readability */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .navbar a:hover {
+            background-color: #27ae60; /* Darker green on hover */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem; /* Increased font size for brand */
+        }
+
+        /* Navbar links container */
+        .navbar-links {
+            float: right; /* Push links to the right */
+        }
+
+        /* Responsive Navbar */
+        @media screen and (max-width: 600px) {
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .navbar-links {
+                float: none;
+            }
+        }
     </style>
 </head>
 <body>
-
-<!-- Header Row -->
-<div class="header">
-    <h1>OUR PRICING PLANS</h1>
-    <p>Choose the plan that works for you</p>
-</div>
-
-<!-- Flexbox Pricing Grid -->
-<div class="flex-container">
-    <!-- Basic Plan -->
-    <div class="pricing-card">
-        <div class="card-content">
-            <h3>Basic Plan</h3>
-            <div class="price">P800 <span class="per-hour">per hour</span></div>
-            <ul class="feature-list">
-                <li>1-5 hours</li>
-                <li>Simple tasks</li>
-                <li>Bug fixes</li>
-                <li>Consultations</li>
-            </ul>
-            <a href="contact.html" class="btn">Get Started</a>
+    <div class="navbar">
+        <a href="#" class="navbar-brand">My Company</a>
+        <div class="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 
-    <!-- Standard Plan (Popular) -->
-    <div class="pricing-card popular">
-        <div class="card-content">
-            <h3>Standard Plan</h3>
-            <div class="price">P1000 <span class="per-hour">per hour</span></div>
-            <ul class="feature-list">
-                <li>5-20 hours</li>
-                <li>Tech projects</li>
-                <li>Website updates</li>
-                <li>Content creation</li>
-            </ul>
-            <a href="contact.html" class="btn">Get Started</a>
+    <div class="header" id="pricing">
+        <h1>OUR PRICING PLANS</h1>
+        <p>Choose the plan that works for you</p>
+    </div>
+
+    <div class="flex-container">
+        <div class="pricing-card">
+            <div class="card-content">
+                <h3>Basic Plan</h3>
+                <div class="price">P800 <span class="per-hour">per hour</span></div>
+                <ul class="feature-list">
+                    <li>1-5 hours</li>
+                    <li>Simple tasks</li>
+                    <li>Bug fixes</li>
+                    <li>Consultations</li>
+                </ul>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+        </div>
+
+        <div class="pricing-card popular">
+            <div class="card-content">
+                <h3>Standard Plan</h3>
+                <div class="price">P1000 <span class="per-hour">per hour</span></div>
+                <ul class="feature-list">
+                    <li>5-20 hours</li>
+                    <li>Tech projects</li>
+                    <li>Website updates</li>
+                    <li>Content creation</li>
+                </ul>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+        </div>
+
+        <div class="pricing-card">
+            <div class="card-content">
+                <h3>Premium Plan</h3>
+                <div class="price">P1200 <span class="per-hour">per hour</span></div>
+                <ul class="feature-list">
+                    <li>20+ hours</li>
+                    <li>Full development</li>
+                    <li>Custom applications</li>
+                    <li>Advanced design</li>
+                </ul>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
         </div>
     </div>
 
-    <!-- Premium Plan -->
-    <div class="pricing-card">
-        <div class="card-content">
-            <h3>Premium Plan</h3>
-            <div class="price">P1200 <span class="per-hour">per hour</span></div>
-            <ul class="feature-list">
-                <li>20+ hours</li>
-                <li>Full development</li>
-                <li>Custom applications</li>
-                <li>Advanced design</li>
-            </ul>
-            <a href="contact.html" class="btn">Get Started</a>
-        </div>
+    <div class="footer">
+        <p>Need help deciding? <a href="contact.html">Contact us</a> | @theo arnold | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms of Policy</a></p>
     </div>
-</div>
-
-<!-- Footer Row -->
-<div class="footer">
-    <p>Need help deciding? <a href="contact.html">Contact us</a></p>
-</div>
 
 </body>
 </html>
