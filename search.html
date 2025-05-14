@@ -13,6 +13,8 @@
             --text-color: #333333;
             --light-color: #f8f9fa;
             --border-color: #e0e0e0;
+            --footer-bg: #f8f9fa;
+            --footer-text: #777;
         }
 
         body {
@@ -22,12 +24,42 @@
             background-repeat: repeat; /* Make the background image repeat */
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Arrange header, content, and footer vertically */
+            justify-content: flex-start; /* Align items at the start of the container */
             align-items: center;
             margin: 0;
             padding: 20px;
             color: var(--text-color);
             line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navigation {
+            width: 100%;
+            max-width: 700px;
+            padding: 15px 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-button {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-right: 10px;
+        }
+
+        .nav-button:hover {
+            background-color: var(--accent-color);
+            color: white;
         }
 
         .search-container {
@@ -38,6 +70,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             padding: 30px 40px;
             border: 1px solid var(--border-color);
+            margin-bottom: 20px; /* Add some space between search and footer */
         }
 
         .search-header {
@@ -172,6 +205,19 @@
             font-size: 14px;
         }
 
+        /* Footer */
+        .footer {
+            width: 100%;
+            max-width: 700px;
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 12px;
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 4px 4px;
+        }
+
         /* Scrollbar styling */
         #searchResults::-webkit-scrollbar {
             width: 6px;
@@ -206,11 +252,27 @@
             .search-box::before {
                 top: 16px;
             }
+
+            .navigation {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-button {
+                margin-bottom: 10px;
+                margin-right: 0;
+                width: 100%;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div class="navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <button class="nav-button" onclick="window.history.back()">Back</button>
+    </div>
+
     <div class="search-container">
         <div class="search-header">
             <h2>Enterprise Search</h2>
@@ -222,6 +284,10 @@
         </div>
         <div id="searchResults"></div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+    </footer>
 
     <script>
         // Sample data to search through
