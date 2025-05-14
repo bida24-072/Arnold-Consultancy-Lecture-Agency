@@ -15,17 +15,16 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            /* Background Image Styles */
-            background-image: url('best%20logo.jfif');
+            background-image: url('best%20logo.jfif'); /* Use the correct image URL */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-blend-mode: overlay;
-            background-color: rgba(245, 247, 250, 0.9);
+            background-blend-mode: normal; /* Changed blend mode to normal */
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay to darken image */
         }
 
         .dropdown-container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight opacity for better visibility */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
@@ -118,7 +117,7 @@
             .dropdown-header h2 {
                 font-size: 22px;
             }
-            .dropdown-header p{
+            .dropdown-header p {
                 font-size: 14px;
             }
         }
@@ -133,7 +132,8 @@
             border-top: 1px solid #b0d9c2;
             border-radius: 0 0 12px 12px;
         }
-        .footer p{
+
+        .footer p {
             font-size: 14px;
         }
     </style>
@@ -161,6 +161,7 @@
             <i class="fas fa-lock"></i> Secure connection • Authorized access only
         </div>
     </div>
+
     <div class="footer">
         <p>© 2025 My Firm. All rights reserved.  <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </div>
