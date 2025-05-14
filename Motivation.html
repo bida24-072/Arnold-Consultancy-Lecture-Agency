@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Lecture | MI Business Learning</title>
+    <title>Online Lecture | Arnold Consultancy And Lecture Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #004e89; /* Professional Blue */
-            --accent-color: #00b38f;   /* Business Green */
+            --primary-color: #004e89;
+            --accent-color: #00b38f;
             --light-gray: #f5f7fa;
             --dark-gray: #333;
         }
@@ -27,8 +27,8 @@
 
         /* Navigation */
         nav {
-            background-color: white;
-            border-bottom: 1px solid #ddd;
+            background-color: #00b38f;
+            border-bottom: 1px solid #008060;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -36,7 +36,7 @@
         }
 
         nav .logo {
-            color: var(--primary-color);
+            color: white;
             font-size: 1.5rem;
             font-weight: 700;
         }
@@ -49,13 +49,13 @@
 
         nav ul li a {
             text-decoration: none;
-            color: var(--dark-gray);
+            color: white;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: var(--accent-color);
+            color: #e6f4ec;
         }
 
         /* Main Content */
@@ -87,8 +87,10 @@
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
         }
 
@@ -97,6 +99,7 @@
             padding: 2rem;
             border-left: 6px solid var(--accent-color);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
         }
 
         .lecture-info h2 {
@@ -109,24 +112,62 @@
             font-size: 1rem;
         }
 
+        .motivational-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+        }
+
+        .motivational-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .motivational-section p {
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .booking-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .booking-button:hover {
+            background-color: #003366;
+        }
+
         /* Footer */
         footer {
-            background-color: #fff;
-            border-top: 1px solid #ddd;
+            background-color: #00b38f;
+            border-top: 1px solid #008060;
             text-align: center;
             padding: 1rem 2rem;
             margin-top: 4rem;
-            color: #777;
+            color: white;
             font-size: 0.9rem;
         }
 
         footer a {
-            color: var(--accent-color);
+            color: #e6f4ec;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
             text-decoration: underline;
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -143,9 +184,8 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
-        <div class="logo">MI Business Learning</div>
+        <div class="logo">Arnold Consultancy And Lecture Agency</div>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Lectures</a></li>
@@ -154,14 +194,13 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <div class="container">
         <div class="lecture-header">
             <h1>Strategic Leadership in Digital Environments</h1>
         </div>
 
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                     title="Lecture Video" allowfullscreen></iframe>
         </div>
 
@@ -174,11 +213,31 @@
                 in hybrid workspaces.
             </p>
         </div>
+
+        <div class="motivational-section">
+            <h3>Empowering Your Leadership Journey</h3>
+            <p>
+                At Arnold Consultancy And Lecture Agency, we believe that every professional has the potential to become an exceptional leader.
+                Our programs are designed to equip you with the skills, knowledge, and mindset needed to thrive in today's dynamic
+                business environment.
+            </p>
+            <p>
+                Embrace the challenge of leadership and unlock your full potential. Our expert instructors and cutting-edge
+                curriculum will guide you every step of the way, providing you with the tools and strategies to excel.
+            </p>
+            <p>
+                Join a community of like-minded individuals who are passionate about growth and innovation. Together, we will
+                explore new ideas, share insights, and inspire each other to achieve greatness.
+            </p>
+            <p>
+                Take the first step towards a brighter future. Invest in yourself and your leadership journey with Arnold Consultancy And Lecture Agency.
+            </p>
+            <a href="#" class="booking-button">Book a Session Now</a>
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        © 2025 MI Business Learning | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+        © 2025 Arnold Consultancy And Lecture Agency | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
     </footer>
 
 </body>
