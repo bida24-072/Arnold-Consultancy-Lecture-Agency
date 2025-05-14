@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnold Consultancy & Lecture Agency</title>
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
-            padding-top: 80px; /* Adjusted for fixed header + nav */
+            padding-top: 100px; /* Adjusted for fixed header + nav */
             min-height: 100vh;
             position: relative;
             padding-bottom: 100px; /* Space for footer */
         }
-        
+
         /* Header Styles */
         .main-header {
             background-color: #2E5A88;
@@ -31,7 +33,7 @@
             width: 100%;
             z-index: 999;
         }
-        
+
         /* Navigation Bar - Fixed */
         .navbar {
             background: linear-gradient(135deg, #006400, #228B22);
@@ -41,7 +43,7 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -50,7 +52,7 @@
             align-items: center;
             padding: 0 20px;
         }
-        
+
         .logo {
             color: white;
             font-weight: bold;
@@ -60,21 +62,22 @@
             align-items: center;
             padding: 15px 0;
         }
-        
+
         .logo img {
             height: 40px;
             margin-right: 10px;
         }
-        
+
         .nav-menu {
             list-style-type: none;
             display: flex;
+            align-items: center; /* Align items vertically in the menu */
         }
-        
+
         .nav-item {
             position: relative;
         }
-        
+
         .nav-link {
             color: white;
             text-align: center;
@@ -84,20 +87,20 @@
             transition: all 0.3s ease;
             display: block;
         }
-        
+
         .nav-link:hover {
             background-color: rgba(255,255,255,0.1);
         }
-        
+
         .nav-link.active {
             background-color: rgba(255,255,255,0.2);
         }
-        
+
         /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
-        
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -110,11 +113,11 @@
             left: 0;
             top: 100%;
         }
-        
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
-        
+
         .dropdown-content a {
             color: #333;
             padding: 12px 16px;
@@ -123,24 +126,31 @@
             transition: all 0.3s;
             text-align: left;
         }
-        
+
         .dropdown-content a:hover {
             background-color: #f1f1f1;
             color: #006400;
         }
-        
+
         /* Dropdown arrow */
         .dropdown > .nav-link::after {
             content: " ▾";
             font-size: 0.8em;
         }
-        
+
         .login-btn {
             background-color: rgba(255,255,255,0.3);
             border-radius: 4px;
             margin-left: 10px;
+            display: flex; /* Align icon and text */
+            align-items: center;
         }
-        
+
+        .login-btn i {
+            margin-right: 5px; /* Space between icon and text */
+            font-size: 1em; /* Adjust icon size if needed */
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -150,14 +160,14 @@
             cursor: pointer;
             padding: 15px;
         }
-        
+
         /* Main Content Layout */
         .content-container {
             display: flex;
             max-width: 1200px;
-            margin: 120px auto 40px; /* Adjusted for fixed headers */
+            margin: 140px auto 40px; /* Adjusted for fixed headers */
         }
-        
+
         /* Sidebars */
         .sidebar {
             width: 200px;
@@ -168,22 +178,22 @@
             border-radius: 8px;
             height: fit-content;
         }
-        
+
         .sidebar h2 {
             margin-bottom: 20px;
             color: #ecf0f1;
             border-bottom: 1px solid #34495e;
             padding-bottom: 10px;
         }
-        
+
         .sidebar ul {
             list-style-type: none;
         }
-        
+
         .sidebar li {
             margin-bottom: 10px;
         }
-        
+
         .sidebar a {
             color: #ecf0f1;
             text-decoration: none;
@@ -192,11 +202,11 @@
             border-radius: 4px;
             transition: background-color 0.3s;
         }
-        
+
         .sidebar a:hover {
             background-color: #3a6ea5;
         }
-        
+
         /* Main Content */
         .main-content {
             flex: 1;
@@ -205,7 +215,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 8px;
         }
-        
+
         /* Welcome Section - Now Separate */
         .welcome-section {
             background-color: white;
@@ -216,12 +226,12 @@
             border-radius: 8px;
             text-align: center;
         }
-        
+
         .welcome-section h2 {
             color: #2c3e50;
             margin-bottom: 20px;
         }
-        
+
         .welcome-section p {
             color: #333;
             line-height: 1.6;
@@ -230,14 +240,14 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 40px 20px;
             margin: 40px 0;
         }
-        
+
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #006400, #228B22);
@@ -249,26 +259,26 @@
             margin-top: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        
+
         /* Featured Image */
         .featured-image {
             max-width: 1200px;
             margin: 0 auto 40px;
             text-align: center;
         }
-        
+
         .featured-image img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        
+
         /* Footer Styles */
         footer {
             background: linear-gradient(135deg, #006400, #228B22);
@@ -279,7 +289,7 @@
             bottom: 0;
             width: 100%;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -287,100 +297,100 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         .footer-links {
             margin-top: 15px;
         }
-        
+
         .footer-links a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             transition: opacity 0.3s;
         }
-        
+
         .footer-links a:hover {
             opacity: 0.8;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .content-container {
                 flex-direction: column;
-                margin-top: 140px;
+                margin-top: 160px;
             }
-            
+
             .sidebar {
                 width: 100%;
                 margin: 20px 0;
             }
         }
-        
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
                 right: 20px;
                 top: 10px;
             }
-            
+
             .nav-menu {
                 display: none;
                 width: 100%;
                 flex-direction: column;
             }
-            
+
             .nav-menu.active {
                 display: flex;
             }
-            
+
             .nav-item {
                 width: 100%;
             }
-            
+
             .nav-link {
                 padding: 15px;
                 text-align: left;
             }
-            
+
             .dropdown-content {
                 position: static;
                 box-shadow: none;
                 width: 100%;
                 display: none;
             }
-            
+
             .dropdown:hover .dropdown-content {
                 display: none;
             }
-            
+
             .dropdown.active .dropdown-content {
                 display: block;
             }
-            
+
             .main-header {
                 top: 60px;
                 position: relative;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Fixed Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="OIP%20(1).jpg" alt="Arnold's Mentorship">
                 Arnold's Mentorship
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-            
+
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
@@ -395,41 +405,30 @@
                 <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item">
-                    <a href="login.html" class="nav-link login-btn">Login</a>
+                    <a href="search.html" class="nav-link"><i class="fas fa-search"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link login-btn"><i class="fas fa-user"></i> Login</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Header -->
     <header class="main-header">
         <h1><em>Arnold Consultancy & Lecture Agency</em></h1>
     </header>
 
-    <!-- Welcome Section - Now Separate -->
     <section class="welcome-section">
         <h2>Welcome to Arnold Agency</h2>
         <p>Your premier destination for expert lectures and professional consultation services. We specialize in delivering high-quality, insightful lectures and tailored consultations.</p>
         <p><a href="contact.html" style="color: #006400; font-weight: 500;">Contact Us</a></p>
     </section>
 
-    <!-- Featured Image -->
     <div class="featured-image">
         <img src="office.jpg" alt="Team working together">
     </div>
 
-<div>
-
-  <li class="nav-item"><a href="search.html" class="nav-link active">Search</a></li>
-
-    
-</div>
-
-
-    
-    <!-- Main Content with Sidebars -->
     <div class="content-container">
-        <!-- Left Sidebar -->
         <aside class="sidebar">
             <h2>We Got;</h2>
             <ul>
@@ -441,9 +440,7 @@
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Hero Section -->
             <section class="hero">
                 <h1>Unlock Your Potential with Expert Guidance</h1>
                 <p>Arnold Consultancy & Lecture Agency provides top-tier professional consultation and educational services tailored to your unique needs.</p>
@@ -451,26 +448,18 @@
             </section>
         </main>
 
-        <!-- Right Sidebar -->
         <aside class="sidebar">
             <h2>Our Premium Services</h2>
             <ul>
                 <li><a href="oneonone.html">1v1 Consultation</a></li>
                 <li><a href="grouplecture.html">Group Lecture</a></li>
                 <li><a href="onlinelearning.html">Online Learning</a></li>
-                <li><a href="distancelearning.html">Distance Learning</a></li
-                   <li><a href="Motivation.html">Motivational Sessions</a></li>                                                             
+                <li><a href="distancelearning.html">Distance Learning</a></li>
+                <li><a href="Motivation.html">Motivational Sessions</a></li>
             </ul>
         </aside>
-
-
     </div>
 
-
-
-
-    
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
@@ -480,7 +469,6 @@
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-
     </footer>
 
     <script>
@@ -489,11 +477,11 @@
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
         }
-        
+
         // Mobile dropdown functionality
         document.addEventListener('DOMContentLoaded', function() {
             const dropdowns = document.querySelectorAll('.dropdown');
-            
+
             if (window.innerWidth <= 768) {
                 dropdowns.forEach(dropdown => {
                     const link = dropdown.querySelector('.nav-link');
@@ -504,18 +492,4 @@
                 });
             }
         });
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.matches('.nav-link') && !event.target.matches('.dropdown-content a')) {
-                const dropdowns = document.querySelectorAll('.dropdown');
-                dropdowns.forEach(dropdown => {
-                    if (dropdown.classList.contains('active')) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+```
