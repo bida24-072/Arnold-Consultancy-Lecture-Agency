@@ -1,1 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Learning - Arnold Consultancy & Lecture Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #5ee7b7;
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0f946b;
+        }
+
+        /* Distance Learning Content */
+        .distance-learning-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+        }
+
+        .distance-learning-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .distance-learning-header h1 {
+            font-size: 36px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .distance-learning-header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .distance-learning-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .distance-learning-section {
+            margin-bottom: 30px;
+        }
+
+        .distance-learning-section h2 {
+            font-size: 24px;
+            color: #1e293b;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .distance-learning-section h3 {
+            font-size: 20px;
+            color: #1e293b;
+            margin: 20px 0 10px;
+        }
+
+        .distance-learning-section p, .distance-learning-section ul {
+            margin-bottom: 15px;
+            color: #475569;
+        }
+
+        .distance-learning-section ul {
+            padding-left: 20px;
+        }
+
+        .distance-learning-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background-color: #f0fdf4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #34d399;
+        }
+
+        /* Features Section Styles */
+        .features-section {
+            background-color: #f7fafc;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background-color: #e0f2fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 500px;
+            color: #1e3a8a;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: #0d47a1;
+        }
+
+        /* Call to Action Section Styles */
+        .cta-section {
+            background-color: #f0fdf4;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 30px;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #16a34a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #15803d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #16a34a;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .distance-learning-header h1 {
+                font-size: 28px;
+            }
+
+            .distance-learning-section h2 {
+                font-size: 22px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav .container{
+                flex-direction: column;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="OIP%20(1).jpg" alt="Arnold's Mentorship">
+                Arnold Consultancy
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="OIP%20(1).jpg" alt="Arnold's Mentorship">
+                Arnold Consultancy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="distance-learning-container">
+            <div class="distance-learning-header">
+                <h1>Distance Learning</h1>
+                <p>Flexible and accessible education for everyone.</p>
+            </div>
+
+            <div class="distance-learning-content">
+                <div class="distance-learning-section">
+                    <h2>Welcome to Our Distance Learning Programs</h2>
+                    <p>
+                        At Arnold Consultancy & Lecture Agency, we believe that education should be accessible to everyone, regardless of their location or schedule. Our distance learning programs are designed to provide you with the same high-quality education as our in-person courses, but with the flexibility to learn at your own pace.
+                    </p>
+                    <p>
+                        We offer a variety of online courses and resources to help you achieve your educational and professional goals. Whether you're looking to start a new career, enhance your skills, or simply learn something new, our distance learning programs can help you get there.
+                    </p>
+                </div>
+
+                <div class="distance-learning-section">
+                    <h2>Key Features of Our Distance Learning Programs</h2>
+                    <ul>
+                        <li><strong>Flexible Scheduling:</strong> Learn anytime, anywhere, with 24/7 access to course materials.</li>
+                        <li><strong>Interactive Learning:</strong> Engage with instructors and fellow students through online forums, live sessions, and interactive assignments.</li>
+                        <li><strong>Expert Instructors:</strong> Learn from industry professionals and experienced educators.</li>
+                        <li><strong>Comprehensive Resources:</strong> Access a wide range of learning materials, including videos, readings, quizzes, and projects.</li>
+                        <li><strong>Personalized Support:</strong> Receive individualized feedback and support from instructors and academic advisors.</li>
+                        <li><strong>Career-Focused Curriculum:</strong> Gain practical skills and knowledge that are directly applicable to your career.</li>
+                    </ul>
+                </div>
+
+                <div class="distance-learning-section">
+                    <h2>Courses and Programs</h2>
+                    <p>We offer a variety of distance learning courses and programs in the following fields:</p>
+                    <ul>
+                        <li>Business and Management</li>
+                        <li>Technology and IT</li>
+                        <li>Finance and Accounting</li>
+                        <li>Marketing and Sales</li>
+                        <li>Personal Development and Leadership</li>
+                        <li>And more...</li>
+                    </ul>
+                    <p>
+                        For a complete list of our offerings, please visit our <a href="services.html">courses page</a>.
+                    </p>
+                </div>
+
+                <div class="distance-learning-section">
+                    <h2>How It Works</h2>
+                    <ol>
+                        <li><strong>Enroll:</strong> Choose your desired course and complete the online enrollment process.</li>
+                        <li><strong>Access Materials:</strong> Log in to our online learning platform to access course materials and resources.</li>
+                        <li><strong>Engage:</strong> Participate in online discussions, complete assignments, and interact with instructors and peers.</li>
+                        <li><strong>Get Support:</strong> Receive assistance from instructors and academic advisors as needed.</li>
+                        <li><strong>Complete:</strong> Finish the course requirements and receive your certificate of completion.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Choose Our Distance Learning Programs?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Flexibility</h3>
+                    <p>Learn at your own pace and on your own schedule.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Accessibility</h3>
+                    <p>Access high-quality education from anywhere in the world.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Affordability</h3>
+                    <p>Enjoy cost-effective education without compromising quality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Support</h3>
+                    <p>Receive personalized support from instructors and advisors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial-card">
+                <p>"The flexibility of the distance learning program allowed me to balance my studies with my full-time job. The instructors were incredibly supportive, and the course material was engaging and relevant."</p>
+                <p class="author">- Sarah M.</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"I was able to gain valuable skills and knowledge that helped me advance in my career. The online platform was easy to use, and the interactive sessions made learning fun and engaging."</p>
+                <p class="author">- John K.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Enroll in our distance learning program today and take the next step towards your educational and professional goals.</p>
+            <a href="services.html" class="cta-button">Explore Courses</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="copyright">
+                &copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
