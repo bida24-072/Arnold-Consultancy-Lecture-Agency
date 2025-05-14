@@ -5,14 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnold Consultancy Lecture Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome Icons -->
-    <style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <style>
         /* General Styles */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f5f7fa;
             color: #333;
             margin: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #006400; /* Dark Green */
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #006400; /* Dark Green */
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700; /* Gold */
+        }
+
+        nav ul li a.active {
+            color: #FFD700; /* Gold */
+            font-weight: 700;
         }
 
         /* Main Content */
@@ -89,9 +151,10 @@
 
         /* Footer Styles */
         footer {
-            background-color: #004e89;  /* Professional Blue */
+            background-color: #006400;  /* Dark Green */
             color: white;
-            padding: 3rem 2rem;
+            padding: 3rem 0;
+            margin-top: 4rem;
         }
 
         footer .container {
@@ -99,6 +162,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
+            padding: 0 2rem;
         }
 
         footer .footer-container {
@@ -106,6 +170,7 @@
             flex-wrap: wrap;
             justify-content: space-between;
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         footer .footer-col {
@@ -138,6 +203,7 @@
             color: #f5f5f5;
             text-decoration: none;
             font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
 
         footer .footer-links a:hover {
@@ -190,12 +256,38 @@
                 flex: 1 1 100%;
                 margin-bottom: 2rem;
             }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Content: Information About Online Learning -->
+    <header>
+        <div class="container">
+            <h1>Arnold Consultancy Lecture Agency</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="servicedropdown.html">Programs</a></li>
+                <li><a href="#process">Our Process</a></li>
+                <li><a href="speaker.html">Experts</a></li>
+                <li><a href="FAQ.html">FAQs</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="main-content">
         <h2>Unlock Your Potential with Expert Online Learning</h2>
         <p>
@@ -231,7 +323,6 @@
         <button class="boost-btn" onclick="window.location.href='#boost-session'">Boost Your Session Now</button>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-container">
