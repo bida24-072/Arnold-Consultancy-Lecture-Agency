@@ -1,3 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnold Consultancy Lecture Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome Icons -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: #004e89; /* Professional Blue */
+            margin-bottom: 1rem;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .learn-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .learn-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 2rem;
+            flex: 1 1 30%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .learn-box h3 {
+            color: #004e89;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .learn-box p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .boost-btn {
+            padding: 0.8rem 2rem;
+            background-color: #00b38f; /* Business Green */
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .boost-btn:hover {
+            background-color: #004e89; /* Darker Blue */
+        }
+
+        .boost-btn:focus {
+            outline: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #004e89;  /* Professional Blue */
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        footer .footer-col {
+            flex: 1 1 220px;
+            margin-bottom: 2rem;
+        }
+
+        footer .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #00b38f;  /* Business Green */
+        }
+
+        footer .footer-col p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+
+        footer .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-links li {
+            margin: 0.5rem 0;
+        }
+
+        footer .footer-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        footer .footer-links a:hover {
+            color: #00b38f;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer .social-links a {
+            color: #f5f5f5;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #00b38f;
+        }
+
+        footer .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            margin-top: 2rem;
+        }
+
+        footer .copyright a {
+            color: #00b38f;
+            text-decoration: none;
+        }
+
+        footer .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            footer .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .learn-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .learn-box {
+                flex: 1 1 100%;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content: Information About Online Learning -->
+    <div class="main-content">
+        <h2>Unlock Your Potential with Expert Online Learning</h2>
+        <p>
+            At Arnold Consultancy Lecture Agency, we provide high-quality online courses and consultations tailored to professionals
+            in fields like finance, technology, and personal development. Whether you're looking to enhance your skills or seek industry-specific advice,
+            our expert-led sessions are designed to guide you every step of the way.
+        </p>
+
+        <div class="learn-section">
+            <div class="learn-box">
+                <h3>Comprehensive Courses</h3>
+                <p>
+                    We offer a wide range of comprehensive courses designed for professionals looking to enhance their knowledge in specific industries.
+                    From financial analysis to software development, we cover all aspects that help you thrive in your career.
+                </p>
+            </div>
+
+            <div class="learn-box">
+                <h3>Expert Instructors</h3>
+                <p>
+                    Learn from the best! Our instructors are industry leaders with years of experience in their respective fields. Get access to real-world insights and mentorship.
+                </p>
+            </div>
+
+            <div class="learn-box">
+                <h3>Flexible Learning</h3>
+                <p>
+                    Enjoy the flexibility of learning at your own pace. Our online courses are accessible on-demand, giving you the freedom to study at times that work best for you.
+                </p>
+            </div>
+        </div>
+
+        <button class="boost-btn" onclick="window.location.href='#boost-session'">Boost Your Session Now</button>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -43,7 +276,10 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Arnold-Consultancy-Lecture-Agency. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+                <p>&copy; 2025 Arnold-Consultancy-Lecture-Agency. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
+
+</body>
+</html>
