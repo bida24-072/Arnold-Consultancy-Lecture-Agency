@@ -4,102 +4,462 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Catalogue</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --accent-color: #dc3545;
+            --light-color: #f9f9f9;
+            --dark-color: #003366;
+            --text-color: #34495e;
+            --text-light: #6c757d;
+            --heading-font: 'Inter', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
 
-    
+        body {
+            font-family: var(--body-font);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            font-family: var(--heading-font);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            margin-bottom: 1.6rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-family: var(--body-font);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        .rating-option {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .rating-option input {
+            margin: 0.5rem auto;
+        }
+
+        .rating-option label {
+            font-weight: normal;
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: var(--transition);
+            font-family: var(--body-font);
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .checkbox-group {
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+            border: 1px solid #ededed;
+        }
+
+        .thank-you h2 {
+            font-family: var(--heading-font);
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* Style for the hidden textarea */
+        #recommend-reason {
+            display: none;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-family: var(--body-font);
+            font-size: 1rem;
+            resize: vertical;
+            height: 80px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #218838;
+            padding: 12px 0;
+            position: relative;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            background-color: #2a4d14;
+            transform: translateY(-2px);
+        }
+
+        nav a i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        nav ul::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav li:hover ~ ul::after,
+        nav li.active ~ ul::after {
+            width: 100%;
+            left: 0;
+            transform: translateX(0);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #218838;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 2rem;
+            border-top: 1px solid #d1d1d1;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: #e2f3e5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .catalogue {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .product-content {
+            margin-top: 1rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-weight: 600;
+        }
+
+        .product-content p {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-content .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-align: center;
+            font-family: var(--body-font);
+            font-weight: 500;
+            display: block;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .catalogue {
+                grid-template-columns: 1fr;
+            }
+
+            .product {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Service Catalogue</h1>
-
-    <div class="catalogue">
-        <!-- Financial Consulting -->
-        <div class="product">
-            <img src="R.jfif" alt="Financial Consulting">
-            <div class="product-content">
-                <h3>Financial Consulting</h3>
-                <p>Expert financial advice to help grow your business and manage your finances effectively.</p>
-                <p class="price">P250</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
-            </div>
+    <nav aria-label="Main Navigation">
+        <div class="container">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Technology Consulting -->
-        <div class="product">
-            <img src="OIP.jfif" alt="Technology Consulting">
-            <div class="product-content">
-                <h3>Technology Consulting</h3>
-                <p>Cutting-edge technology solutions to streamline your business operations.</p>
-                <p class="price">P300</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+    <div class="container">
+        <h1>Service Catalogue</h1>
+
+        <div class="catalogue">
+            <div class="product">
+                <img src="R.jfif" alt="Financial Consulting">
+                <div class="product-content">
+                    <h3>Financial Consulting</h3>
+                    <p>Expert financial advice to help grow your business and manage your finances effectively.</p>
+                    <p class="price">P250</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Marketing and Sales Consulting -->
-        <div class="product">
-            <img src="R%20(1).jfif" alt="Marketing and Sales Consulting">
-            <div class="product-content">
-                <h3>Marketing and Sales Consulting</h3>
-                <p>Boost your sales with our proven marketing strategies and techniques.</p>
-                <p class="price">P250</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+            <div class="product">
+                <img src="OIP.jfif" alt="Technology Consulting">
+                <div class="product-content">
+                    <h3>Technology Consulting</h3>
+                    <p>Cutting-edge technology solutions to streamline your business operations.</p>
+                    <p class="price">P300</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Strategic Consulting -->
-        <div class="product">
-            <img src="shutterstock_1522523957-1536x1024.jpg" alt="Strategic Consulting">
-            <div class="product-content">
-                <h3>Strategic Consulting</h3>
-                <p>Develop long-term strategies to position your business for sustainable growth.</p>
-                <p class="price">P300</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+            <div class="product">
+                <img src="R%20(1).jfif" alt="Marketing and Sales Consulting">
+                <div class="product-content">
+                    <h3>Marketing and Sales Consulting</h3>
+                    <p>Boost your sales with our proven marketing strategies and techniques.</p>
+                    <p class="price">P250</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Industry-Specific Lecturing -->
-        <div class="product">
-            <img src="csm_01022020_La_grande_dicte___uee_pour_tous_004_6ff88770c0.jpg" alt="Industry-Specific Lecturing">
-            <div class="product-content">
-                <h3>Industry-Specific Lecturing</h3>
-                <p>Specialized training sessions tailored to your industry's unique challenges.</p>
-                <p class="price">P250</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+            <div class="product">
+                <img src="shutterstock_1522523957-1536x1024.jpg" alt="Strategic Consulting">
+                <div class="product-content">
+                    <h3>Strategic Consulting</h3>
+                    <p>Develop long-term strategies to position your business for sustainable growth.</p>
+                    <p class="price">P300</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Personal Development -->
-        <div class="product">
-            <img src="personal-development.jpg" alt="Personal Development">
-            <div class="product-content">
-                <h3>Personal Development</h3>
-                <p>Enhance your skills and unlock your full potential with our coaching programs.</p>
-                <p class="price">P300</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+            <div class="product">
+                <img src="csm_01022020_La_grande_dicte___uee_pour_tous_004_6ff88770c0.jpg" alt="Industry-Specific Lecturing">
+                <div class="product-content">
+                    <h3>Industry-Specific Lecturing</h3>
+                    <p>Specialized training sessions tailored to your industry's unique challenges.</p>
+                    <p class="price">P250</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="personal-development.jpg" alt="Personal Development">
+                <div class="product-content">
+                    <h3>Personal Development</h3>
+                    <p>Enhance your skills and unlock your full potential with our coaching programs.</p>
+                    <p class="price">P300</p>
+                    <a href="cart.html" class="btn">Add to Cart</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
-
-
-<!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Arnold Consultancy &amp; Lecture Agency. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-
     </footer>
-
-
-
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
 </html>
