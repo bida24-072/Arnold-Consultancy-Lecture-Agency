@@ -4,171 +4,404 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Feedback Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --accent-color: #dc3545;
+            --light-color: #f9f9f9;
+            --dark-color: #003366;
+            --text-color: #34495e;
+            --text-light: #6c757d;
+            --heading-font: 'Inter', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            font-family: var(--body-font);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            margin: 0;
+            padding: 0;
         }
+
         h1 {
-            color: #2c3e50;
+            color: var(--primary-color);
             text-align: center;
+            font-family: var(--heading-font);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
         }
+
+        p {
+            margin-bottom: 1.6rem;
+            font-size: 1.1rem;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
+
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 1.1rem;
         }
+
         input[type="text"],
         input[type="email"],
         input[type="tel"],
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: var(--border-radius);
             box-sizing: border-box;
+            font-family: var(--body-font);
+            transition: var(--transition);
+            font-size: 1rem;
         }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+        }
+
         textarea {
             height: 120px;
+            resize: vertical;
         }
+
         .rating {
             display: flex;
             justify-content: space-between;
-            margin: 10px 0;
+            margin: 1rem 0;
         }
+
         .rating-option {
             text-align: center;
             cursor: pointer;
         }
+
         .rating-option input {
-            margin: 0 auto;
+            margin: 0.5rem auto;
         }
+
+        .rating-option label {
+            font-weight: normal;
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
         button {
-            background-color: #3498db;
+            background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--border-radius);
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.1rem;
             width: 100%;
+            transition: var(--transition);
+            font-family: var(--body-font);
+            font-weight: 500;
         }
+
         button:hover {
-            background-color: #2980b9;
+            background-color: #218838;
+            transform: translateY(-2px);
         }
+
         .checkbox-group {
-            margin: 15px 0;
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            margin: 0;
+            font-size: 1rem;
+        }
+
         .thank-you {
             display: none;
             text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            margin-top: 20px;
+            padding: 2rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+            border: 1px solid #ededed;
+        }
+        .thank-you h2{
+            font-family: var(--heading-font);
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you p{
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* Style for the hidden textarea */
+        #recommend-reason {
+            display: none;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-family: var(--body-font);
+            font-size: 1rem;
+            resize: vertical;
+            height: 80px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #218838;
+            padding: 12px 0;
+            position: relative;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            background-color: #2a4d14;
+            transform: translateY(-2px);
+        }
+
+        nav a i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        nav ul::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav li:hover ~ ul::after,
+        nav li.active ~ ul::after {
+            width: 100%;
+            left: 0;
+            transform: translateX(0);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #218838;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 2rem;
+            border-top: 1px solid #d1d1d1;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: #e2f3e5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Share Your Experience</h1>
-    <p>We value your feedback! Please take a moment to share your thoughts about our services.</p>
-    
-    <form id="feedbackForm">
-        <div class="form-group">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
+    <nav aria-label="Main Navigation">
+        <div class="container">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
         </div>
-        
-        <div class="form-group">
-            <label for="contact">Email/Phone Number (optional):</label>
-            <input type="text" id="contact" name="contact">
-        </div>
-        
-        <div class="form-group">
-            <label>How would you rate your overall experience?</label>
-            <div class="rating">
-                <div class="rating-option">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5">⭐️⭐️⭐️⭐️⭐️<br>Excellent</label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4">⭐️⭐️⭐️⭐️<br>Good</label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3">⭐️⭐️⭐️<br>Average</label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2">⭐️⭐️<br>Needs Improvement</label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1">⭐️<br>Poor</label>
+    </nav>
+
+    <div class="container">
+        <h1>Share Your Experience</h1>
+        <p>We value your feedback! Please take a moment to share your thoughts about our services.</p>
+
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Email/Phone Number (optional):</label>
+                <input type="text" id="contact" name="contact">
+            </div>
+
+            <div class="form-group">
+                <label>How would you rate your overall experience?</label>
+                <div class="rating">
+                    <div class="rating-option">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5">⭐️⭐️⭐️⭐️⭐️<br>Excellent</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">⭐️⭐️⭐️⭐️<br>Good</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">⭐️⭐️⭐️<br>Average</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">⭐️⭐️<br>Needs Improvement</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">⭐️<br>Poor</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="valuable">What did you find most valuable about this service?</label>
-            <textarea id="valuable" name="valuable"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label for="impact">How has this service impacted you?</label>
-            <textarea id="impact" name="impact" placeholder="Personal growth, mindset, skills, etc."></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label>Would you recommend this service to others?</label>
-            <div class="checkbox-group">
-                <input type="radio" id="recommend-yes" name="recommend" value="yes">
-                <label for="recommend-yes">Yes</label>
-                
-                <input type="radio" id="recommend-no" name="recommend" value="no">
-                <label for="recommend-no">No</label>
-                
-                <input type="radio" id="recommend-maybe" name="recommend" value="maybe">
-                <label for="recommend-maybe">Maybe</label>
+
+            <div class="form-group">
+                <label for="valuable">What did you find most valuable about this service?</label>
+                <textarea id="valuable" name="valuable"></textarea>
             </div>
-            <textarea id="recommend-reason" name="recommend-reason" placeholder="Please share why..." style="display: none; margin-top: 10px;"></textarea>
+
+            <div class="form-group">
+                <label for="impact">How has this service impacted you?</label>
+                <textarea id="impact" name="impact" placeholder="Personal growth, mindset, skills, etc."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Would you recommend this service to others?</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="recommend-yes" name="recommend" value="yes">
+                    <label for="recommend-yes">Yes</label>
+
+                    <input type="radio" id="recommend-no" name="recommend" value="no">
+                    <label for="recommend-no">No</label>
+
+                    <input type="radio" id="recommend-maybe" name="recommend" value="maybe">
+                    <label for="recommend-maybe">Maybe</label>
+                </div>
+                <textarea id="recommend-reason" name="recommend-reason" placeholder="Please share why..." style="display: none; margin-top: 10px;"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="testimonial">Testimonial (Optional but appreciated!):</label>
+                <textarea id="testimonial" name="testimonial" placeholder="Share your honest thoughts about your experience. We'd love to feature your words (with your permission)!"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="improvement">How can we improve?</label>
+                <textarea id="improvement" name="improvement"></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="permission" name="permission">
+                <label for="permission">I give permission to share my testimonial publicly (anonymously if preferred)</label>
+            </div>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <div id="thankYou" class="thank-you">
+            <h2>Thank You!</h2>
+            <p>We appreciate you taking the time to share your feedback. Your insights help us improve our services.</p>
         </div>
-        
-        <div class="form-group">
-            <label for="testimonial">Testimonial (Optional but appreciated!):</label>
-            <textarea id="testimonial" name="testimonial" placeholder="Share your honest thoughts about your experience. We'd love to feature your words (with your permission)!"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label for="improvement">How can we improve?</label>
-            <textarea id="improvement" name="improvement"></textarea>
-        </div>
-        
-        <div class="form-group checkbox-group">
-            <input type="checkbox" id="permission" name="permission">
-            <label for="permission">I give permission to share my testimonial publicly (anonymously if preferred)</label>
-        </div>
-        
-        <button type="submit">Submit Feedback</button>
-    </form>
-    
-    <div id="thankYou" class="thank-you">
-        <h2>Thank You!</h2>
-        <p>We appreciate you taking the time to share your feedback. Your insights help us improve our services.</p>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Arnold Consultancy &amp; Lecture Agency. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Show/hide "why" textarea based on "maybe" selection
         document.querySelectorAll('input[name="recommend"]').forEach(radio => {
-            radio.addEventListener('change', function() {
+            radio.addEventListener('change', function () {
                 const reasonTextarea = document.getElementById('recommend-reason');
                 if (this.value === 'maybe') {
                     reasonTextarea.style.display = 'block';
@@ -179,36 +412,17 @@
         });
 
         // Form submission handling (in a real implementation, you'd send this to your server)
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Here you would typically send the data to your server
             // For demonstration, we'll just show the thank you message
             this.style.display = 'none';
             document.getElementById('thankYou').style.display = 'block';
-            
+
             // Scroll to thank you message
             document.getElementById('thankYou').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
-
-<!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="contact.html">Contact Us</a>
-            </div>
-        </div>
-
-    </footer>
-
-
-
-
-
-    
 </body>
 </html>
