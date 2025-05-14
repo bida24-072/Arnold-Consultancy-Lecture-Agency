@@ -4,87 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Featured Speakers</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Speaker Section Styles */
-        .speakers {
-            background-color: #f9f9f9;
-            padding: 60px 20px;
+        :root {
+            --primary-color: #006400;  /* Dark Green */
+            --secondary-color: #228B22; /* Forest Green */
+            --text-color: #333;
+            --light-text-color: #777;
+            --background-color: #f9f9f9;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
             text-align: center;
         }
 
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Main Content Styles */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
         .section-title {
-            margin-bottom: 40px;
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
 
         .section-title h2 {
             font-size: 2.5rem;
             font-weight: 600;
-            color: #333;
+            color: var(--text-color);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
         }
 
         .section-title p {
             font-size: 1.2rem;
-            color: #555;
-            margin-top: 10px;
+            color: var(--light-text-color);
+            margin-top: 0.5rem;
         }
 
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            justify-items: center;
-            margin-top: 40px;
-        }
-
-        .speaker-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Speakers Slideshow Styles */
+        .speakers-slideshow {
+            position: relative;
             overflow: hidden;
             width: 100%;
-            max-width: 320px;
-            text-align: left;
+            max-width: 600px; /* Increased max-width for larger screens */
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
         }
 
-        .speaker-img img {
+        .speaker-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .speaker-slide.active {
+            opacity: 1;
+        }
+
+        .speaker-slide img {
+            width: 100%;
+            max-height: 250px;
             object-fit: cover;
-            border-bottom: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
-        .speaker-info {
-            padding: 20px;
+        .speaker-slide h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
         }
 
-        .speaker-info h3 {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .speaker-info p {
+        .speaker-slide p {
             font-size: 1.1rem;
-            color: #777;
-            margin-bottom: 15px;
+            color: var(--light-text-color);
+            margin-bottom: 1rem;
         }
 
-        .speaker-info .bio {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 20px;
+        .speaker-slide .bio {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .learn-more {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #006400;
-            color: white;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
             font-size: 1rem;
             text-decoration: none;
             border-radius: 4px;
@@ -92,104 +182,214 @@
         }
 
         .learn-more:hover {
-            background-color: #228B22;
+            background-color: var(--primary-color);
+        }
+
+        .slide-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .slide-control-btn {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slide-control-btn.active {
+            background-color: var(--secondary-color);
+        }
+
+        .slide-control-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .speakers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speaker-card {
+                margin: 0 auto;
+            }
         }
     </style>
-<style>
-
-
-    
 </head>
 <body>
 
-<!-- Speakers Section -->
-<section class="speakers" id="speakers">
-    <div class="container">
-        <div class="section-title">
-            <h2>Featured Group Lecturers</h2>
-            <p>Our speakers are experts at engaging groups and facilitating collaborative learning experiences.</p>
-        </div>
+    <header>
+        <h1>Arnold Consultancy & Lecture Agency</h1>
+        <p>Inspiring Minds, Empowering Growth</p>
+    </header>
 
-        <div class="speakers-grid">
-            <!-- Speaker 1 -->
-            <div class="speaker-card">
-                <div class="speaker-img">
-                    <img src="Media%20(1).jpg" alt="Financial Speaker">
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="speakers" id="speakers">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Group Lecturers</h2>
+                    <p>Our speakers are experts at engaging groups and facilitating collaborative learning experiences.</p>
                 </div>
-                <div class="speaker-info">
-                    <h3>Theo Gaopalelwe</h3>
-                    <p>Financial Group Facilitator</p>
-                    <div class="bio">Specializes in interactive financial workshops that make complex concepts accessible to groups.</div>
-                    <a href="topic.html" class="learn-more">View Topics →</a>
+
+                <div class="speakers-slideshow">
+                    <div class="speaker-slide active">
+                        <img src="Media%20(1).jpg" alt="Financial Speaker">
+                        <h3>Theo Gaopalelwe</h3>
+                        <p>Financial Group Facilitator</p>
+                        <div class="bio">Specializes in interactive financial workshops that make complex concepts accessible to groups.</div>
+                        <a href="topic.html" class="learn-more">View Topics →</a>
+                    </div>
+
+                    <div class="speaker-slide">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Speaker">
+                        <h3>Malebogo Nku</h3>
+                        <p>Tech Workshop Leader</p>
+                        <div class="bio">Creates hands-on tech learning experiences that keep groups engaged and collaborating.</div>
+                        <a href="topic.html" class="learn-more">View Topics →</a>
+                    </div>
+
+                    <div class="speaker-slide">
+                        <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Speaker">
+                        <h3>Tumisang Babadinyana</h3>
+                        <p>Team Development Expert</p>
+                        <div class="bio">Designs transformative group experiences that build skills and strengthen team dynamics.</div>
+                        <a href="topic.html" class="learn-more">View Topics →</a>
+                    </div>
+
+                    <div class="speaker-slide">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Speaker">
+                        <h3>Leo Cj</h3>
+                        <p>Industry Roundtable Moderator</p>
+                        <div class="bio">Facilitates industry-specific group discussions that surface insights and best practices.</div>
+                        <a href="topic.html" class="learn-more">View Topics →</a>
+                    </div>
+
+                    <div class="speaker-slide">
+                        <img src="https://images.unsplash.com/photo-1563298720-9a7f87bce694?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjQ2OXwwfDF8c2VhY2h8MXx8Zm9vZCUyMGRlc2lnbnxlbnwwfHx8fDE2NzkxNzc1MTg&ixlib=rb-1.2.1&q=80&w=400" alt="Leadership Speaker">
+                        <h3>Maria Sefalana</h3>
+                        <p>Leadership Coach</p>
+                        <div class="bio">Helps leaders develop emotional intelligence and strategic decision-making in group settings.</div>
+                        <a href="topic.html" class="learn-more">View Topics →</a>
+                    </div>
+                </div>
+
+                <div class="slide-controls">
+                    <button class="slide-control-btn active" data-slide="0"></button>
+                    <button class="slide-control-btn" data-slide="1"></button>
+                    <button class="slide-control-btn" data-slide="2"></button>
+                    <button class="slide-control-btn" data-slide="3"></button>
+                     <button class="slide-control-btn" data-slide="4"></button>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Speaker 2 -->
-            <div class="speaker-card">
-                <div class="speaker-img">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Speaker">
-                </div>
-                <div class="speaker-info">
-                    <h3>Malebogo Nku</h3>
-                    <p>Tech Workshop Leader</p>
-                    <div class="bio">Creates hands-on tech learning experiences that keep groups engaged and collaborating.</div>
-                    <a href="topic.html" class="learn-more">View Topics →</a>
-                </div>
-            </div>
-
-            <!-- Speaker 3 -->
-            <div class="speaker-card">
-                <div class="speaker-img">
-                    <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Growth Speaker">
-                </div>
-                <div class="speaker-info">
-                    <h3>Tumisang Babadinyana</h3>
-                    <p>Team Development Expert</p>
-                    <div class="bio">Designs transformative group experiences that build skills and strengthen team dynamics.</div>
-                    <a href="topic.html" class="learn-more">View Topics →</a>
-                </div>
-            </div>
-
-            <!-- Speaker 4 -->
-            <div class="speaker-card">
-                <div class="speaker-img">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Industry Speaker">
-                </div>
-                <div class="speaker-info">
-                    <h3>Leo Cj</h3>
-                    <p>Industry Roundtable Moderator</p>
-                    <div class="bio">Facilitates industry-specific group discussions that surface insights and best practices.</div>
-                    <a href="topic.html" class="learn-more">View Topics →</a>
-                </div>
-            </div>
-
-            <!-- Additional Speakers -->
-            <!-- Speaker 5 -->
-            <div class="speaker-card">
-                <div class="speaker-img">
-                    <img src="https://images.unsplash.com/photo-1563298720-9a7f87bce694?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjQ2OXwwfDF8c2VhY2h8MXx8Zm9vZCUyMGRlc2lnbnxlbnwwfHx8fDE2NzkxNzc1MTg&ixlib=rb-1.2.1&q=80&w=400" alt="Leadership Speaker">
-                </div>
-                <div class="speaker-info">
-                    <h3>Maria Sefalana</h3>
-                    <p>Leadership Coach</p>
-                    <div class="bio">Helps leaders develop emotional intelligence and strategic decision-making in group settings.</div>
-                    <a href="topic.html" class="learn-more">View Topics →</a>
-                </div>
-            </div>
-
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
+            <p>© 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-
     </footer>
-     
 
+    <script>
+        const slides = document.querySelectorAll('.speaker-slide');
+        const controlButtons = document.querySelectorAll('.slide-control-btn');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+
+            controlButtons.forEach(button => button.classList.remove('active'));
+            controlButtons[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideInterval);
+        }
+
+        controlButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                stopSlideshow();
+                showSlide(index);
+                startSlideshow();
+            });
+        });
+
+        startSlideshow();
+        window.onload = startSlideshow;
+    </script>
 </body>
 </html>
