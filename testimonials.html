@@ -4,29 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Testimonials | Arnold's Mentorship</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Brand Colors */
         :root {
-            --primary-blue: #002366;
+            --primary-blue: #003366;  /* Dark Blue */
+            --secondary-green: #006400; /* Dark Green */
             --accent-gold: #FFD700;
-            --light-gray: #F5F5F5;
+            --light-gray: #f5f5f5;
             --dark-gray: #333333;
+            --white: #ffffff;
         }
-        
+
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark-gray);
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--secondary-green);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Main Content Styles */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
         .testimonials-header {
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .testimonials-header h2 {
             color: var(--primary-blue);
             font-size: 2.2rem;
@@ -34,7 +94,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .testimonials-header h2:after {
             content: "";
             position: absolute;
@@ -44,36 +104,36 @@
             bottom: -10px;
             left: 25%;
         }
-        
+
         .testimonials-header p {
             color: var(--dark-gray);
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .testimonial-card {
-            background: white;
+            background: var(--white);
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             padding: 30px;
             position: relative;
             transition: transform 0.3s ease;
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .testimonial-card:before {
-            content: """;
+            content: open-quote;
             font-family: Georgia, serif;
             font-size: 5rem;
             color: var(--light-gray);
@@ -83,7 +143,7 @@
             line-height: 1;
             z-index: 0;
         }
-        
+
         .testimonial-content {
             position: relative;
             z-index: 1;
@@ -91,12 +151,12 @@
             font-style: italic;
             color: var(--dark-gray);
         }
-        
+
         .client-info {
             display: flex;
             align-items: center;
         }
-        
+
         .client-avatar {
             width: 60px;
             height: 60px;
@@ -105,143 +165,181 @@
             border: 3px solid var(--accent-gold);
             margin-right: 15px;
         }
-        
+
         .client-details h4 {
             margin: 0;
             color: var(--primary-blue);
             font-size: 1.1rem;
         }
-        
+
         .client-details p {
             margin: 5px 0 0;
             color: #666;
             font-size: 0.9rem;
         }
-        
+
         .rating {
             color: var(--accent-gold);
             margin-top: 5px;
             font-size: 1rem;
         }
-        
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-green);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="testimonials-section">
-        <div class="testimonials-header">
-            <h2>Trusted by Leaders</h2>
-            <p>Don't just take our word for it - here's what our clients say about their mentorship experience</p>
-        </div>
-        
-        <div class="testimonials-grid">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-                <p class="testimonial-content">
-                    Arnold's mentorship transformed our executive team's decision-making process. The 1:1 sessions provided clarity we couldn't find elsewhere.
-                </p>
-                <div class="client-info">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="client-avatar">
-                    <div class="client-details">
-                        <h4>Sarah Johnson</h4>
-                        <p>CEO, TechForward Inc.</p>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-                <p class="testimonial-content">
-                    The group workshops revolutionized our company culture. Arnold's approach to leadership development is unlike anything we've experienced before.
-                </p>
-                <div class="client-info">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="client-avatar">
-                    <div class="client-details">
-                        <h4>Michael Chen</h4>
-                        <p>COO, Global Strategies</p>
-                        <div class="rating">★★★★★</div>
-                    </div>
-                </div>
+    <header>
+        <h1>Arnold's Mentorship</h1>
+        <p>Empowering Leaders, Driving Success</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="testimonials-section">
+            <div class="testimonials-header">
+                <h2>Trusted by Leaders</h2>
+                <p>Don't just take our word for it - here's what our clients say about their mentorship experience</p>
             </div>
 
-
-
-                        <div class="client-img">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
-                        </div>
-                        <div class="client-name">
-                            <h4>Boipelo Kamogelo</h4>
-                            <p>Small Business Owner</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "As a remote worker, the technology mentorship sessions were invaluable. The consultant could view my code in real-time and guide me through improvements, just as effective as in-person but more convenient."
-                    </div>
+                    <p class="testimonial-content">
+                        Arnold's mentorship transformed our executive team's decision-making process. The 1:1 sessions provided clarity we couldn't find elsewhere.
+                    </p>
                     <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, TechForward Inc.</p>
+                            <div class="rating">★★★★★</div>
                         </div>
-                        <div class="client-name">
-                            <h4>Kitso Motshelo</h4>
-                            <p>Software Developer</p>
+                    </div>
+                </div>
 
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        The group workshops revolutionized our company culture. Arnold's approach to leadership development is unlike anything we've experienced before.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Michael Chen</h4>
+                            <p>COO, Global Strategies</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        As a female executive, I found Arnold's mentorship incredibly empowering. The tailored approach helped me break through barriers in my industry.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Diallo" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Amina Diallo</h4>
+                            <p>Founder, Elevate Africa</p>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        Thuto ga Arnold e fetotse tsela eo re dirang dip തീരുമാന ka teng mo setlhopheng sa rona sa botsamaisi. Dithuto tsa 1:1 di re file lesedi le re neng re sa le bone gope.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Tumelo Modise" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Tumelo Modise</h4>
+                            <p>CEO, Maemo (Pty) Ltd</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-            
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-                <p class="testimonial-content">
-                    As a female executive, I found Arnold's mentorship incredibly empowering. The tailored approach helped me break through barriers in my industry.
-                </p>
-                <div class="client-info">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Diallo" class="client-avatar">
-                    <div class="client-details">
-                        <h4>Amina Diallo</h4>
-                        <p>Founder, Elevate Africa</p>
-                        <div class="rating">★★★★☆</div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        Dithuto tsa setlhopha di hlabolotse moetlo wa k'hamphani ya rona. Mokgwa wa ga Arnold wa tlhabollo ya boetapele ga o tshwane le tse re kileng ra di bona pele.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Lerato Nkosi" class="client-avatar">
+                        <div class="client-details">
+                            <h4>Lerato Nkosi</h4>
+                            <p>COO, Global Holdings</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-<!-- Footer -->
+        </section>
+    </main>
+
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
+            <p>© 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-
-    </footer>    </div>
-                </div>
-    </section>
-    
-
-
-
-                        
+    </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-  
