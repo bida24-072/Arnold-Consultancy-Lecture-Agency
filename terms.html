@@ -11,21 +11,21 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
             line-height: 1.6;
             color: #333;
             background-color: #f8fafc;
             padding-bottom: 50px;
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         /* Header Styles */
         header {
             background-color: #ffffff;
@@ -33,14 +33,17 @@
             padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 100;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: 700;
@@ -50,12 +53,45 @@
             gap: 10px;
             text-decoration: none;
         }
-        
+
         .logo img {
             height: 40px;
             width: auto;
         }
-        
+
+        /* Navigation Styles */
+        nav {
+            background-color: #5ee7b7; /* Green navigation bar */
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between; /* Space out logo and links */
+            align-items: center;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0; /* Reset default list margin */
+            padding: 0; /* Reset default list padding */
+        }
+
+        .nav-links a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0f946b;
+        }
+
         /* Terms Content */
         .terms-container {
             background-color: #ffffff;
@@ -63,32 +99,32 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             padding: 40px;
         }
-        
+
         .terms-header {
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .terms-header h1 {
             font-size: 36px;
             color: #1e293b;
             margin-bottom: 15px;
         }
-        
+
         .terms-header p {
             color: #64748b;
             font-size: 16px;
         }
-        
+
         .terms-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .terms-section {
             margin-bottom: 30px;
         }
-        
+
         .terms-section h2 {
             font-size: 24px;
             color: #1e293b;
@@ -96,92 +132,99 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #e2e8f0;
         }
-        
+
         .terms-section h3 {
             font-size: 20px;
             color: #1e293b;
             margin: 20px 0 10px;
         }
-        
+
         .terms-section p, .terms-section ul {
             margin-bottom: 15px;
             color: #475569;
         }
-        
+
         .terms-section ul {
             padding-left: 20px;
         }
-        
+
         .terms-section li {
             margin-bottom: 8px;
         }
-        
+
         .highlight {
-            background-color: #e0e7ff;
+            background-color: #f0fdf4;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+            border: 1px solid #34d399;
         }
-        
+
         /* Footer */
         footer {
-            background-color: #1e293b;
+            background-color: #16a34a; /* Green footer */
             color: white;
             padding: 30px 0;
             margin-top: 50px;
         }
-        
+
         .footer-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .footer-links {
             display: flex;
             gap: 20px;
         }
-        
+
         .footer-links a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s;
         }
-        
+
         .footer-links a:hover {
             opacity: 0.8;
         }
-        
+
         .copyright {
             opacity: 0.8;
             font-size: 14px;
         }
-        
+
         @media (max-width: 768px) {
             .terms-header h1 {
                 font-size: 28px;
             }
-            
+
             .terms-section h2 {
                 font-size: 22px;
             }
-            
+
             .footer-container {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
-            
+
             .footer-links {
                 flex-direction: column;
                 gap: 10px;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav .container{
+                flex-direction: column;
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
@@ -191,24 +234,37 @@
         </div>
     </header>
 
-    <!-- Terms Content -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="OIP%20(1).jpg" alt="Arnold's Mentorship">
+                Arnold Consultancy
+            </a>
+            <ul class="nav-links">
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="terms-container">
             <div class="terms-header">
                 <h1>Terms of Service</h1>
                 <p>Last Updated: January 1, 2024</p>
             </div>
-            
+
             <div class="terms-content">
                 <div class="terms-section">
                     <h2>1. Introduction</h2>
                     <p>Welcome to Arnold Consultancy & Lecture Agency ("we," "our," or "us"). These Terms of Service ("Terms") govern your use of our website, services, and any related content (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms.</p>
-                    
+
                     <div class="highlight">
                         <p><strong>Important:</strong> Please read these Terms carefully before using our Services. If you do not agree to these Terms, you may not access or use our Services.</p>
                     </div>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>2. Services Description</h2>
                     <p>Arnold Consultancy & Lecture Agency provides professional consultation services and educational lectures in various fields including but not limited to:</p>
@@ -220,12 +276,12 @@
                     </ul>
                     <p>All services are provided either in-person or through online platforms as specified in individual service agreements.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>3. User Responsibilities</h2>
                     <h3>3.1 Account Registration</h3>
                     <p>To access certain Services, you may need to register for an account. You agree to provide accurate and complete information and to keep this information current.</p>
-                    
+
                     <h3>3.2 Acceptable Use</h3>
                     <p>You agree not to use the Services to:</p>
                     <ul>
@@ -236,14 +292,14 @@
                         <li>Engage in fraudulent activities</li>
                     </ul>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>4. Payment and Fees</h2>
                     <p>Certain Services require payment of fees. You agree to pay all applicable fees as described in the specific service agreement or pricing page.</p>
-                    
+
                     <h3>4.1 Payment Terms</h3>
                     <p>Payment is due as specified at the time of purchase. We accept various payment methods as indicated during checkout.</p>
-                    
+
                     <h3>4.2 Refunds</h3>
                     <p>Refund policies vary by service and are outlined in the specific service agreement. Generally:</p>
                     <ul>
@@ -252,14 +308,14 @@
                         <li>No refunds for no-shows or cancellations within 24 hours</li>
                     </ul>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>5. Intellectual Property</h2>
                     <p>All content provided through our Services, including lectures, materials, and website content, is the property of Arnold Consultancy & Lecture Agency or its licensors and is protected by intellectual property laws.</p>
-                    
+
                     <h3>5.1 License</h3>
                     <p>We grant you a limited, non-exclusive, non-transferable license to access and use the Services for personal, non-commercial purposes.</p>
-                    
+
                     <h3>5.2 Restrictions</h3>
                     <p>You may not:</p>
                     <ul>
@@ -268,39 +324,39 @@
                         <li>Reverse engineer or attempt to extract source code from our Services</li>
                     </ul>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>6. Privacy</h2>
                     <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information and is incorporated into these Terms by reference.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>7. Disclaimers and Limitation of Liability</h2>
                     <h3>7.1 Service Disclaimer</h3>
                     <p>Our Services are provided for informational and educational purposes only. We do not guarantee specific results or outcomes from using our Services.</p>
-                    
+
                     <h3>7.2 No Professional Advice</h3>
                     <p>Our Services do not constitute legal, financial, or other professional advice. You should consult with appropriate professionals for advice specific to your situation.</p>
-                    
+
                     <h3>7.3 Limitation of Liability</h3>
                     <p>To the maximum extent permitted by law, Arnold Consultancy & Lecture Agency shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Services.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>8. Termination</h2>
                     <p>We may terminate or suspend your access to the Services at any time, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>9. Changes to Terms</h2>
                     <p>We may modify these Terms at any time. We will notify you of significant changes through our website or by email. Your continued use of the Services after changes become effective constitutes acceptance of the new Terms.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>10. Governing Law</h2>
-                    <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.</p>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of Botswana, without regard to its conflict of law provisions.</p>
                 </div>
-                
+
                 <div class="terms-section">
                     <h2>11. Contact Information</h2>
                     <p>For questions about these Terms, please contact us at:</p>
@@ -308,13 +364,12 @@
                     Email: gaopalelwetheoanold@gmail.com<br>
                     Phone: +26772706831<br>
                     Address: Babusi, South-East · 2.4 km
-                          Botswana, BW</p>
+                                   Botswana, BW</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <div class="copyright">
