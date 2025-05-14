@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Lecture Booking System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #1d6a81;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Header */
+        header {
+            background-color: #1d6a81;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Container */
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #e6f4ec;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .about h2 {
+            font-size: 28px;
+            color: #1d6a81;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .about ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 16px;
+        }
+
+        .about ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .about ul li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            color: #3498db;
+        }
+
+        /* Lecture Topics Section */
+        .lecture-topics {
+            margin-top: 50px;
+        }
+
+        .lecture-topics h2 {
+            font-size: 28px;
+            color: #1d6a81;
+            margin-bottom: 20px;
+        }
+
+        .lecture-topics ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lecture-topics ul li {
+            background-color: #fff;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lecture-topics ul li a {
+            text-decoration: none;
+            color: #1d6a81;
+            font-weight: 600;
+        }
+
+        .lecture-topics ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Booking Form Section */
+        .booking-form {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form h2 {
+            font-size: 28px;
+            color: #1d6a81;
+            margin-bottom: 20px;
+        }
+
+        .booking-form input, .booking-form select, .booking-form button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .booking-form button {
+            background-color: #1d6a81;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .booking-form button:hover {
+            background-color: #3498db;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1d6a81;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .about h2 {
+                font-size: 24px;
+            }
+
+            .lecture-topics ul li {
+                font-size: 16px;
+            }
+
+            .booking-form input, .booking-form select, .booking-form button {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#topics">Lecture Topics</a>
+        <a href="#book-session">Book a Session</a>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Group Lecture Booking System</h1>
+        <p>Access a variety of group lectures and book your session today!</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <!-- About Section -->
+        <div class="about" id="about">
+            <h2>About Arnold Consultancy</h2>
+            <p>Arnold Consultancy has been a leader in professional development and corporate training for over 15 years. We provide industry-focused, result-driven learning solutions that help individuals and organizations stay competitive in an ever-changing business world. Our expert instructors deliver engaging, practical lectures on topics ranging from technology to finance, ensuring that our clients gain the knowledge and skills they need to thrive.</p>
+
+            <h3>Why Choose Arnold Consultancy?</h3>
+            <ul>
+                <li>✔ Experienced Industry Experts: Our instructors have decades of combined experience in their respective fields.</li>
+                <li>✔ Tailored Learning: We offer personalized training solutions to meet the unique needs of individuals and organizations.</li>
+                <li>✔ Flexible Scheduling: Book sessions at your convenience—morning, afternoon, or evening sessions available.</li>
+                <li>✔ Proven Success: Our clients consistently see improved performance and career growth after attending our sessions.</li>
+                <li>✔ Interactive & Engaging: We use real-world case studies, hands-on exercises, and interactive tools to ensure a dynamic learning experience.</li>
+            </ul>
+        </div>
+
+        <!-- Lecture Topics Section -->
+        <div class="lecture-topics" id="topics">
+            <h2>Available Lecture Topics</h2>
+            <ul>
+                <li>
+                    <span>Introduction to Web Development</span>
+                    <a href="#book-session">Book Now</a>
+                </li>
+                <li>
+                    <span>Advanced JavaScript Techniques</span>
+                    <a href="#book-session">Book Now</a>
+                </li>
+                <li>
+                    <span>Mastering CSS Grid Layouts</span>
+                    <a href="#book-session">Book Now</a>
+                </li>
+                <li>
+                    <span>Database Management for Beginners</span>
+                    <a href="#book-session">Book Now</a>
+                </li>
+                <li>
+                    <span>Introduction to Machine Learning</span>
+                    <a href="#book-session">Book Now</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Booking Form Section -->
+        <div class="booking-form" id="book-session">
+            <h2>Book a Session</h2>
+            <form action="#" method="POST">
+                <label for="topic">Select a Topic:</label>
+                <select id="topic" name="topic" required>
+                    <option value="">--Select Topic--</option>
+                    <option value="web-dev">Introduction to Web Development</option>
+                    <option value="js-techniques">Advanced JavaScript Techniques</option>
+                    <option value="css-grid">Mastering CSS Grid Layouts</option>
+                    <option value="db-management">Database Management for Beginners</option>
+                    <option value="machine-learning">Introduction to Machine Learning</option>
+                </select>
+
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="date">Preferred Date and Time:</label>
+                <input type="datetime-local" id="date" name="date" required>
+
+                <button type="submit">Book Session</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Arnold Consultancy. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>
