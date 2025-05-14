@@ -14,10 +14,12 @@
             --light-color: #f8f9fa;
             --border-color: #e0e0e0;
         }
-        
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: clear;
+            background-color: #f4f4f4; /* A light background color */
+            background-image: url('your-background-image.jpg'); /* Replace with your image URL */
+            background-repeat: repeat; /* Make the background image repeat */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,7 +29,7 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-        
+
         .search-container {
             width: 100%;
             max-width: 700px;
@@ -37,31 +39,31 @@
             padding: 30px 40px;
             border: 1px solid var(--border-color);
         }
-        
+
         .search-header {
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         .search-header h2 {
             color: var(--primary-color);
             margin: 0 0 10px 0;
             font-size: 24px;
             font-weight: 600;
         }
-        
+
         .search-header p {
             color: #7f8c8d;
             margin: 0;
             font-size: 14px;
         }
-        
+
         .search-box {
             display: flex;
             margin-bottom: 5px;
             position: relative;
         }
-        
+
         .search-box input {
             flex: 1;
             padding: 14px 20px 14px 45px;
@@ -70,14 +72,12 @@
             font-size: 15px;
             outline: none;
             transition: border-color 0.3s ease;
-            background-color: clear;
         }
-        
+
         .search-box input:focus {
             border-color: var(--accent-color);
-            background-color: white;
         }
-        
+
         .search-box::before {
             content: "\f002";
             font-family: "Font Awesome 6 Free";
@@ -89,9 +89,9 @@
             color: #95a5a6;
             font-size: 14px;
         }
-        
+
         .search-box button {
-            background-color: clear;
+            background-color: var(--accent-color);
             color: white;
             border: none;
             border-radius: 4px;
@@ -103,15 +103,15 @@
             transition: background-color 0.3s ease;
             min-width: 100px;
         }
-        
+
         .search-box button:hover {
             background-color: var(--secondary-color);
         }
-        
+
         .search-box button:active {
             background-color: var(--primary-color);
         }
-        
+
         #searchResults {
             max-height: 400px;
             overflow-y: auto;
@@ -121,93 +121,94 @@
             border-radius: 4px;
             background: white;
         }
-        
+
         .result-item {
             padding: 16px 20px;
             border-bottom: 1px solid var(--border-color);
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
-        
+
         .result-item:last-child {
             border-bottom: none;
         }
-        
+
         .result-item:hover {
-            background-color: clear;
+            background-color: #f9f9f9;
         }
-        
+
         .result-title {
             font-weight: 600;
-            color: clear;
+            color: var(--primary-color);
             margin-bottom: 5px;
             font-size: 16px;
             display: flex;
             align-items: center;
         }
-        
+
         .result-title i {
             margin-right: 10px;
             color: var(--accent-color);
             font-size: 14px;
         }
-        
+
         .result-snippet {
             color: #7f8c8d;
             font-size: 14px;
             line-height: 1.5;
         }
-        
+
         .result-url {
             color: #3498db;
             font-size: 13px;
             margin-top: 5px;
             font-family: 'Courier New', monospace;
         }
-        
+
         .no-results {
             padding: 20px;
             text-align: center;
             color: #95a5a6;
             font-size: 14px;
         }
-        
+
         /* Scrollbar styling */
         #searchResults::-webkit-scrollbar {
             width: 6px;
         }
-        
+
         #searchResults::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
-        
+
         #searchResults::-webkit-scrollbar-thumb {
             background: #bdc3c7;
             border-radius: 3px;
         }
-        
+
         /* Responsive design */
         @media (max-width: 768px) {
             .search-container {
                 padding: 25px;
             }
-            
+
             .search-box {
                 flex-direction: column;
             }
-            
+
             .search-box button {
                 margin-left: 0;
                 margin-top: 10px;
                 padding: 12px;
                 width: 100%;
             }
-            
+
             .search-box::before {
                 top: 16px;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="search-container">
@@ -290,21 +291,21 @@
         function performSearch() {
             const query = searchInput.value.toLowerCase().trim();
             const resultsContainer = document.getElementById('searchResults');
-            
+
             // Clear previous results
             resultsContainer.innerHTML = '';
-            
+
             if (query === '') {
                 resultsContainer.style.display = 'none';
                 return;
             }
-            
+
             // Filter data based on search query
             const results = searchData.filter(item => {
-                return item.title.toLowerCase().includes(query) || 
+                return item.title.toLowerCase().includes(query) ||
                        item.content.toLowerCase().includes(query);
             });
-            
+
             // Display results
             if (results.length > 0) {
                 results.forEach(item => {
@@ -340,7 +341,7 @@
         // Highlight matching text in results
         function highlightMatches(text, query) {
             if (!query) return text;
-            
+
             const regex = new RegExp(query, 'gi');
             return text.replace(regex, match => `<span style="background-color: #e3f2fd; color: #1565c0; padding: 0 2px;">${match}</span>`);
         }
@@ -352,7 +353,7 @@
                 performSearch();
             }
         });
-        
+
         // Focus the search input on page load
         window.addEventListener('load', () => {
             searchInput.focus();
