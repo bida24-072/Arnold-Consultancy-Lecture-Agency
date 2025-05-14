@@ -15,6 +15,9 @@
         body {
             background-color: #f5f5f5;
             padding-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         /* Navigation Bar - Consistent with main site */
@@ -78,11 +81,46 @@
             background-color: rgba(255,255,255,0.2);
         }
         
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #006400;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
         /* Main Content Styles */
         .services-container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
+            flex: 1;
         }
         
         .page-header {
@@ -187,6 +225,40 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #006400, #228B22);
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .services-grid {
@@ -195,6 +267,65 @@
             
             .page-header h1 {
                 font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 15px;
+                text-align: left;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                display: none;
+                width: 100%;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 10px;
+                align-self: flex-end;
             }
         }
     </style>
@@ -207,22 +338,21 @@
                 Arnold's Mentorship
             </a>
             
-            <ul class="nav-menu">
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="servicedropdown.html" class="nav-link active">Services</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                  <li class="nav-item dropdown">
-                    <a  
-                        class="nav-link">Resources</a>
-                   
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Resources</a>
+                    <div class="dropdown-content">
                         <a href="speakers.html">Lectures</a>
                         <a href="topic.html">Topics</a>
                     </div>
                 </li>
-
-
-
-                
                 <li class="nav-item"><a href="catalogue.html" class="nav-link">Catalogue</a></li>
                 <li class="nav-item"><a href="login.html" class="nav-link" style="background-color: rgba(255,255,255,0.3); border-radius: 4px; margin-left: 10px;">Login</a></li>
             </ul>
@@ -233,12 +363,7 @@
         <div class="page-header">
             <h1>Our Comprehensive Services</h1>
             <p>At Arnold Consultancy & Lecture Agency, we offer a wide range of professional services designed to meet your individual or organizational needs.</p>
-
-
-                              <strong> Explore our offerings below.
-                                  
-                              </strong>
-            
+            <strong>Explore our offerings below.</strong>
         </div>
         
         <div class="services-grid">
@@ -364,9 +489,6 @@
         </div>
     </div>
 
-    <script>
-
-<!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Arnold Consultancy & Lecture Agency. All rights reserved.</p>
@@ -376,22 +498,19 @@
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-
     </footer>
 
-
-
-
-
-        
-        // Mobile menu functionality (consistent with main site)
-        function toggleMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
-        }
-        
-        // Add active class to current page in nav
+    <script>
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Add active class to current page in nav
             const currentPage = window.location.pathname.split('/').pop();
             const navLinks = document.querySelectorAll('.nav-link');
             
@@ -399,6 +518,20 @@
                 if (link.getAttribute('href') === currentPage) {
                     link.classList.add('active');
                 }
+            });
+            
+            // Dropdown functionality for mobile
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
             });
         });
     </script>
