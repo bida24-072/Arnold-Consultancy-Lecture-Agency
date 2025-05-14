@@ -4,58 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Arnold's Mentorship</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --text-light: #7f8c8d;
+            --primary-color: #007bff;  /* Blue */
+            --secondary-color: #28a745; /* Green */
+            --accent-color: #dc3545;    /* Red -  consider using this sparingly */
+            --light-color: #f9f9f9;
+            --dark-color: #003366;      /* Darker shade of blue for some text if needed*/
+            --text-color: #34495e;
+            --text-light: #6c757d;
+            --heading-font: 'Inter', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: var(--body-font);
+            line-height: 1.7;
             color: var(--text-color);
-            background-color: #f9f9f9;
+            background-color: transparent;
             margin: 0;
             padding: 0;
-            background-image: url('best%20logo.jfif');
-            background-size: 30%;
-            background-repeat: repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: overlay;
-            background-color: rgba(249, 249, 249, 0.9);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 25px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
+
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            font-family: var(--heading-font);
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
-        
+
         nav {
-            background-color: var(--dark-color);
-            padding: 10px 0;
+            background-color: transparent;
+            padding: 12px 0;
+            position: relative;
         }
-        
+
         nav ul {
             list-style-type: none;
             margin: 0;
@@ -63,81 +67,128 @@
             display: flex;
             justify-content: center;
         }
-        
+
         nav li {
-            margin: 0 15px;
+            margin: 0 20px;
         }
-        
+
         nav a {
-            color: white;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: block;
         }
-        
+
         nav a:hover {
-            background-color: var(--secondary-color);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
         }
-        
+
+        nav a i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        nav ul::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav li:hover ~ ul::after,
+        nav li.active ~ ul::after {
+            width: 100%;
+            left: 0;
+            transform: translateX(0);
+        }
+
+
         main {
             padding: 40px 0;
-            background-color: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            background-color: var(--light-color);
             margin: 30px auto;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             max-width: 1000px;
         }
-        
+
         .content-section {
             padding: 0 40px;
         }
-        
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+
+        .content-section h2{
+            font-family: var(--heading-font);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
-        
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
         .paragraph-spacing {
             margin-top: 30px;
         }
-        
+
         .video-container {
             margin: 40px 0;
             text-align: center;
         }
-        
+
         video {
             max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            aspect-ratio: 16 / 9;
+            display: block;
+            margin: 0 auto;
         }
-        
+
         .video-caption {
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
             color: var(--text-light);
+            font-size: 0.95rem;
+            text-align: center;
         }
-        
+
         .highlight-box {
-            background-color: var(--light-color);
+            background-color: #f0f4f8;
             border-left: 4px solid var(--secondary-color);
-            padding: 20px;
+            padding: 25px;
             margin: 30px 0;
-            border-radius: 0 4px 4px 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        
+        .highlight-box p{
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
         footer {
             background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             margin-top: 40px;
+            border-top: 1px solid #4a5568;
         }
-        
-        footer p {
-            margin: 0;
+        footer p{
+            font-size: 1rem;
         }
 
         footer a {
@@ -154,20 +205,24 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             nav li {
-                margin: 5px 0;
+                margin: 10px 0;
             }
-            
+            nav a{
+                padding: 10px;
+            }
+
             .content-section {
                 padding: 0 20px;
             }
-            
-            body {
-                background-size: 60%;
+            header h1{
+                font-size: 2.5rem;
+            }
+            .content-section h2{
+                font-size: 2rem;
             }
         }
-
     </style>
 </head>
 <body>
@@ -176,56 +231,64 @@
             <h1>About Arnold's Mentorship</h1>
         </div>
     </header>
-    
+
     <nav aria-label="Main Navigation">
         <div class="container">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
-    
+
     <main>
         <div class="content-section">
+            <h2>Our Philosophy</h2>
             <div class="highlight-box">
-                <p>Arnold's Mentorship has established itself as a trusted name in the fields of lecturing and consultation services over its two years of operation. Founded with the vision of empowering individuals and organizations to achieve their full potential, Arnold's Mentorship offers tailored guidance in areas such as academic excellence, career development, and business strategy.</p>
+                <p>
+                    At Arnold's Mentorship, we believe in empowering individuals and organizations to reach their full potential.  With two years of experience in lecturing and consultation, we provide tailored guidance and practical insights to foster academic excellence, career development, and strategic business growth.
+                </p>
             </div>
-            
-            <p>With a focus on personalized attention, Arnold combines his extensive expertise and passion for teaching to deliver impactful lectures and consultations. His approach is rooted in practical insights, ensuring that clients and students not only gain knowledge but also develop the skills needed to succeed in their respective fields.</p>
-            
+
+            <p>
+                Our approach is centered on personalized attention, combining extensive expertise with a passion for teaching.  We strive to equip our clients and students with the knowledge and skills necessary to thrive in their respective fields.
+            </p>
+
             <div class="video-container">
                 <video controls>
                     <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/mp4">
                     <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
-                <div class="video-caption">What Financial Consultants Do (And how to become one)</div>
+                <div class="video-caption">What Financial Consultants Do (And How to Become One)</div>
             </div>
-            
-            <p class="paragraph-spacing">Over the past two years, Arnold's Mentorship has built a reputation for excellence, helping countless individuals and businesses navigate challenges and achieve their goals. What sets Arnold's Mentorship apart is its commitment to adaptability and client-centered solutions.</p>
-            
-            <p>Whether it's one-on-one tutoring, group lectures, or strategic business consultations, Arnold tailors his services to meet the unique needs of each client. His two years of operation have been marked by consistent growth, driven by positive testimonials and word-of-mouth referrals.</p>
-            
-            <p class="paragraph-spacing">Arnold's ability to simplify complex concepts and provide actionable advice has made him a sought-after mentor in both academic and professional circles. As Arnold's Mentorship continues to expand, it remains dedicated to its core mission: fostering growth, confidence, and success in every individual and organization it serves.</p>
+
+            <p class="paragraph-spacing">
+                Arnold's Mentorship has built a strong reputation for excellence, helping numerous individuals and businesses overcome challenges and achieve their objectives.  We are committed to providing adaptable, client-centered solutions.
+            </p>
+
+            <p>
+                Whether through one-on-one tutoring, group lectures, or strategic business consultations, our services are customized to meet the unique needs of each client.  Our growth is driven by positive testimonials and word-of-mouth referrals, a testament to the value we provide.
+            </p>
+
+            <p class="paragraph-spacing">
+               Our ability to simplify complex concepts and deliver actionable advice has made us a trusted mentor in academic and professional arenas.  As we look to the future, Arnold's Mentorship remains dedicated to fostering growth, confidence, and success in every individual and organization we serve.
+            </p>
         </div>
-<!-- Embedded YouTube Video -->
 <div class="video-container">
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Arnold's Mentorship - Financial Consultant Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div class="video-caption">Learn more about becoming a financial consultant.</div>
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Arnold's Mentorship - Financial Consultant Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="video-caption">Learn more about becoming a financial consultant.</div>
 </div>
 
-        
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Arnold's Mentorship. All rights reserved.</p>
+            <p>© 2025 Arnold's Mentorship. All rights reserved.</p>
             <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
