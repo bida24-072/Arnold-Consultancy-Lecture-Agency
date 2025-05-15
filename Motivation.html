@@ -11,6 +11,7 @@
             --accent-color: #00b38f;
             --light-gray: #f5f7fa;
             --dark-gray: #333;
+            --green: #008060; /* Changed to a darker green */
         }
 
         * {
@@ -27,8 +28,8 @@
 
         /* Navigation */
         nav {
-            background-color: #00b38f;
-            border-bottom: 1px solid #008060;
+            background-color: var(--green);
+            border-bottom: 1px solid #00503d; /* Darker border color */
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -150,8 +151,8 @@
 
         /* Footer */
         footer {
-            background-color: #00b38f;
-            border-top: 1px solid #008060;
+            background-color: var(--green); /* Changed to darker green */
+            border-top: 1px solid #00503d; /* Darker border color */
             text-align: center;
             padding: 1rem 2rem;
             margin-top: 4rem;
@@ -187,10 +188,10 @@
     <nav>
         <div class="logo">Arnold Consultancy And Lecture Agency</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="speaker.html">Lectures</a></li>
-            <li><a href="servicedropdown.html">Programs</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Lectures</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
 
@@ -232,7 +233,7 @@
             <p>
                 Take the first step towards a brighter future. Invest in yourself and your leadership journey with Arnold Consultancy And Lecture Agency.
             </p>
-            <a href="registerbook.html" class="booking-button">Book a Session Now</a>
+            <a href="#" class="booking-button">Book a Session Now</a>
         </div>
     </div>
 
