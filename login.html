@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnold's Consulting Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #004e89;
+            --accent-color: #00b38f;
+            --light-gray: #f5f7fa;
+            --dark-gray: #333;
+            --green: #008060; /* Darker green */
+        }
+
         body {
             background-color: #f5f5f5;
             display: flex;
@@ -14,8 +23,9 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif; /* Using Roboto font */
         }
+
         .login-container {
             width: 100%;
             max-width: 400px;
@@ -24,24 +34,36 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
+
         .login-header {
             text-align: center;
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: var(--green); /* Green header */
         }
+
         .company-logo {
             width: 80px;
             height: 80px;
             object-fit: contain;
             margin-bottom: 15px;
         }
+
+        .login-header h2 {
+            color: white; /* White text in header */
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
         .login-body {
             padding: 20px;
         }
+
         .input-icon {
             position: relative;
             margin-bottom: 15px;
         }
+
         .input-icon i {
             position: absolute;
             left: 10px;
@@ -49,27 +71,122 @@
             transform: translateY(-50%);
             color: #777;
         }
+
         .w3-input {
             padding-left: 35px !important;
             width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
+
+        .w3-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(0, 179, 143, 0.25);
+        }
+
         .login-btn {
-            background-color: #4CAF50 !important;
+            background-color: var(--accent-color) !important; /* Green button */
             color: white !important;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: 100%;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        .login-btn:hover {
+            background-color: #008060 !important; /* Darker green on hover */
+        }
+
         .login-footer {
             text-align: center;
             padding: 15px;
-            background-color: #f8f9fa;
-            font-size: 14px;
+            background-color: var(--green); /* Green footer */
+            color: white;
+            font-size: 0.9rem;
+            border-top: 1px solid #00503d;
         }
+
+        .login-footer a {
+            color: #e6f4ec;
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
         .forgot-password {
             text-align: right;
             margin-top: 5px;
         }
+
+        .forgot-password a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .w3-section {
+            margin-bottom: 20px;
+        }
+
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--green);
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .fixed-nav button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .fixed-nav button:hover {
+            background-color: #00503d;
+        }
+
+        .back-button {
+            margin-right: 10px;
+        }
     </style>
 </head>
-<body>
+<body style="padding-top: 50px;">
+    <div class="fixed-nav">
+        <button class="back-button" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button class="home-button" onclick="goHome()">
+            <i class="fas fa-home"></i> Home
+        </button>
+    </div>
 
 <div class="login-container">
     <div class="login-header">
@@ -116,5 +233,14 @@
     </div>
 </div>
 
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    function goHome() {
+        window.location.href = "/";
+    }
+</script>
 </body>
 </html>
