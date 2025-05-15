@@ -105,16 +105,21 @@
             overflow: hidden;
             padding: 10px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align items to the start (left) */
+            align-items: center; /* Vertically center items */
         }
-        .navbar a {
+        .navbar a, .navbar button {
             color: white;
             text-align: center;
             padding: 10px 20px;
             text-decoration: none;
             font-size: 17px;
+            background: none; /* Ensure buttons don't have default button background */
+            border: none; /* Remove button borders */
+            cursor: pointer;
+            outline: none; /* Remove outline on focus */
         }
-        .navbar a:hover {
+        .navbar a:hover, .navbar button:hover {
             background-color: #218838;
             border-radius: 5px;
         }
@@ -122,7 +127,11 @@
             color: white;
             font-size: 24px;
             font-weight: bold;
-            margin-right: auto;
+            margin-right: 20px; /* Add some space after the brand */
+        }
+        .nav-links {
+            display: flex;
+            margin-left: auto; /* Push navigation links to the right */
         }
 
         /* Footer Styles */
@@ -155,10 +164,13 @@
 <body>
     <nav class="navbar">
         <span class="navbar-brand">Knowledge Hub</span>
-        <a href="#finance">Finance</a>
-        <a href="#tech">Technology</a>
-        <a href="#industry">Industry</a>
-        <a href="#growth">Personal Growth</a>
+        <div class="nav-links">
+            <button onclick="window.history.back()">Back</button>
+            <a href="index.html">Home</a> <a href="#finance">Finance</a>
+            <a href="#tech">Technology</a>
+            <a href="#industry">Industry</a>
+            <a href="#growth">Personal Growth</a>
+        </div>
     </nav>
     <div class="container">
         <h1>Knowledge Hub - Topic Directory</h1>
