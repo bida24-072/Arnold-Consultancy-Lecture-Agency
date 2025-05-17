@@ -3,111 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy FAQs | Your Company Name</title>
+    <title>Consultancy FAQs | ConsultPro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <style>
-        /* Global Styles */
+        :root {
+            --primary-blue: #1a6fbf;
+            --light-blue: #e6f2ff;
+            --footer-green: #2a8f37;
+            --light-green: #c1e1c1;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
             color: #333;
             line-height: 1.6;
         }
         
-        .container {
-            width: 85%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Navigation Bar */
-        nav {
-            background-color: #1a6fbf; /* Primary blue */
-            padding: 15px 0;
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-blue);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            color: white;
-            font-size: 24px;
+        .navbar-brand {
+            font-size: 1.5rem;
             font-weight: bold;
-            text-decoration: none;
         }
         
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
+        .nav-link {
             font-weight: 500;
-            transition: color 0.3s;
         }
         
-        .nav-links a:hover {
-            color: #c1e1c1; /* Light green */
+        .nav-link:hover {
+            color: var(--light-green) !important;
         }
         
         /* Header */
         .faq-header {
-            background-color: #e6f2ff; /* Light blue */
-            padding: 60px 0;
-            text-align: center;
+            background-color: var(--light-blue);
+            padding: 5rem 0;
         }
         
         .faq-header h1 {
-            color: #1a6fbf; /* Primary blue */
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .faq-header p {
-            color: #555;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
+            color: var(--primary-blue);
         }
         
         /* FAQ Section */
-        .faq-section {
-            padding: 60px 0;
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
         .faq-item {
-            margin-bottom: 30px;
-            border: 1px solid #d1e7dd; /* Light green border */
-            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d1e7dd;
+            border-radius: 0.5rem;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
         .faq-question {
             background-color: #f8f9fa;
-            padding: 20px;
+            padding: 1.25rem;
             cursor: pointer;
             font-weight: 600;
-            color: #1a6fbf; /* Primary blue */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: var(--primary-blue);
             transition: background-color 0.3s;
         }
         
@@ -117,6 +74,7 @@
         
         .faq-question::after {
             content: '+';
+            float: right;
             font-size: 1.5rem;
         }
         
@@ -125,7 +83,7 @@
         }
         
         .faq-answer {
-            padding: 0 20px;
+            padding: 0 1.25rem;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out, padding 0.3s ease;
@@ -133,29 +91,21 @@
         }
         
         .faq-answer.show {
-            padding: 20px;
-            max-height: 500px;
+            padding: 1.25rem;
+            max-height: 1000px;
         }
         
         /* Footer */
         footer {
-            background-color: #2a8f37; /* Green footer */
+            background-color: var(--footer-green);
             color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
         }
         
         .footer-column h3 {
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 0.5rem;
         }
         
         .footer-column h3::after {
@@ -165,20 +115,11 @@
             bottom: 0;
             width: 50px;
             height: 2px;
-            background-color: #c1e1c1; /* Light green */
-        }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
+            background-color: var(--light-green);
         }
         
         .footer-column a {
-            color: #c1e1c1; /* Light green */
+            color: var(--light-green);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -188,162 +129,146 @@
         }
         
         .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .container {
-                flex-direction: column;
-            }
-            
-            .nav-links {
-                margin-top: 15px;
-            }
-            
-            .nav-links li {
-                margin: 0 10px;
-            }
-            
-            .faq-header {
-                padding: 40px 0;
-            }
-            
-            .faq-header h1 {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a href="#" class="logo">ConsultPro</a>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Case Studies</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+            <a class="navbar-brand" href=""> Arnold Consultancy And Lecture Agency</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicedropdown.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topic.html">Our Topics</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="FAQ.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     
     <!-- FAQ Header -->
     <section class="faq-header">
-        <div class="container">
-            <h1>Frequently Asked Questions</h1>
-            <p>Find answers to common questions about our consultancy services, processes, and how we can help your business grow.</p>
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">Frequently Asked Questions</h1>
+            <p class="lead mx-auto" style="max-width: 700px;">
+                Find answers to common questions about our consultancy services, processes, and how we can help your business grow.
+            </p>
         </div>
     </section>
     
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="py-5">
         <div class="container">
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">What services does your consultancy offer?</div>
-                    <div class="faq-answer">
-                        <p>We offer a comprehensive range of consultancy services including business strategy development, operational improvement, market research, digital transformation, and leadership coaching. Our team specializes in helping businesses of all sizes navigate challenges and capitalize on opportunities.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item">
+                        <div class="faq-question">What services does your consultancy offer?</div>
+                        <div class="faq-answer">
+                            <p>We offer a comprehensive range of consultancy services including business strategy development, operational improvement, market research, digital transformation, and leadership coaching. Our team specializes in helping businesses of all sizes navigate challenges and capitalize on opportunities.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I know if my business needs a consultant?</div>
-                    <div class="faq-answer">
-                        <p>You might benefit from a consultant if you're facing challenges such as stagnant growth, operational inefficiencies, difficulty adapting to market changes, or if you need an objective outside perspective. Many clients also engage us when they're preparing for major transitions like expansion, mergers, or digital transformation.</p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How do I know if my business needs a consultant?</div>
+                        <div class="faq-answer">
+                            <p>You might benefit from a consultant if you're facing challenges such as stagnant growth, operational inefficiencies, difficulty adapting to market changes, or if you need an objective outside perspective. Many clients also engage us when they're preparing for major transitions like expansion, mergers, or digital transformation.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What makes your consultancy different from others?</div>
-                    <div class="faq-answer">
-                        <p>Our unique value proposition includes:</p>
-                        <ul>
-                            <li>Industry-specific expertise across multiple sectors</li>
-                            <li>Data-driven approach combined with practical experience</li>
-                            <li>Customized solutions rather than one-size-fits-all recommendations</li>
-                            <li>Ongoing support and implementation guidance</li>
-                            <li>Transparent pricing with no hidden fees</li>
-                        </ul>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What makes your consultancy different from others?</div>
+                        <div class="faq-answer">
+                            <p>Our unique value proposition includes:</p>
+                            <ul>
+                                <li>Industry-specific expertise across multiple sectors</li>
+                                <li>Data-driven approach combined with practical experience</li>
+                                <li>Customized solutions rather than one-size-fits-all recommendations</li>
+                                <li>Ongoing support and implementation guidance</li>
+                                <li>Transparent pricing with no hidden fees</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What is your typical engagement process?</div>
-                    <div class="faq-answer">
-                        <p>Our process typically follows these stages:</p>
-                        <ol>
-                            <li><strong>Discovery Call:</strong> Initial discussion to understand your needs</li>
-                            <li><strong>Proposal:</strong> Customized plan with scope, timeline, and investment</li>
-                            <li><strong>Diagnostic Phase:</strong> In-depth analysis of your business</li>
-                            <li><strong>Solution Development:</strong> Creating tailored recommendations</li>
-                            <li><strong>Implementation Support:</strong> Helping you execute the plan</li>
-                            <li><strong>Review & Follow-up:</strong> Measuring results and making adjustments</li>
-                        </ol>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is your typical engagement process?</div>
+                        <div class="faq-answer">
+                            <p>Our process typically follows these stages:</p>
+                            <ol>
+                                <li><strong>Discovery Call:</strong> Initial discussion to understand your needs</li>
+                                <li><strong>Proposal:</strong> Customized plan with scope, timeline, and investment</li>
+                                <li><strong>Diagnostic Phase:</strong> In-depth analysis of your business</li>
+                                <li><strong>Solution Development:</strong> Creating tailored recommendations</li>
+                                <li><strong>Implementation Support:</strong> Helping you execute the plan</li>
+                                <li><strong>Review & Follow-up:</strong> Measuring results and making adjustments</li>
+                            </ol>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do you determine pricing for your services?</div>
-                    <div class="faq-answer">
-                        <p>Our pricing is based on several factors including the scope of work, complexity of the project, duration of engagement, and the level of expertise required. We offer different engagement models:</p>
-                        <ul>
-                            <li><strong>Project-based:</strong> Fixed fee for defined deliverables</li>
-                            <li><strong>Retainer:</strong> Ongoing support at a monthly rate</li>
-                            <li><strong>Hourly:</strong> For smaller or more flexible needs</li>
-                        </ul>
-                        <p>We provide transparent quotes after our initial discovery call so you know exactly what to expect.</p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How do you determine pricing for your services?</div>
+                        <div class="faq-answer">
+                            <p>Our pricing is based on several factors including the scope of work, complexity of the project, duration of engagement, and the level of expertise required. We offer different engagement models:</p>
+                            <ul>
+                                <li><strong>Project-based:</strong> Fixed fee for defined deliverables</li>
+                                <li><strong>Retainer:</strong> Ongoing support at a monthly rate</li>
+                                <li><strong>Hourly:</strong> For smaller or more flexible needs</li>
+                            </ul>
+                            <p>We provide transparent quotes after our initial discovery call so you know exactly what to expect.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What industries do you specialize in?</div>
-                    <div class="faq-answer">
-                        <p>Our consultants have deep expertise across multiple sectors including:</p>
-                        <ul>
-                            <li>Technology & SaaS</li>
-                            <li>Professional Services</li>
-                            <li>Manufacturing & Industrial</li>
-                            <li>Healthcare</li>
-                            <li>Financial Services</li>
-                            <li>Retail & E-commerce</li>
-                            <li>Non-profit Organizations</li>
-                        </ul>
-                        <p>We also work with businesses in emerging industries and can adapt our methodologies to your specific sector.</p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What industries do you specialize in?</div>
+                        <div class="faq-answer">
+                            <p>Our consultants have deep expertise across multiple sectors including:</p>
+                            <ul>
+                                <li>Technology & SaaS</li>
+                                <li>Professional Services</li>
+                                <li>Manufacturing & Industrial</li>
+                                <li>Healthcare</li>
+                                <li>Financial Services</li>
+                                <li>Retail & E-commerce</li>
+                                <li>Non-profit Organizations</li>
+                            </ul>
+                            <p>We also work with businesses in emerging industries and can adapt our methodologies to your specific sector.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How long does a typical consulting engagement last?</div>
-                    <div class="faq-answer">
-                        <p>Engagement duration varies significantly based on the project scope:</p>
-                        <ul>
-                            <li><strong>Quick assessments:</strong> 2-4 weeks</li>
-                            <li><strong>Strategy development:</strong> 4-12 weeks</li>
-                            <li><strong>Implementation projects:</strong> 3-6 months</li>
-                            <li><strong>Ongoing advisory:</strong> 6+ months</li>
-                        </ul>
-                        <p>We'll provide a clear timeline during our proposal phase and can adjust as needed based on your priorities and budget.</p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How long does a typical consulting engagement last?</div>
+                        <div class="faq-answer">
+                            <p>Engagement duration varies significantly based on the project scope:</p>
+                            <ul>
+                                <li><strong>Quick assessments:</strong> 2-4 weeks</li>
+                                <li><strong>Strategy development:</strong> 4-12 weeks</li>
+                                <li><strong>Implementation projects:</strong> 3-6 months</li>
+                                <li><strong>Ongoing advisory:</strong> 6+ months</li>
+                            </ul>
+                            <p>We'll provide a clear timeline during our proposal phase and can adjust as needed based on your priorities and budget.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Can you help with implementation, not just recommendations?</div>
-                    <div class="faq-answer">
-                        <p>Absolutely! While some consultancies stop at delivering reports, we believe real value comes from implementation. We offer:</p>
-                        <ul>
-                            <li>Hands-on support during execution</li>
-                            <li>Change management assistance</li>
-                            <li>Training for your team</li>
-                            <li>Progress tracking and adjustments</li>
-                            <li>Post-implementation reviews</li>
-                        </ul>
-                        <p>Our goal is to ensure you see measurable results from our work together.</p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Can you help with implementation, not just recommendations?</div>
+                        <div class="faq-answer">
+                            <p>Absolutely! While some consultancies stop at delivering reports, we believe real value comes from implementation. We offer:</p>
+                            <ul>
+                                <li>Hands-on support during execution</li>
+                                <li>Change management assistance</li>
+                                <li>Training for your team</li>
+                                <li>Progress tracking and adjustments</li>
+                                <li>Post-implementation reviews</li>
+                            </ul>
+                            <p>Our goal is to ensure you see measurable results from our work together.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -351,55 +276,39 @@
     </section>
     
     <!-- Footer -->
-    <footer>
+    <footer class="pt-5 pb-3">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>ConsultPro</h3>
-                    <p>Helping businesses navigate challenges and capitalize on opportunities through strategic consulting and practical solutions.</p>
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <h3> Arnold Consultancy And Lecture Agency</h3>
+                    <p class="mt-3">Helping businesses navigate challenges and capitalize on opportunities through strategic consulting and practical solutions.</p>
                 </div>
                 
-                <div class="footer-column">
+                <div class="col-md-6 col-lg-3">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Contact</a></li>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="servicedropdown.html">Services</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        
+                        <li class="mb-2"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
+               
                 
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Business Strategy</a></li>
-                        <li><a href="#">Operational Improvement</a></li>
-                        <li><a href="#">Digital Transformation</a></li>
-                        <li><a href="#">Market Research</a></li>
-                        <li><a href="#">Leadership Coaching</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>123 Business Ave, Suite 400</li>
-                        <li>New York, NY 10001</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@consultpro.example</li>
-                    </ul>
-                </div>
-            </div>
+               
             
-            <div class="footer-bottom">
-                <p>&copy; 2023 ConsultPro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <div class="footer-bottom pt-3 text-center">
+                <p class="mb-0">&copy; 2025 Arnold Consultancy And Lecture Agency. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
     
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- FAQ Toggle Script -->
     <script>
-        // FAQ Toggle Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
