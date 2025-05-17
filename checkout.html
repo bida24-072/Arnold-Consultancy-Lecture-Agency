@@ -4,501 +4,490 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Arnold Consultancy & Lecture Agency</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary-color: #006400;
+            --secondary-color: #228B22;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --light-text: #6c757d;
         }
-        
+
         body {
-            background-color: #f5f5f5;
-            padding-top: 60px;
-            color: #333;
+            background-color: var(--light-bg);
+            padding-top: 56px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        
-        /* Navigation Bar - Consistent with main site */
-        .navbar {
-            background: linear-gradient(135deg, #006400, #228B22);
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+        /* Navbar Styles */
+        .navbar-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-decoration: none;
+
+        .navbar-brand {
+            font-weight: 700;
             display: flex;
             align-items: center;
-            padding: 15px 0;
         }
-        
-        .logo img {
+
+        .navbar-brand img {
             height: 40px;
             margin-right: 10px;
         }
-        
-        .nav-menu {
-            list-style-type: none;
-            display: flex;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
+
         .nav-link {
-            color: white;
-            text-align: center;
-            padding: 20px 15px;
-            text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 1rem;
             transition: all 0.3s ease;
-            display: block;
         }
-        
+
         .nav-link:hover {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
-        
-        .nav-link.active {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        /* Checkout Container */
-        .checkout-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 30px;
-        }
-        
-        /* Cart Items Section */
-        .cart-items {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
+
+        /* Main Content Styles */
         .section-title {
-            color: #006400;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
-        
+
+        /* Cart Item Styles */
         .cart-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
         }
-        
+
         .item-image {
             width: 100px;
             height: 100px;
-            background-color: #f0f0f0;
-            border-radius: 4px;
-            margin-right: 20px;
+            background-color: #e9ecef;
+            border-radius: 0.375rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-size: 0.9rem;
+            overflow: hidden;
         }
-        
-        .item-details {
-            flex: 1;
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        
+
         .item-title {
+            color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 5px;
-            color: #006400;
         }
-        
-        .item-type {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
+
         .item-price {
-            font-weight: bold;
-            color: #006400;
+            color: var(--primary-color);
+            font-weight: 700;
         }
-        
-        .item-actions {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        
+
         .quantity-selector {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
+            width: 120px;
         }
-        
-        .quantity-btn {
-            width: 30px;
-            height: 30px;
-            background: #f0f0f0;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .quantity-input {
-            width: 50px;
-            height: 30px;
-            text-align: center;
-            border: 1px solid #ddd;
-            margin: 0 5px;
-        }
-        
-        .remove-btn {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .remove-btn i {
-            margin-right: 5px;
-        }
-        
-        /* Order Summary Section */
-        .order-summary {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            height: fit-content;
+
+        /* Order Summary Styles */
+        .order-summary-card {
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
-        
+
         .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
+            padding: 0.5rem 0;
         }
-        
+
         .summary-total {
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            margin-top: 10px;
+            border-top: 2px solid #dee2e6;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
-        
-        /* Payment Section */
-        .payment-section {
-            margin-top: 40px;
-        }
-        
-        .payment-methods {
-            margin: 20px 0;
-        }
-        
+
+        /* Payment Method Styles */
         .payment-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
         }
-        
+
         .payment-method:hover {
-            border-color: #006400;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 1px var(--primary-color);
         }
-        
-        .payment-method input {
-            margin-right: 15px;
+
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 100, 0, 0.05);
         }
-        
+
         .payment-icon {
             width: 40px;
-            margin-right: 15px;
+            height: 25px;
+            object-fit: contain;
+            margin-right: 1rem;
         }
-        
+
+        /* Button Styles */
         .checkout-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #006400, #228B22);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 0.75rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
-        
+
         .checkout-btn:hover {
-            background: linear-gradient(135deg, #228B22, #006400);
-            box-shadow: 0 4px 12px rgba(0,100,0,0.2);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.3);
+            transform: translateY(-2px);
         }
-        
-        /* Customer Info Form */
-        .customer-form {
-            margin-top: 40px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .checkout-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .order-summary {
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .order-summary-card {
                 position: static;
-                margin-top: 40px;
+                margin-top: 2rem;
             }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .cart-item {
-                flex-direction: column;
-            }
-            
+        }
+
+        @media (max-width: 768px) {
             .item-image {
                 width: 100%;
-                height: 150px;
-                margin-bottom: 15px;
+                height: 200px;
+                margin-bottom: 1rem;
+            }
+            
+            .quantity-selector {
+                width: 100%;
             }
         }
     </style>
-<style>
-p {
-  background-image: url('top%20logo.png');
-}
-</style>
-
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
                 <img src="logo.png" alt="Arnold's Mentorship Logo">
                 Arnold's Mentorship
             </a>
-            
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="servicedropdown.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="catalogue.html" class="nav-link">Catalogue</a></li>
-               
-                
-            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicedropdown.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogue.html">Catalogue</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="checkout-container">
-        <div class="cart-section">
-            <div class="cart-items">
-                <h2 class="section-title">Your Consultation & Lecture Selections</h2>
-                
-               
-            
-            <div class="customer-form">
-                <h2 class="section-title">Customer Information</h2>
-                <form id="checkout-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first-name" class="form-label">First Name</label>
-                            <input type="text" id="first-name" class="form-input" required>
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="row g-4">
+            <!-- Left Column - Cart Items and Customer Form -->
+            <div class="col-lg-8">
+                <!-- Cart Items Section -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="section-title">Your Consultation & Lecture Selections</h2>
+                        
+                        <!-- Sample Cart Item (would be dynamically generated in a real application) -->
+                        <div class="cart-item mb-4 pb-4 border-bottom">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="item-image">
+                                        <img src="financial-consulting.jpg" alt="Financial Consulting">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="item-title h5">Financial Consulting</h3>
+                                    <p class="text-muted small mb-2">Expert financial advice for your business</p>
+                                    <p class="item-price mb-0">P300.00</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex flex-column h-100 justify-content-between">
+                                        <div class="input-group quantity-selector">
+                                            <button class="btn btn-outline-secondary" type="button">-</button>
+                                            <input type="text" class="form-control text-center" value="1">
+                                            <button class="btn btn-outline-secondary" type="button">+</button>
+                                        </div>
+                                        <button class="btn btn-link text-danger p-0 remove-btn mt-2">
+                                            <i class="fas fa-trash-alt me-1"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="last-name" class="form-label">Last Name</label>
-                            <input type="text" id="last-name" class="form-input" required>
+                        
+                        <!-- Second Sample Cart Item -->
+                        <div class="cart-item mb-4 pb-4 border-bottom">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="item-image">
+                                        <img src="tech-consulting.jpg" alt="Technology Consulting">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="item-title h5">Technology Consulting</h3>
+                                    <p class="text-muted small mb-2">Technology solutions for your business</p>
+                                    <p class="item-price mb-0">P250.00</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex flex-column h-100 justify-content-between">
+                                        <div class="input-group quantity-selector">
+                                            <button class="btn btn-outline-secondary" type="button">-</button>
+                                            <input type="text" class="form-control text-center" value="1">
+                                            <button class="btn btn-outline-secondary" type="button">+</button>
+                                        </div>
+                                        <button class="btn btn-link text-danger p-0 remove-btn mt-2">
+                                            <i class="fas fa-trash-alt me-1"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Empty Cart Message (hidden when items exist) -->
+                        <div class="text-center py-5 text-muted d-none">
+                            <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                            <h4>Your cart is empty</h4>
+                            <p>Browse our services and add items to get started</p>
+                            <a href="catalogue.html" class="btn btn-outline-success">View Services</a>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company" class="form-label">Company (Optional)</label>
-                        <input type="text" id="company" class="form-input">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="notes" class="form-label">Special Instructions</label>
-                        <textarea id="notes" class="form-input" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="order-summary">
-            <h2 class="section-title">Order Summary</h2>
-            
-            <div class="summary-row">
-                <span>Subtotal ( items)</span>
-                <span>......</span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Service Fee</span>
-                <span>P25.00</span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Estimated Tax</span>
-                <span>P43.84</span>
-            </div>
-            
-            <div class="summary-row summary-total">
-                <span>Total</span>
-                <span>.....</span>
-            </div>
-            
-            <div class="payment-section">
-                <h3 class="section-title">Payment Method</h3>
-                
-                <div class="payment-methods">
-                    <label class="payment-method">
-                        <input type="radio" name="payment" checked>
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Credit Card" class="payment-icon">
-                        <span>Credit/Debit Card</span>
-                    </label>
-                    
-                    <label class="payment-method">
-                        <input type="radio" name="payment">
-                        <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="PayPal" class="payment-icon">
-                        <span>PayPal</span>
-                    </label>
-                    
-                    <label class="payment-method">
-                        <input type="radio" name="payment">
-                        <img src="https://cdn-icons-png.flaticon.com/512/825/825423.png" alt="Bank Transfer" class="payment-icon">
-                        <span>Bank Transfer</span>
-                    </label>
                 </div>
                 
-                <button type="submit" form="checkout-form" class="checkout-btn">
-                    Complete Purchase
-                </button>
-                
-                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
-                    By completing your purchase, you agree to our <a href="terms.html" style="color: #006400;">Terms of Service</a>
-                </p>
+                <!-- Customer Information Form -->
+                <div class="card shadow-sm mt-4">
+                    <div class="card-body">
+                        <h2 class="section-title">Customer Information</h2>
+                        <form id="checkout-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="first-name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="first-name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last-name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="last-name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="company" class="form-label">Company (Optional)</label>
+                                    <input type="text" class="form-control" id="company">
+                                </div>
+                                <div class="col-12">
+                                    <label for="notes" class="form-label">Special Instructions</label>
+                                    <textarea class="form-control" id="notes" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Order Summary -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm order-summary-card">
+                    <div class="card-body">
+                        <h2 class="section-title">Order Summary</h2>
+                        
+                        <div class="d-flex justify-content-between summary-row">
+                            <span>Subtotal (2 items)</span>
+                            <span>P550.00</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between summary-row">
+                            <span>Service Fee</span>
+                            <span>P25.00</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between summary-row">
+                            <span>Estimated Tax</span>
+                            <span>P43.84</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between summary-row summary-total">
+                            <span>Total</span>
+                            <span>P618.84</span>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h3 class="section-title">Payment Method</h3>
+                            
+                            <div class="mb-3">
+                                <div class="payment-method active">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment" id="credit-card" checked>
+                                        <label class="form-check-label d-flex align-items-center" for="credit-card">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Credit Card" class="payment-icon">
+                                            <span>Credit/Debit Card</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment" id="paypal">
+                                        <label class="form-check-label d-flex align-items-center" for="paypal">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="PayPal" class="payment-icon">
+                                            <span>PayPal</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment" id="bank-transfer">
+                                        <label class="form-check-label d-flex align-items-center" for="bank-transfer">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/825/825423.png" alt="Bank Transfer" class="payment-icon">
+                                            <span>Bank Transfer</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" form="checkout-form" class="btn btn-success checkout-btn w-100 py-3">
+                                <i class="fas fa-lock me-2"></i> Complete Purchase
+                            </button>
+                            
+                            <p class="text-center mt-3 small text-muted">
+                                By completing your purchase, you agree to our 
+                                <a href="terms.html" class="text-decoration-none" style="color: var(--primary-color);">Terms of Service</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // Quantity selector functionality
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.parentElement.querySelector('.quantity-input');
-                let value = parseInt(input.value);
-                
-                if (this.textContent === '+' && value < 10) {
-                    input.value = value + 1;
-                } else if (this.textContent === '-' && value > 1) {
-                    input.value = value - 1;
-                }
-                
-                updateTotals();
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quantity adjustment
+            document.querySelectorAll('.quantity-selector button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    let value = parseInt(input.value);
+                    
+                    if (this.textContent === '+' && value < 10) {
+                        input.value = value + 1;
+                    } else if (this.textContent === '-' && value > 1) {
+                        input.value = value - 1;
+                    }
+                    
+                    updateCartTotals();
+                });
             });
+            
+            // Remove item
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.cart-item').remove();
+                    updateCartTotals();
+                });
+            });
+            
+            // Payment method selection
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.addEventListener('click', function() {
+                    document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                    this.querySelector('input').checked = true;
+                });
+            });
+            
+            // Form submission
+            document.getElementById('checkout-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                const successAlert = document.createElement('div');
+                successAlert.className = 'alert alert-success alert-dismissible fade show';
+                successAlert.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>Thank you for your purchase!</strong> A confirmation has been sent to your email.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                const container = document.querySelector('.container');
+                container.insertBefore(successAlert, container.firstChild);
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+            
+            // Initialize cart totals
+            updateCartTotals();
         });
         
-        // Remove item functionality
-        document.querySelectorAll('.remove-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                this.closest('.cart-item').remove();
-                updateTotals();
+        function updateCartTotals() {
+            // Calculate subtotal
+            let subtotal = 0;
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const priceText = item.querySelector('.item-price').textContent;
+                const price = parseFloat(priceText.replace('P', '').replace(',', ''));
+                const quantity = parseInt(item.querySelector('.quantity-selector input').value);
+                subtotal += price * quantity;
             });
-        });
-        
-        // Update order totals
-        function updateTotals() {
-            // In a real implementation, you would calculate based on actual cart items
-            // This is just a placeholder for the demo
-            const subtotal = 0.00;
+            
+            // Calculate service fee and tax (these would be dynamic in a real app)
             const serviceFee = 25.00;
-            const tax = 43.84;
+            const taxRate = 0.08;
+            const tax = subtotal * taxRate;
             const total = subtotal + serviceFee + tax;
             
-            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `PP{subtotal.toFixed(2)}`;
-            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `PP{tax.toFixed(2)}`;
-            document.querySelector('.summary-total span:last-child').textContent = `PP{total.toFixed(2)}`;
+            // Update display
+            const itemCount = document.querySelectorAll('.cart-item').length;
+            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `P${subtotal.toFixed(2)}`;
+            document.querySelector('.summary-row:nth-child(1) span:first-child').textContent = `Subtotal (${itemCount} ${itemCount === 1 ? 'item' : 'items'})`;
+            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `P${tax.toFixed(2)}`;
+            document.querySelector('.summary-total span:last-child').textContent = `P${total.toFixed(2)}`;
+            
+            // Show/hide empty cart message
+            const emptyCartMsg = document.querySelector('.text-center.py-5.text-muted');
+            if (itemCount === 0) {
+                emptyCartMsg.classList.remove('d-none');
+            } else {
+                emptyCartMsg.classList.add('d-none');
+            }
         }
-        
-        // Form submission
-        document.getElementById('checkout-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your purchase! A confirmation has been sent to your email.');
-            // In a real implementation, you would process the payment here
-        });
     </script>
 </body>
 </html>
