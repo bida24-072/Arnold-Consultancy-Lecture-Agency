@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Arnold's Mentorship</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #007bff;
@@ -28,268 +33,164 @@
             font-family: var(--body-font);
             line-height: 1.7;
             color: var(--text-color);
-            background-color: transparent;
-            margin: 0;
-            padding: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: transparent;
-            color: var(--primary-color);
-            padding: 25px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-family: var(--heading-font);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        nav {
+        .navbar-custom {
             background-color: #e2f3e5;
-            padding: 12px 0;
-            position: relative;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav li {
-            margin: 0 20px;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
+        .nav-link {
+            color: var(--primary-color) !important;
             font-weight: 500;
-            padding: 10px 15px;
+            padding: 10px 15px !important;
             border-radius: var(--border-radius);
-            transition: var(--transition);
-            font-size: 1.1rem;
-            display: block;
+            transition: var(--transition) !important;
         }
 
-        nav a:hover {
-            color: var(--secondary-color);
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
             transform: translateY(-2px);
         }
 
-        nav a i {
+        .nav-link i {
             margin-right: 8px;
-            font-size: 1.2rem;
         }
-
-        nav ul::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary-color);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        nav li:hover ~ ul::after,
-        nav li.active ~ ul::after {
-            width: 100%;
-            left: 0;
-            transform: translateX(0);
-        }
-
 
         main {
-            padding: 40px 0;
             background-color: var(--light-color);
-            margin: 30px auto;
             border-radius: var(--border-radius);
-            max-width: 1000px;
         }
 
-        .content-section {
-            padding: 0 40px;
-        }
-
-        .content-section h2{
+        h1, h2 {
             font-family: var(--heading-font);
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 25px;
             font-weight: 600;
             letter-spacing: -0.02em;
-        }
-
-        p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            color: var(--text-color);
-        }
-
-        .paragraph-spacing {
-            margin-top: 30px;
-        }
-
-        .video-container {
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        video {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            aspect-ratio: 16 / 9;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .video-caption {
-            margin-top: 15px;
-            font-style: italic;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            text-align: center;
+            color: var(--primary-color);
         }
 
         .highlight-box {
             background-color: #f0f4f8;
             border-left: 4px solid var(--secondary-color);
-            padding: 25px;
-            margin: 30px 0;
             border-radius: var(--border-radius);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        .highlight-box p{
-            font-size: 1.1rem;
-            color: var(--text-color);
+
+        .video-container video, .video-container iframe {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            aspect-ratio: 16/9;
         }
 
-        footer {
+        .video-caption {
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .footer-custom {
             background-color: #e2f3e5;
             color: var(--dark-color);
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 40px;
             border-top: 1px solid #4a5568;
         }
-        footer p{
-            font-size: 1rem;
-        }
 
-        footer a {
+        .footer-custom a {
             color: var(--primary-color);
             text-decoration: none;
         }
 
-        footer a:hover {
+        .footer-custom a:hover {
             color: var(--secondary-color);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav li {
-                margin: 10px 0;
-            }
-            nav a{
-                padding: 10px;
-            }
-
-            .content-section {
-                padding: 0 20px;
-            }
-            header h1{
-                font-size: 2.5rem;
-            }
-            .content-section h2{
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>About Arnold's Mentorship</h1>
+    <!-- Header -->
+    <header class="py-4">
+        <div class="container text-center">
+            <h1 class="display-4 mb-0">About Arnold's Mentorship</h1>
         </div>
     </header>
 
-    <nav aria-label="Main Navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom py-2">
         <div class="container">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back</a></li>
-                <li><a href="about.html" class="active"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html"><i class="fas fa-user"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main>
-        <div class="content-section">
-            <h2>Our Philosophy</h2>
-            <div class="highlight-box">
-                <p>
-                    At Arnold's Mentorship, we believe in empowering individuals and organizations to reach their full potential.  With two years of experience in lecturing and consultation, we provide tailored guidance and practical insights to foster academic excellence, career development, and strategic business growth.
+    <!-- Main Content -->
+    <main class="container my-5 py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h2 class="mb-4">Our Philosophy</h2>
+                
+                <div class="highlight-box p-4 mb-4">
+                    <p class="mb-0 fs-5">
+                        At Arnold's Mentorship, we believe in empowering individuals and organizations to reach their full potential. With two years of experience in lecturing and consultation, we provide tailored guidance and practical insights to foster academic excellence, career development, and strategic business growth.
+                    </p>
+                </div>
+
+                <p class="fs-5">
+                    Our approach is centered on personalized attention, combining extensive expertise with a passion for teaching. We strive to equip our clients and students with the knowledge and skills necessary to thrive in their respective fields.
                 </p>
+
+                <div class="video-container my-5">
+                    <video controls class="mb-2">
+                        <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/mp4">
+                        <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-caption text-center">What Financial Consultants Do (And How to Become One)</div>
+                </div>
+
+                <p class="fs-5 mt-4">
+                    Arnold's Mentorship has built a strong reputation for excellence, helping numerous individuals and businesses overcome challenges and achieve their objectives. We are committed to providing adaptable, client-centered solutions.
+                </p>
+
+                <p class="fs-5">
+                    Whether through one-on-one tutoring, group lectures, or strategic business consultations, our services are customized to meet the unique needs of each client. Our growth is driven by positive testimonials and word-of-mouth referrals, a testament to the value we provide.
+                </p>
+
+                <p class="fs-5 mt-4">
+                    Our ability to simplify complex concepts and deliver actionable advice has made us a trusted mentor in academic and professional arenas. As we look to the future, Arnold's Mentorship remains dedicated to fostering growth, confidence, and success in every individual and organization we serve.
+                </p>
+
+                <div class="video-container my-5">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Arnold's Mentorship - Financial Consultant Video" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption text-center mt-2">Learn more about becoming a financial consultant.</div>
+                </div>
             </div>
-
-            <p>
-                Our approach is centered on personalized attention, combining extensive expertise with a passion for teaching.  We strive to equip our clients and students with the knowledge and skills necessary to thrive in their respective fields.
-            </p>
-
-            <div class="video-container">
-                <video controls>
-                    <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/mp4">
-                    <source src="tubidymp3.lol%20-%20What%20Financial%20Consultants%20Do%20(And%20how%20to%20become%20one)%20(320%20KBps).mp3" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-caption">What Financial Consultants Do (And How to Become One)</div>
-            </div>
-
-            <p class="paragraph-spacing">
-                Arnold's Mentorship has built a strong reputation for excellence, helping numerous individuals and businesses overcome challenges and achieve their objectives.  We are committed to providing adaptable, client-centered solutions.
-            </p>
-
-            <p>
-                Whether through one-on-one tutoring, group lectures, or strategic business consultations, our services are customized to meet the unique needs of each client.  Our growth is driven by positive testimonials and word-of-mouth referrals, a testament to the value we provide.
-            </p>
-
-            <p class="paragraph-spacing">
-               Our ability to simplify complex concepts and deliver actionable advice has made us a trusted mentor in academic and professional arenas.  As we look to the future, Arnold's Mentorship remains dedicated to fostering growth, confidence, and success in every individual and organization we serve.
-            </p>
         </div>
-<div class="video-container">
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Arnold's Mentorship - Financial Consultant Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div class="video-caption">Learn more about becoming a financial consultant.</div>
-</div>
-
     </main>
 
-    <footer>
-        <div class="container">
-            <p>© 2025 Arnold's Mentorship. All rights reserved.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <!-- Footer -->
+    <footer class="footer-custom py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">© 2025 Arnold's Mentorship. All rights reserved.</p>
+            <p class="mb-0">
+                <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
+            </p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
